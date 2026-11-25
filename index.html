@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#4f46e5">
+  <title>Quiz Interativo de Revisão</title>
+  <style>
+    :root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#0f172a;background:#f4f6fb;font-synthesis:none;text-rendering:optimizeLegibility;--primary:#4f46e5;--border:#e2e8f0;--muted:#64748b}*{box-sizing:border-box}body{margin:0;padding:24px 16px 40px;line-height:1.55}.app{max-width:860px;margin:auto}.header,.card{background:white;border:1px solid var(--border);border-radius:18px;box-shadow:0 8px 24px #0f172a0b}.header{padding:20px;margin-bottom:18px}.top,.actions,.filters,.meta,.footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.title{margin:0;font-size:1.25rem}.subtitle,.muted{color:var(--muted);font-size:.9rem}.actions{justify-content:flex-end}.score{background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:7px 12px;font-weight:700}.filters{justify-content:flex-start;border-top:1px solid var(--border);margin-top:16px;padding-top:14px}.btn,.filter{font:inherit;font-weight:650;border:1px solid var(--border);border-radius:10px;padding:9px 13px;background:white;color:#334155;cursor:pointer}.btn:hover,.filter:hover{background:#f1f5f9}.filter.active,.primary{background:var(--primary);border-color:var(--primary);color:white}.progress{margin:16px 0}.meta{font-size:.88rem;color:#475569;margin-bottom:7px}.track{height:9px;border-radius:20px;background:#e2e8f0;overflow:hidden}.fill{height:100%;width:0;background:var(--primary);transition:width .2s}.card{padding:26px}.qmeta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:.85rem;margin-bottom:14px}.badge{display:inline-block;background:#eef2ff;color:#3730a3;border-radius:999px;padding:4px 11px;font-weight:700}.question{font-size:1.15rem;line-height:1.5;margin:0 0 20px}.options{display:grid;gap:11px}.option{display:flex;align-items:flex-start;text-align:left;gap:12px;padding:13px 15px;border:2px solid var(--border);border-radius:12px;background:white;color:inherit;font:inherit;cursor:pointer}.option:hover:not(:disabled){border-color:var(--primary);background:#f8f8ff}.letter{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:#f1f5f9;font-weight:800}.option:disabled{cursor:default}.option.correct{background:#ecfdf5;border-color:#059669;color:#064e3b}.option.wrong{background:#fff1f2;border-color:#e11d48;color:#881337}.explanation{margin-top:18px;border-radius:12px;padding:15px;background:#f8fafc}.footer{border-top:1px solid var(--border);margin-top:24px;padding-top:17px}.summary{text-align:center}.summary h2{margin-top:0}.review{text-align:left;margin-top:22px}.review-item{border-top:1px solid var(--border);padding:14px 0}.review-item p{margin:5px 0}.hidden{display:none}@media(max-width:600px){.card{padding:20px 16px}.actions{justify-content:flex-start}.header{padding:16px}}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="top">
+        <div><h1 class="title">Quiz Interativo de Revisão</h1><p class="subtitle">Geografia, História, Língua Portuguesa e Arte</p></div>
+        <div class="actions"><span class="score" id="score">Acertos: 0 / 0</span><button class="btn" id="shuffle" type="button">Embaralhar</button><button class="btn" id="restart" type="button">Reiniciar</button></div>
+      </div>
+      <nav class="filters" id="filters" aria-label="Filtrar questões por disciplina"></nav>
+    </header>
+    <section class="progress" aria-label="Progresso"><div class="meta"><span id="progress-label"></span><span id="percent"></span></div><div class="track"><div class="fill" id="fill"></div></div></section>
+    <main class="card" id="quiz" aria-live="polite"></main>
+  </div>
+<script>
+(() => {
+  'use strict';
+  const questions = [
+    {id:1,subject:'Geografia',chapter:'Formação geológica e relevo',question:'Como a separação de Gondwana e a formação do Vale do Rift contribuíram para o relevo africano?',options:['Originaram os continentes atuais e contribuíram para a formação de planaltos, montanhas e grandes bacias hidrográficas.','Transformaram todo o continente em uma planície sem falhas geológicas.','Mantiveram a África ligada à América do Sul até hoje.','Impediram a formação de bacias hidrográficas.'],correct:0,explanation:'A fragmentação de Gondwana e os processos tectônicos, incluindo o Rift, ajudaram a moldar o relevo variado do continente.'},
+    {id:2,subject:'Geografia',chapter:'Clima e biomas africanos',question:'Qual alternativa descreve corretamente a diversidade de climas e biomas da África?',options:['Todo o continente tem clima equatorial e floresta densa.','Há desertos como o Saara e o Kalahari, florestas tropicais na Bacia do Congo e extensas savanas.','As savanas existem apenas em áreas permanentemente congeladas.','O Saara fica no extremo sul do continente.'],correct:1,explanation:'A África possui grande diversidade ambiental, com áreas áridas, zonas equatoriais, florestas tropicais e savanas.'},
+    {id:3,subject:'Geografia',chapter:'Aspectos étnicos e culturais',question:'Qual foi um efeito das fronteiras coloniais impostas na África?',options:['Respeitaram todos os limites tradicionais e eliminaram tensões.','Agruparam povos distintos ou dividiram povos entre países, contribuindo para conflitos.','Criaram uma única língua e religião para o continente.','Foram definidas exclusivamente por lideranças locais antes da colonização.'],correct:1,explanation:'As fronteiras coloniais frequentemente ignoraram as divisões étnicas e culturais existentes.'},
+    {id:4,subject:'Geografia',chapter:'Demografia africana',question:'Qual fator ajuda a explicar o crescimento populacional africano?',options:['Altas taxas de fertilidade, com concentração populacional em cidades, litorais e vales fluviais.','Baixas taxas de fertilidade e população concentrada no Saara.','Distribuição perfeitamente uniforme por todo o continente.','Imigração europeia recente como causa principal.'],correct:0,explanation:'O crescimento é associado a taxas de fertilidade elevadas, e a população se distribui de forma desigual.'},
+    {id:5,subject:'Geografia',chapter:'Neocolonialismo e Apartheid',question:'Qual consequência está relacionada ao neocolonialismo na África?',options:['Fim imediato de conflitos e da segregação racial.','Instabilidade e conflitos, além do regime de Apartheid na África do Sul entre 1948 e 1994.','Igualdade de direitos durante todo o Apartheid.','Eliminação da dependência econômica externa.'],correct:1,explanation:'A dominação colonial deixou impactos políticos e econômicos; o Apartheid foi um regime de segregação racial sul-africano.'},
+    {id:6,subject:'Geografia',chapter:'Economia e meio ambiente',question:'Qual alternativa associa corretamente recursos e desafios ambientais africanos?',options:['Nigéria e Angola produzem petróleo; a mineração é importante em países como África do Sul e RDC, enquanto áreas como o Sahel enfrentam desertificação.','A África não possui reservas minerais ou petróleo.','A agricultura eliminou todos os problemas de desmatamento e erosão.','O Sahel é uma grande floresta equatorial úmida.'],correct:0,explanation:'Há importantes atividades petrolíferas e minerais, ao lado de desafios como desertificação, desmatamento e degradação do solo.'},
+    {id:7,subject:'História',chapter:'Unificação italiana',question:'Quais correntes participaram do processo de unificação italiana (Risorgimento)?',options:['Republicanos como Mazzini e Garibaldi e monarquistas ligados ao Reino da Sardenha-Piemonte, como Cavour.','Apenas os monarquistas prussianos liderados por Bismarck.','O Congresso de Viena, que proclamou uma república italiana em 1815.','Nacionalistas japoneses aliados aos Estados Unidos.'],correct:0,explanation:'Republicanos e monarquistas do Piemonte tiveram papéis importantes, embora defendessem projetos políticos diferentes.'},
+    {id:8,subject:'História',chapter:'Unificação alemã',question:'Como a unificação alemã foi consolidada em 1871?',options:['Por plebiscito pacífico, sem conflitos.','Sob liderança prussiana e de Bismarck, após guerras contra Dinamarca, Áustria e França.','Por aliança entre Garibaldi e Napoleão III para dissolver a Prússia.','Por tratados com o xogunato Tokugawa.'],correct:1,explanation:'A Prússia conduziu a unificação por meio de guerras e proclamou o Império Alemão em 1871.'},
+    {id:9,subject:'História',chapter:'Imperialismo e Conferência de Berlim',question:'Que justificativas e interesses acompanharam o imperialismo europeu na África?',options:['Ideias racistas de missão civilizatória e busca por matérias-primas, mão de obra e mercados; a Conferência de Berlim organizou a partilha colonial.','Igualdade cultural e devolução das terras aos povos locais.','Fim dos monopólios e abandono da busca por recursos.','Uma iniciativa da Índia e da China para limitar a industrialização europeia.'],correct:0,explanation:'Interesses econômicos e ideologias racistas foram usados para justificar a expansão imperialista.'},
+    {id:10,subject:'História',chapter:'Resistências na África e na Ásia',question:'Como povos africanos e asiáticos reagiram à expansão imperialista?',options:['Aceitaram passivamente a ocupação em todos os lugares.','Organizaram resistências armadas e simbólicas e movimentos nacionalistas em diferentes regiões.','Somente a China resistiu; não houve levantes na África nem na Índia.','Aliaram-se às potências europeias para colonizar outros povos.'],correct:1,explanation:'A expansão imperialista encontrou resistência em muitos territórios, inclusive por meio de levantes e movimentos nacionalistas.'}
+  ];
+  const subjects = ['Todas', ...new Set(questions.map(q => q.subject))];
+  let order = [...questions], filter = 'Todas', index = 0;
+  const answers = new Map();
+  const $ = id => document.getElementById(id);
+  const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const current = () => order.filter(q => filter === 'Todas' || q.subject === filter);
+  function renderFilters(){
+    const counts = Object.fromEntries(subjects.map(s => [s, s === 'Todas' ? order.length : order.filter(q => q.subject === s).length]));
+    $('filters').innerHTML = subjects.map(s => `<button type="button" class="filter ${s === filter ? 'active' : ''}" data-filter="${esc(s)}" aria-pressed="${s === filter}">${esc(s)} <span>${counts[s]}</span></button>`).join('');
+    $('filters').querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => { filter = button.dataset.filter; index = 0; render(); }));
+  }
+  function render(){
+    renderFilters();
+    const list = current(), done = list.filter(q => answers.has(q.id)).length;
+    const correct = list.filter(q => answers.get(q.id) === q.correct).length;
+    $('score').textContent = `Acertos: ${correct} / ${done}`;
+    $('progress-label').textContent = list.length ? `Questão ${Math.min(index + 1, list.length)} de ${list.length}` : 'Nenhuma questão';
+    const percent = list.length ? Math.round(done / list.length * 100) : 0;
+    $('percent').textContent = `${percent}% respondido`;
+    $('fill').style.width = `${percent}%`;
+    if (!list.length){ $('quiz').innerHTML = '<p>Nenhuma questão encontrada.</p>'; return; }
+    if (index >= list.length){ renderSummary(list); return; }
+    const q = list[index], selected = answers.get(q.id);
+    $('quiz').innerHTML = `<div class="qmeta"><span class="badge">${esc(q.subject)}</span><span>${esc(q.chapter)} · ${index + 1}/${list.length}</span></div><h2 class="question">${esc(q.question)}</h2><div class="options">${q.options.map((option,i) => {let state=''; if(selected !== undefined){state = i === q.correct ? ' correct' : i === selected ? ' wrong' : '';} return `<button type="button" class="option${state}" data-answer="${i}" ${selected !== undefined ? 'disabled' : ''}><span class="letter">${'ABCD'[i]}</span><span>${esc(option)}</span></button>`;}).join('')}</div>${selected !== undefined ? `<div class="explanation"><strong>${selected === q.correct ? 'Correto!' : `Resposta: ${'ABCD'[q.correct]}.`}</strong> ${esc(q.explanation)}</div>` : ''}<div class="footer"><span class="muted">Escolha uma alternativa para continuar.</span>${selected !== undefined ? `<button type="button" class="btn primary" id="next">${index === list.length - 1 ? 'Ver resultado' : 'Próxima questão'}</button>` : ''}</div>`;
+    $('quiz').querySelectorAll('[data-answer]').forEach(button => button.addEventListener('click', () => { answers.set(q.id, Number(button.dataset.answer)); render(); }));
+    const next = $('next'); if(next) next.addEventListener('click', () => { index++; render(); });
+  }
+  function renderSummary(list){
+    const correct = list.filter(q => answers.get(q.id) === q.correct).length;
+    const details = list.map(q => `<article class="review-item"><strong>${esc(q.subject)} — ${esc(q.chapter)}</strong><p>${esc(q.question)}</p><p class="muted">${answers.get(q.id) === q.correct ? 'Acertou' : `Resposta correta: ${'ABCD'[q.correct]}. ${esc(q.options[q.correct])}`}</p></article>`).join('');
+    $('quiz').innerHTML = `<section class="summary"><span class="badge">Resultado final</span><h2>Você acertou ${correct} de ${list.length}</h2><p class="muted">${Math.round(correct / list.length * 100)}% de aproveitamento</p><button class="btn primary" id="again" type="button">Tentar novamente</button></section><section class="review"><h3>Revisão das questões</h3>${details}</section>`;
+    $('again').addEventListener('click', reset);
+  }
+  function reset(){ answers.clear(); index = 0; render(); }
+  $('restart').addEventListener('click', reset);
+  $('shuffle').addEventListener('click', () => { order = [...order].sort(() => Math.random() - .5); reset(); });
+  render();
+})();
+</script>
+</body>
+</html>
