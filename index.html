@@ -3,1627 +3,407 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quiz Interativo — Geografia, História, Língua Portuguesa e Arte</title>
+  <title>Portal de Quizzes Interativos</title>
   <style>
     :root {
-      --bg-page: #f4f6fb;
-      --bg-card: #ffffff;
-      --bg-subtle: #f8fafc;
-      --text-main: #0f172a;
-      --text-secondary: #475569;
-      --text-muted: #64748b;
-      --border-color: #e2e8f0;
-      --primary: #4f46e5;
-      --primary-hover: #4338ca;
-      --primary-soft: #eef2ff;
-      --primary-border: #c7d2fe;
-      --success: #059669;
-      --success-bg: #ecfdf5;
-      --success-border: #6ee7b7;
-      --success-text: #064e3b;
-      --danger: #e11d48;
-      --danger-bg: #fff1f2;
-      --danger-border: #fda4af;
-      --danger-text: #881337;
-      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
-      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
+      --bg: #0f172a;
+      --card: #1e293b;
+      --card-light: #273549;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --success: #10b981;
+      --success-bg: rgba(16, 185, 129, 0.16);
+      --danger: #ef4444;
+      --danger-bg: rgba(239, 68, 68, 0.16);
+      --border: #334155;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--bg-page);
-      color: var(--text-main);
-      line-height: 1.55;
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
-      padding: 20px 16px 40px;
-      -webkit-font-smoothing: antialiased;
+      padding: 24px 16px;
+      display: flex;
+      justify-content: center;
     }
 
-    .app-wrapper {
-      max-width: 860px;
-      margin: 0 auto;
+    .container {
+      width: 100%;
+      max-width: 820px;
     }
 
-    /* Cabeçalho */
-    .header-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
+    header {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
       padding: 20px;
-      box-shadow: var(--shadow-sm);
       margin-bottom: 18px;
     }
 
-    .header-top {
+    .top-row {
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
       justify-content: space-between;
-      gap: 16px;
-    }
-
-    .brand-box {
-      display: flex;
       align-items: center;
-      gap: 14px;
-    }
-
-    .brand-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: var(--radius-md);
-      background: var(--primary);
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .brand-title {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--text-main);
-      letter-spacing: -0.01em;
-    }
-
-    .brand-subtitle {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    .header-actions {
-      display: flex;
       flex-wrap: wrap;
-      align-items: center;
-      gap: 10px;
+      gap: 12px;
+      margin-bottom: 16px;
     }
 
-    .score-pill {
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 6px 14px;
-      text-align: right;
+    h1 {
+      font-size: 1.35rem;
+      font-weight: 700;
     }
 
-    .score-label {
-      display: block;
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-    }
-
-    .score-value {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--text-main);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      font-family: inherit;
-      font-size: 0.875rem;
-      font-weight: 600;
-      padding: 10px 15px;
-      border-radius: var(--radius-md);
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
-      user-select: none;
-    }
-
-    .btn:active {
-      transform: scale(0.98);
-    }
-
-    .btn-soft {
-      background: var(--primary-soft);
-      color: var(--primary);
-      border-color: var(--primary-border);
-    }
-
-    .btn-soft:hover {
-      background: #e0e7ff;
-    }
-
-    .btn-neutral {
-      background: #f1f5f9;
-      color: #334155;
-      border-color: var(--border-color);
-    }
-
-    .btn-neutral:hover {
-      background: #e2e8f0;
-    }
-
-    .btn-outline {
-      background: #ffffff;
-      color: #334155;
-      border-color: var(--border-color);
-    }
-
-    .btn-outline:hover {
-      background: var(--bg-subtle);
-      border-color: #cbd5e1;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: #ffffff;
-      padding: 12px 22px;
-      font-size: 0.95rem;
-      box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-hover);
-    }
-
-    /* Abas de Filtro */
-    .filter-bar {
+    .controls {
       display: flex;
-      flex-wrap: wrap;
       gap: 8px;
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border-color);
     }
 
-    .filter-tab {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 8px 13px;
-      border-radius: 999px;
-      border: 1px solid var(--border-color);
-      background: #ffffff;
-      color: var(--text-secondary);
-      font-family: inherit;
-      font-size: 0.82rem;
-      font-weight: 600;
+    button {
       cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--card-light);
+      color: var(--text);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
       transition: all 0.15s ease;
     }
 
-    .filter-tab:hover {
-      background: var(--bg-subtle);
-      color: var(--text-main);
+    button:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: #31435c;
     }
 
-    .filter-tab.active {
+    button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    button.primary {
       background: var(--primary);
       border-color: var(--primary);
-      color: #ffffff;
+      color: #fff;
     }
 
-    .filter-count {
-      padding: 1px 7px;
+    button.primary:hover:not(:disabled) {
+      background: var(--primary-hover);
+    }
+
+    /* Seletor Principal de Quiz */
+    .quiz-selector-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .quiz-tabs, .sub-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .quiz-tab {
+      flex: 1 1 200px;
+      text-align: left;
+      padding: 12px 14px;
+      background: #162033;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .quiz-tab strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 2px;
+    }
+
+    .quiz-tab span {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .quiz-tab.active {
+      background: rgba(59, 130, 246, 0.18);
+      border-color: var(--primary);
+    }
+
+    .sub-filter-box {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    .sub-tab {
+      padding: 6px 12px;
+      font-size: 0.85rem;
       border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      background: #f1f5f9;
-      color: var(--text-muted);
     }
 
-    .filter-tab.active .filter-count {
-      background: rgba(255, 255, 255, 0.22);
-      color: #ffffff;
+    .sub-tab.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
     }
 
-    /* Progresso */
-    .progress-section {
-      margin-bottom: 18px;
-    }
-
-    .progress-meta {
+    /* Barra de Status e Progresso */
+    .status-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.84rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      color: var(--muted);
     }
 
     .progress-track {
       width: 100%;
-      height: 10px;
-      background: #e2e8f0;
+      height: 8px;
+      background: var(--card);
       border-radius: 999px;
       overflow: hidden;
+      margin-bottom: 18px;
+      border: 1px solid var(--border);
     }
 
     .progress-fill {
       height: 100%;
-      width: 0%;
       background: var(--primary);
-      border-radius: 999px;
+      width: 0%;
       transition: width 0.25s ease;
     }
 
-    /* Card Principal da Questão / Resumo */
-    .main-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 26px 24px;
-      box-shadow: var(--shadow-md);
+    /* Card da Questão */
+    .quiz-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(6px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in {
-      animation: fadeIn 0.22s ease-out;
-    }
-
-    .question-meta {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .badge-group {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .subject-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 12px;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      border: 1px solid transparent;
-    }
-
-    .subject-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-    }
-
-    .subj-geo { background: #ecfdf5; color: #065f46; border-color: #a7f3d0; }
-    .subj-geo .subject-dot { background: #10b981; }
-
-    .subj-hist { background: #fffbeb; color: #92400e; border-color: #fde68a; }
-    .subj-hist .subject-dot { background: #f59e0b; }
-
-    .subj-port { background: #eff6ff; color: #1e40af; border-color: #bfdbfe; }
-    .subj-port .subject-dot { background: #3b82f6; }
-
-    .subj-arte { background: #fdf2f8; color: #9d174d; border-color: #fbcfe8; }
-    .subj-arte .subject-dot { background: #ec4899; }
-
-    .chapter-label {
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--text-muted);
-    }
-
-    .question-number-tag {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--text-muted);
-    }
-
-    .question-text {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text-main);
-      line-height: 1.5;
-      margin-bottom: 22px;
-    }
-
-    /* Opções */
-    .options-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .option-btn {
-      width: 100%;
-      text-align: left;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 15px 16px;
-      border-radius: var(--radius-md);
-      border: 2px solid var(--border-color);
-      background: #ffffff;
-      color: var(--text-main);
-      font-family: inherit;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      cursor: pointer;
-      transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.1s ease;
-    }
-
-    .option-btn:not(:disabled):hover {
-      border-color: var(--primary);
-      background: #f5f7ff;
-    }
-
-    .option-btn:not(:disabled):active {
-      transform: scale(0.995);
-    }
-
-    .option-btn:disabled {
-      cursor: default;
-    }
-
-    .option-letter {
-      width: 32px;
-      height: 32px;
-      border-radius: var(--radius-sm);
-      background: #f1f5f9;
-      color: #334155;
-      font-weight: 800;
-      font-size: 0.88rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: background-color 0.15s ease, color 0.15s ease;
-    }
-
-    .option-btn:not(:disabled):hover .option-letter {
-      background: var(--primary);
-      color: #ffffff;
-    }
-
-    .option-content {
-      flex: 1;
-      padding-top: 3px;
-      font-weight: 500;
-    }
-
-    .option-status-icon {
-      flex-shrink: 0;
-      font-weight: 800;
-      font-size: 1.05rem;
-      padding-top: 3px;
-    }
-
-    /* Estados Pós-Resposta */
-    .option-btn.opt-correct {
-      border-color: var(--success);
-      background: var(--success-bg);
-      color: var(--success-text);
-    }
-
-    .option-btn.opt-correct .option-letter {
-      background: var(--success);
-      color: #ffffff;
-    }
-
-    .option-btn.opt-wrong {
-      border-color: var(--danger);
-      background: var(--danger-bg);
-      color: var(--danger-text);
-    }
-
-    .option-btn.opt-wrong .option-letter {
-      background: var(--danger);
-      color: #ffffff;
-    }
-
-    .option-btn.opt-muted {
-      background: #f8fafc;
-      border-color: #e2e8f0;
-      color: #64748b;
-      opacity: 0.78;
-    }
-
-    /* Caixa de Explicação */
-    .explanation-box {
-      margin-top: 22px;
-      padding: 18px 20px;
-      border-radius: var(--radius-md);
-      border: 1px solid transparent;
-      animation: fadeIn 0.22s ease-out;
-    }
-
-    .explanation-box.exp-correct {
-      background: var(--success-bg);
-      border-color: var(--success-border);
-      color: var(--success-text);
-    }
-
-    .explanation-box.exp-wrong {
-      background: var(--danger-bg);
-      border-color: var(--danger-border);
-      color: var(--danger-text);
-    }
-
-    .explanation-header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .explanation-pill {
-      font-size: 0.74rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      padding: 3px 10px;
-      border-radius: 999px;
-      color: #ffffff;
-    }
-
-    .exp-correct .explanation-pill {
-      background: var(--success);
-    }
-
-    .exp-wrong .explanation-pill {
-      background: var(--danger);
-    }
-
-    .explanation-title {
-      font-size: 0.98rem;
-      font-weight: 800;
-    }
-
-    .explanation-body {
-      font-size: 0.92rem;
-      line-height: 1.55;
-    }
-
-    /* Navegação Inferior */
-    .card-footer {
-      margin-top: 26px;
-      padding-top: 18px;
-      border-top: 1px solid var(--border-color);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .hint-text {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    /* Tela de Resumo Final */
-    .summary-hero {
-      text-align: center;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .summary-badge {
+    .badge {
       display: inline-block;
-      padding: 5px 14px;
-      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.18);
+      color: #93c5fd;
       font-size: 0.8rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      background: var(--primary-soft);
-      color: var(--primary);
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
       margin-bottom: 12px;
     }
 
-    .summary-title {
-      font-size: 1.65rem;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 8px;
-    }
-
-    .summary-desc {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      max-width: 580px;
-      margin: 0 auto 20px;
-    }
-
-    .stats-grid {
-      display: inline-flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 16px 28px;
-      margin-bottom: 22px;
-    }
-
-    .stat-item {
-      min-width: 72px;
-    }
-
-    .stat-label {
-      display: block;
-      font-size: 0.76rem;
+    .question-text {
+      font-size: 1.12rem;
+      line-height: 1.55;
+      margin-bottom: 20px;
       font-weight: 600;
-      color: var(--text-muted);
-      text-transform: uppercase;
     }
 
-    .stat-num {
-      font-size: 1.55rem;
-      font-weight: 800;
-    }
-
-    .stat-green { color: var(--success); }
-    .stat-red { color: var(--danger); }
-    .stat-dark { color: var(--text-main); }
-
-    .summary-actions {
+    .options-list {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .option-btn {
+      display: flex;
+      align-items: flex-start;
       gap: 12px;
+      text-align: left;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: #162033;
+      border: 1px solid var(--border);
+      font-weight: 500;
+      line-height: 1.45;
     }
 
-    .section-heading {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--text-main);
-      margin: 24px 0 14px;
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: #1e2d47;
     }
 
-    .subjects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 14px;
-    }
-
-    .subject-stat-card {
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 16px;
-    }
-
-    .subject-stat-top {
+    .option-letter {
+      min-width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--card-light);
       display: flex;
       align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .option-btn.correct {
+      background: var(--success-bg);
+      border-color: var(--success);
+      color: #ecfdf5;
+    }
+
+    .option-btn.correct .option-letter {
+      background: var(--success);
+      color: #064e3b;
+    }
+
+    .option-btn.wrong {
+      background: var(--danger-bg);
+      border-color: var(--danger);
+      color: #fef2f2;
+    }
+
+    .option-btn.wrong .option-letter {
+      background: var(--danger);
+      color: #fff;
+    }
+
+    .explanation {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: #162033;
+      border-left: 4px solid var(--primary);
+      font-size: 0.94rem;
+      line-height: 1.5;
+      color: #e2e8f0;
+      display: none;
+    }
+
+    .explanation.visible {
+      display: block;
+    }
+
+    .nav-footer {
+      display: flex;
       justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 8px;
+      align-items: center;
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
     }
 
-    .subject-stat-score {
-      font-size: 0.92rem;
+    /* Tela Final */
+    .summary-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      display: none;
+    }
+
+    .summary-score {
+      font-size: 2.2rem;
       font-weight: 800;
-      color: var(--text-main);
+      color: var(--primary);
+      margin: 8px 0;
     }
 
-    .subject-stat-sub {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin-bottom: 10px;
+    .breakdown {
+      margin: 20px 0;
+      display: grid;
+      gap: 10px;
     }
 
-    .mini-bar-track {
-      width: 100%;
-      height: 8px;
-      background: #e2e8f0;
-      border-radius: 999px;
-      overflow: hidden;
+    .breakdown-item {
+      background: #162033;
+      padding: 12px 14px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.92rem;
     }
 
-    .mini-bar-fill {
-      height: 100%;
-      border-radius: 999px;
-    }
-
-    .fill-geo { background: #10b981; }
-    .fill-hist { background: #f59e0b; }
-    .fill-port { background: #3b82f6; }
-    .fill-arte { background: #ec4899; }
-
-    /* Lista de Revisão */
     .review-list {
+      margin-top: 20px;
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
 
     .review-item {
-      padding: 16px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-color);
+      background: #162033;
+      padding: 14px;
+      border-radius: 12px;
+      border-left: 4px solid var(--border);
+      font-size: 0.9rem;
+      line-height: 1.45;
     }
 
-    .review-item.rev-ok {
-      background: #f6fef9;
-      border-color: #bbf7d0;
-    }
-
-    .review-item.rev-err {
-      background: #fff8f9;
-      border-color: #fecdd3;
-    }
-
-    .review-top {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .review-status {
-      font-size: 0.74rem;
-      font-weight: 800;
-      padding: 2px 10px;
-      border-radius: 999px;
-      color: #ffffff;
-    }
-
-    .rev-ok .review-status { background: var(--success); }
-    .rev-err .review-status { background: var(--danger); }
-
-    .review-q {
-      font-size: 0.94rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 8px;
-    }
-
-    .review-answers {
-      font-size: 0.84rem;
-      color: var(--text-secondary);
-      margin-bottom: 6px;
-    }
-
-    .review-exp {
-      font-size: 0.84rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    @media (max-width: 600px) {
-      .main-card {
-        padding: 20px 16px;
-      }
-      .question-text {
-        font-size: 1.02rem;
-      }
-      .header-actions {
-        width: 100%;
-        justify-content: space-between;
-      }
-    }
+    .review-item.ok { border-left-color: var(--success); }
+    .review-item.err { border-left-color: var(--danger); }
   </style>
 </head>
 <body>
-  <div class="app-wrapper">
-    <!-- Cabeçalho -->
-    <header class="header-card">
-      <div class="header-top">
-        <div class="brand-box">
-          <div class="brand-icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-            </svg>
-          </div>
-          <div>
-            <h1 class="brand-title">Quiz Interativo de Revisão</h1>
-            <p class="brand-subtitle">Geografia, História, Língua Portuguesa e Arte • 24 Questões</p>
-          </div>
-        </div>
-
-        <div class="header-actions">
-          <div class="score-pill">
-            <span class="score-label">Acertos / Respondidas</span>
-            <span id="score-display" class="score-value">0 / 0</span>
-          </div>
-          <button type="button" id="btn-shuffle" class="btn btn-soft" title="Embaralhar ordem das questões">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="16 3 21 3 21 8"></polyline>
-              <line x1="4" y1="20" x2="21" y2="3"></line>
-              <polyline points="21 16 21 21 16 21"></polyline>
-              <line x1="15" y1="15" x2="21" y2="21"></line>
-              <line x1="4" y1="4" x2="9" y2="9"></line>
-            </svg>
-            <span>Embaralhar</span>
-          </button>
-          <button type="button" id="btn-restart" class="btn btn-neutral" title="Reiniciar questionário">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="1 4 1 10 7 10"></polyline>
-              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
-            </svg>
-            <span>Reiniciar</span>
-          </button>
+  <div class="container">
+    <header>
+      <div class="top-row">
+        <h1>Central de Estudos & Quizzes</h1>
+        <div class="controls">
+          <button id="btn-shuffle" type="button">Embaralhar</button>
+          <button id="btn-restart" type="button">Reiniciar</button>
         </div>
       </div>
 
-      <!-- Abas de Filtro por Disciplina -->
-      <nav id="filter-bar" class="filter-bar" aria-label="Filtrar questões por disciplina"></nav>
+      <span class="quiz-selector-label">Selecione o Quiz Manualmente:</span>
+      <div class="quiz-tabs" id="quiz-tabs">
+        <button type="button" class="quiz-tab active" data-quiz="gerais">
+          <strong>1. Conhecimentos Gerais (24 questões)</strong>
+          <span>Geografia, História, Língua Portuguesa e Arte</span>
+        </button>
+        <button type="button" class="quiz-tab" data-quiz="atletismo">
+          <strong>2. Atletismo e Treinamento (10 questões)</strong>
+          <span>Pista, campo, saltos, lançamentos e rotina esportiva</span>
+        </button>
+        <button type="button" class="quiz-tab" data-quiz="todos">
+          <strong>3. Simulado Completo (34 questões)</strong>
+          <span>Todos os conteúdos reunidos</span>
+        </button>
+      </div>
+
+      <div class="sub-filter-box" id="sub-filter-box">
+        <span class="quiz-selector-label">Filtrar Disciplina:</span>
+        <div class="sub-tabs" id="sub-tabs"></div>
+      </div>
     </header>
 
-    <!-- Barra de Progresso -->
-    <section class="progress-section" aria-label="Progresso do questionário">
-      <div class="progress-meta">
-        <span id="progress-label">Questão 1 de 24</span>
-        <span id="progress-percent">0% concluído</span>
+    <div id="quiz-area">
+      <div class="status-bar">
+        <span id="question-counter">Questão 1 de 24</span>
+        <span id="score-counter">Acertos: 0 / 0</span>
       </div>
       <div class="progress-track">
-        <div id="progress-bar" class="progress-fill"></div>
+        <div class="progress-fill" id="progress-fill"></div>
       </div>
-    </section>
 
-    <!-- Área Dinâmica (Questão ou Resumo Final) -->
-    <main id="quiz-container" class="main-card"></main>
-  </div>
+      <div class="quiz-card">
+        <span class="badge" id="subject-badge">Disciplina</span>
+        <div class="question-text" id="question-text"></div>
+        <div class="options-list" id="options-list"></div>
+        <div class="explanation" id="explanation"></div>
 
-  <script>
-    (function () {
-      'use strict';
+        <div class="nav-footer">
+          <button type="button" id="btn-prev">← Anterior</button>
+          <button type="button" id="btn-next" class="primary">Próxima →</button>
+        </div>
+      </div>
+    </div>
 
-      var OPTION_LETTERS = ['A', 'B', 'C', 'D'];
-      var FILTER_TABS = [
-        { key: 'Todas', label: 'Todas' },
-        { key: 'Geografia', label: 'Geografia' },
-        { key: 'História', label: 'História' },
-        { key: 'Língua Portuguesa', label: 'Língua Portuguesa' },
-        { key: 'Arte', label: 'Arte' }
-      ];
-
-      var SUBJECT_STYLES = {
-        'Geografia': {
-          badgeClass: 'subj-geo',
-          fillClass: 'fill-geo',
-          subtitle: 'Continente Africano: aspectos físicos, humanos e socioeconômicos'
-        },
-        'História': {
-          badgeClass: 'subj-hist',
-          fillClass: 'fill-hist',
-          subtitle: 'Imperialismo, unificações europeias, EUA e Era Meiji'
-        },
-        'Língua Portuguesa': {
-          badgeClass: 'subj-port',
-          fillClass: 'fill-port',
-          subtitle: 'Práticas de estudo, orações adverbiais, modalização e norma culta'
-        },
-        'Arte': {
-          badgeClass: 'subj-arte',
-          fillClass: 'fill-arte',
-          subtitle: 'Salões de arte, concertos, ópera, sonoplastia e arranjos'
-        }
-      };
-
-      var QUESTIONS_DB = [
-        // ==================== GEOGRAFIA (6) ====================
-        {
-          id: 1,
-          subject: 'Geografia',
-          chapter: 'Cap. 1 — Formação Geológica e Relevo',
-          question: 'A história geológica da África remonta à Era Pré-Cambriana e ao supercontinente Gondwana. Como os eventos tectônicos iniciados há cerca de 200 milhões de anos influenciaram o relevo atual do continente?',
-          options: [
-            'A separação de Gondwana originou os continentes atuais e, somada à formação do Vale do Rift, moldou um relevo diversificado com planaltos, montanhas e grandes bacias hidrográficas.',
-            'A colisão de Gondwana com a Europa eliminou as cadeias montanhosas africanas, formando apenas uma única planície sedimentar.',
-            'O surgimento do Vale do Rift impediu a fragmentação de Gondwana e manteve a África ligada à América do Sul até hoje.',
-            'A estabilidade tectônica desde o Pré-Cambriano impediu a existência de falhas geológicas, planaltos ou grandes bacias hidrográficas.'
-          ],
-          correctIndex: 0,
-          explanation: 'A história geológica africana remonta à Era Pré-Cambriana e ao supercontinente Gondwana. Sua separação há cerca de 200 milhões de anos, somada à formação do Vale do Rift, esculpiu um relevo diversificado composto por planaltos, montanhas e grandes bacias hidrográficas.'
-        },
-        {
-          id: 2,
-          subject: 'Geografia',
-          chapter: 'Cap. 1 — Clima e Biomas Africanos',
-          question: 'Sobre a diversidade climática e os biomas do continente africano, qual alternativa apresenta a caracterização correta?',
-          options: [
-            'O deserto do Saara ocupa exclusivamente o extremo sul da África, onde predominam as florestas equatoriais da Bacia do Congo.',
-            'Além de regiões áridas e desertos como o Saara (maior deserto quente do mundo) e o Kalahari, destacam-se as florestas tropicais da Bacia do Congo e as savanas, que favorecem a pecuária e a agricultura.',
-            'As savanas restringem-se às áreas frias do Kalahari, onde o solo congelado impede qualquer atividade agropecuária.',
-            'O clima equatorial abrange todo o norte africano, substituindo o deserto do Saara por florestas subtropicais densas.'
-          ],
-          correctIndex: 1,
-          explanation: 'A África apresenta grande diversidade climática: desde regiões áridas e desertos (como o Saara — maior deserto quente do mundo — e o Kalahari) até zonas equatoriais, tropicais e subtropicais, com destaque para as florestas tropicais da Bacia do Congo e as extensas savanas, propícias à pecuária e à agricultura.'
-        },
-        {
-          id: 3,
-          subject: 'Geografia',
-          chapter: 'Cap. 1 — Aspectos Étnicos e Culturais',
-          question: 'O conceito de "etnia" designa grupos que partilham traços fisionômicos, culturais, religiosos e linguísticos próprios. Qual foi o principal legado da divisão territorial imposta durante o período colonial na África?',
-          options: [
-            'Respeitou rigorosamente os limites tradicionais de cada etnia, garantindo estabilidade política duradoura após as independências.',
-            'Desrespeitou as fronteiras étnicas tradicionais, agrupando povos rivais ou dividindo uma mesma etnia entre países distintos, o que gerou legados de conflitos.',
-            'Unificou todas as línguas e religiões africanas em uma única cultura homogênea, eliminando disputas internas.',
-            'Foi definida pelos próprios líderes étnicos locais antes do século XIX, sem interferência das potências europeias.'
-          ],
-          correctIndex: 1,
-          explanation: 'A divisão territorial colonial impôs fronteiras artificiais que ignoraram as divisões étnicas tradicionais, agrupando povos rivais no mesmo território ou separando uma mesma etnia, gerando um histórico de tensões e conflitos.'
-        },
-        {
-          id: 4,
-          subject: 'Geografia',
-          chapter: 'Cap. 1 — Demografia Africana',
-          question: 'Com população superior a 1,5 bilhão de habitantes, a África é o segundo continente mais populoso do mundo (atrás apenas da Ásia). O que explica seu ritmo de crescimento e sua distribuição espacial?',
-          options: [
-            'O crescimento é impulsionado pelas altas taxas de fertilidade, com forte concentração nas áreas urbanas, ao longo do litoral e no vale do rio Nilo.',
-            'A população africana encolhe continuamente devido às baixas taxas de fertilidade e concentra-se apenas no interior do deserto do Saara.',
-            'A distribuição demográfica é totalmente uniforme em todo o território, sem diferenças entre áreas litorâneas, vales fluviais e desertos.',
-            'A África tornou-se mais populosa que a Ásia devido à imigração europeia recente concentrada nas zonas subtropicais.'
-          ],
-          correctIndex: 0,
-          explanation: 'Com mais de 1,5 bilhão de habitantes (2º continente mais populoso, atrás da Ásia), a África tem crescimento impulsionado pelas altas taxas de fertilidade e forte concentração populacional nas áreas urbanas, no litoral e ao longo do vale do rio Nilo.'
-        },
-        {
-          id: 5,
-          subject: 'Geografia',
-          chapter: 'Cap. 2 — Neocolonialismo, Conflitos e Apartheid',
-          question: 'Intensificado nos séculos XIX e XX, o neocolonialismo marcou a dominação econômica e política das potências europeias sobre a África. Qual foi uma das consequências históricas mais marcantes desse processo?',
-          options: [
-            'A imediata pacificação política do continente no século XIX, sem ocorrência de guerras civis ou regimes de segregação.',
-            'A geração de instabilidade política, guerras civis e conflitos armados contínuos, além de regimes de segregação racial como o Apartheid na África do Sul (1948–1994).',
-            'A garantia de direitos políticos e civis iguais a toda a população sul-africana durante o Apartheid entre 1948 e 1994.',
-            'A eliminação da dependência econômica externa e o fortalecimento das fronteiras socioculturais locais.'
-          ],
-          correctIndex: 1,
-          explanation: 'Ao ignorar fronteiras socioculturais e estabelecer mecanismos de dependência, o neocolonialismo alimentou instabilidade política, guerras civis e conflitos armados, tendo como exemplo marcante de segregação racial o Apartheid na África do Sul (1948–1994).'
-        },
-        {
-          id: 6,
-          subject: 'Geografia',
-          chapter: 'Cap. 2 — Economia, Extrativismo e Problemas Ambientais',
-          question: 'Sobre a economia extrativista e os desafios ambientais do continente africano, qual alternativa apresenta as informações corretas?',
-          options: [
-            'Nigéria e Angola destacam-se na produção de petróleo e gás natural; África do Sul, RDC e Botsuana na extração de ouro, diamantes, cobalto e platina; enquanto o Sahel e o Chifre da África enfrentam secas prolongadas, desertificação, esgotamento dos solos e escassez de água potável.',
-            'Botsuana e Nigéria lideram a extração de platina sem impactos ambientais, enquanto o Sahel apresenta as maiores florestas úmidas e reservas de água potável do planeta.',
-            'A agricultura altamente mecanizada eliminou o desmatamento e o esgotamento dos solos nas zonas rurais africanas.',
-            'África do Sul e Angola dependem exclusivamente da pesca artesanal, pois não possuem reservas de petróleo, ouro ou diamantes.'
-          ],
-          correctIndex: 0,
-          explanation: 'Nigéria e Angola sobressaem no petróleo e gás natural; África do Sul, República Democrática do Congo e Botsuana destacam-se na mineração (ouro, diamantes, cobalto, platina). Já o Sahel e o Chifre da África sofrem severamente com secas e desertificação, além de esgotamento dos solos, desmatamento e escassez de água potável.'
-        },
-
-        // ==================== HISTÓRIA (6) ====================
-        {
-          id: 7,
-          subject: 'História',
-          chapter: 'Cap. 1 — Nacionalismos e Unificação Italiana',
-          question: 'Na segunda metade do século XIX, o Risorgimento promoveu a unificação da Itália, que estava fragmentada sob domínio da Áustria, da França e da Igreja Católica. Quais forças políticas impulsionaram esse processo?',
-          options: [
-            'Apenas os monarquistas da Prússia liderados por Otto von Bismarck, que anexaram Roma após derrotar a Dinamarca.',
-            'Tanto os republicanos (liderados por Giuseppe Mazzini, criador da Jovem Itália, e Giuseppe Garibaldi) quanto os monarquistas do Reino da Sardenha-Piemonte (liderados pelo conde de Cavour).',
-            'Exclusivamente o Congresso de Viena (1815) e o Império Austríaco, que proclamaram a república unitária italiana.',
-            'Os nacionalistas japoneses da Era Meiji em aliança com os Estados Unidos para enfraquecer o Reino da Sardenha-Piemonte.'
-          ],
-          correctIndex: 1,
-          explanation: 'A Unificação Italiana (Risorgimento) articulou duas correntes principais: os republicanos, conduzidos por Giuseppe Mazzini (fundador da Jovem Itália) e Giuseppe Garibaldi, e os monarquistas do Reino da Sardenha-Piemonte, liderados pelo conde de Cavour.'
-        },
-        {
-          id: 8,
-          subject: 'História',
-          chapter: 'Cap. 1 — Unificação Alemã e Segundo Reich',
-          question: 'Conduzida sob a liderança da Prússia e de seu primeiro-ministro Otto von Bismarck, como a unificação alemã foi concretizada em 1871?',
-          options: [
-            'Por meio de um plebiscito pacífico convocado pelo Congresso de Viena, sem guerras contra Estados vizinhos.',
-            'Após três guerras bem-sucedidas lideradas pela Prússia contra a Dinamarca, a Áustria e a França, resultando na criação do Segundo Reich (Império Alemão) em 1871.',
-            'Através da aliança entre Giuseppe Garibaldi e Napoleão III para dissolver o reino da Prússia.',
-            'Pela assinatura de tratados comerciais com o xogunato Tokugawa, que financiou a unificação alemã.'
-          ],
-          correctIndex: 1,
-          explanation: 'Liderada pela Prússia de Otto von Bismarck, a Unificação Alemã consolidou-se após três vitórias militares — contra Dinamarca, Áustria e França — culminando na criação do Segundo Reich (Império Alemão) em 1871.'
-        },
-        {
-          id: 9,
-          subject: 'História',
-          chapter: 'Cap. 1 — Imperialismo e Conferência de Berlim (1885)',
-          question: 'Impulsionadas pela Segunda Revolução Industrial e pelos grandes monopólios, as potências europeias expandiram seu domínio sobre a África e a Ásia. Qual foi a justificativa ideológica utilizada e o papel da Conferência de Berlim (1885)?',
-          options: [
-            'Baseou-se em ideologias racistas de superioridade europeia e missão "civilizatória", enquanto a Conferência de Berlim (reunida por Bismarck) consolidou a partilha da África impondo fronteiras artificiais voltadas aos interesses europeus.',
-            'Defendeu a igualdade cultural plena entre europeus e africanos, devolvendo o controle territorial às lideranças locais.',
-            'Buscou encerrar os monopólios industriais europeus e interromper a busca por matérias-primas e mercados consumidores.',
-            'Foi convocada pela Índia e pela China em Berlim para limitar o avanço industrial da Inglaterra e da França.'
-          ],
-          correctIndex: 0,
-          explanation: 'Em busca de matérias-primas, mão de obra barata e mercados consumidores, as potências usaram ideologias racistas de "missão civilizatória" e oficializaram na Conferência de Berlim (1885, reunida por Bismarck) a partilha da África com fronteiras artificiais.'
-        },
-        {
-          id: 10,
-          subject: 'História',
-          chapter: 'Cap. 1 — Resistências na África e na Ásia',
-          question: 'De que maneira os povos da África e da Ásia reagiram à expansão imperialista das potências europeias?',
-          options: [
-            'Aceitaram passivamente a ocupação estrangeira em ambos os continentes sem organizar levantes ou oposição.',
-            'Na África, organizaram diversas formas de resistência armada e simbólica em praticamente todas as regiões; na Ásia, o imperialismo enfrentou forte oposição nacionalista em grandes impérios como a Índia (sob domínio britânico) e a China.',
-            'Apenas a China resistiu à presença europeia, enquanto na Índia e na África não houve qualquer levante.',
-            'Os movimentos nacionalistas da Índia e da China aliaram-se ao Império Britânico para colonizar a África.'
-          ],
-          correctIndex: 1,
-          explanation: 'A dominação não foi passiva: na África houve resistência armada e simbólica em quase todo o continente, e na Ásia destacaram-se fortes movimentos de oposição nacionalista na Índia (sob domínio britânico) e na China.'
-        },
-        {
-          id: 11,
-          subject: 'História',
-          chapter: 'Cap. 2 — Expansão dos EUA e Guerra Civil (1861–1865)',
-          question: 'Ao longo do século XIX, os Estados Unidos expandiram seu território e sua influência internacional. Qual alternativa sintetiza corretamente esse processo?',
-          options: [
-            'A Marcha para o Oeste (justificada pelo Destino Manifesto) reprimiu povos indígenas (sioux, apaches, comanches); a Guerra Civil (1861–1865) opôs o Norte industrializado ao Sul agrário escravista; e, com a Doutrina Monroe e o Big Stick, os EUA expandiram seu domínio sobre Havaí, Porto Rico, Cuba e Filipinas.',
-            'O Destino Manifesto defendia a devolução das terras americanas às coroas europeias, enquanto a Doutrina Monroe entregou Cuba e Filipinas à Espanha.',
-            'A Guerra de Secessão (1861–1865) foi uma disputa naval entre EUA e Japão pelo controle do Havaí, sem relação com a escravidão.',
-            'A política do Big Stick proibiu a expansão territorial até o Pacífico e preservou integralmente as terras dos sioux e apaches.'
-          ],
-          correctIndex: 0,
-          explanation: 'A expansão para o Pacífico apoiou-se no Destino Manifesto (reprimindo povos indígenas como sioux, apaches e comanches); a Guerra Civil (1861–1865) opôs o Norte industrializado ao Sul agrário escravista; e a Doutrina Monroe (1823) evoluiu para a política imperialista do Big Stick sobre Havaí, Porto Rico, Cuba e Filipinas.'
-        },
-        {
-          id: 12,
-          subject: 'História',
-          chapter: 'Cap. 2 — Era Meiji e Imperialismo Japonês',
-          question: 'Até meados do século XIX, sob o xogunato Tokugawa (1603–1868), o Japão manteve estrutura feudal e rígido isolamento. Qual evento desencadeou a Era Meiji e transformou o país em potência imperialista?',
-          options: [
-            'A vitória militar do xogunato Tokugawa sobre a Inglaterra em 1853, fechando todos os portos japoneses.',
-            'A chegada da frota estadunidense comandada por Matthew C. Perry em 1853, que forçou a abertura dos portos e tratados desiguais, levando o Japão à Era Meiji — rápida modernização política, econômica e industrial que o tornou potência militar e expansionista na Ásia.',
-            'A adesão do Japão ao Congresso de Viena, que manteve a economia exclusivamente feudal até o século XX.',
-            'A ocupação do Japão pelo Segundo Reich alemão em 1871, impedindo sua industrialização.'
-          ],
-          correctIndex: 1,
-          explanation: 'Em 1853, a frota estadunidense de Matthew C. Perry forçou a abertura dos portos japoneses e tratados desiguais. Em resposta à ameaça ocidental, o Japão promoveu a Era Meiji, modernizando rapidamente sua política, economia e indústria até se tornar uma potência militar e expansionista na Ásia.'
-        },
-
-        // ==================== LÍNGUA PORTUGUESA (6) ====================
-        {
-          id: 13,
-          subject: 'Língua Portuguesa',
-          chapter: 'Cap. 1 — Estratégias de Leitura e Divulgação Científica',
-          question: 'Textos acadêmicos costumam empregar termos técnicos de difícil compreensão para o público leigo. Qual é o papel dos textos de divulgação científica e quais estratégias ajudam o leitor a compreendê-los?',
-          options: [
-            'Tornar os avanços e descobertas da ciência mais acessíveis ao público, exigindo estratégias de leitura como a consulta a glossários e a identificação do contexto para compreender o vocabulário especializado.',
-            'Substituir descobertas científicas por opiniões pessoais sem embasamento, dispensando a leitura atenta.',
-            'Restringir o conhecimento científico aos especialistas, evitando o uso de glossários ou pistas contextuais.',
-            'Eliminar qualquer termo técnico por meio de poemas líricos que não tratam de ciência.'
-          ],
-          correctIndex: 0,
-          explanation: 'Os textos de divulgação científica aproximam os avanços e descobertas da ciência do público leigo, demandando estratégias como consultar glossários e analisar o contexto para compreender o vocabulário especializado.'
-        },
-        {
-          id: 14,
-          subject: 'Língua Portuguesa',
-          chapter: 'Cap. 1 — Seleção Lexical em Textos Informativos',
-          question: 'Na construção de um texto informativo, de que forma o autor emprega a seleção lexical para atingir seus propósitos comunicativos?',
-          options: [
-            'Escolhendo palavras ao acaso, sem observar a classe gramatical ou o contexto do enunciado.',
-            'Selecionando e relacionando palavras de diferentes classes gramaticais (como substantivos, adjetivos e verbos) para expressar o significado desejado e produzir determinados efeitos de sentido no interlocutor.',
-            'Utilizando apenas preposições e artigos, já que substantivos e verbos não produzem efeitos de sentido.',
-            'Repetindo os mesmos adjetivos em todas as orações para evitar qualquer variação semântica.'
-          ],
-          correctIndex: 1,
-          explanation: 'Por meio da seleção lexical, o autor escolhe e articula substantivos, adjetivos, verbos e outras classes gramaticais para expressar com precisão o significado pretendido e gerar efeitos de sentido no interlocutor.'
-        },
-        {
-          id: 15,
-          subject: 'Língua Portuguesa',
-          chapter: 'Cap. 1 — Orações Subordinadas Adverbiais',
-          question: 'Em períodos compostos por subordinação presentes em textos científicos e informativos, qual é a função sintática e o valor semântico das orações subordinadas adverbiais?',
-          options: [
-            'Exercem a função de sujeito da oração principal e impedem a indicação de circunstâncias causais ou temporais.',
-            'Funcionam como adjuntos adverbiais de uma oração principal, expressando circunstâncias (como tempo, causa, finalidade, condição e concessão) e indicando o sentido das situações reveladas.',
-            'Atuam como apostos isolados sem relação semântica com a oração principal.',
-            'Substituem exclusivamente substantivos próprios sem expressar condição, concessão ou finalidade.'
-          ],
-          correctIndex: 1,
-          explanation: 'As orações subordinadas adverbiais funcionam como adjuntos adverbiais da oração principal, acrescentando circunstâncias fundamentais (tempo, causa, finalidade, condição, concessão etc.) para precisar o sentido dos enunciados.'
-        },
-        {
-          id: 16,
-          subject: 'Língua Portuguesa',
-          chapter: 'Cap. 2 — Fichamentos e Textos Topicalizados',
-          question: 'Os textos podem ser organizados em parágrafos corridos, enumerações (artigos de lei) ou em tópicos. Qual é a principal contribuição da organização em tópicos e dos fichamentos nos estudos?',
-          options: [
-            'Dificultar a identificação das ideias centrais para exigir a releitura integral de livros extensos.',
-            'Estruturar as ideias principais de textos escolares, acadêmicos e científicos, facilitando o estudo, a síntese e a consulta de informações.',
-            'Substituir a norma culta por frases soltas sem relação lógica entre os temas.',
-            'Transformar textos científicos em narrativas ficcionais escritas em versos.'
-          ],
-          correctIndex: 1,
-          explanation: 'A organização em tópicos e a produção de fichamentos estruturam de maneira clara as ideias principais de textos escolares, acadêmicos e científicos, facilitando o estudo, a síntese e a consulta rápida.'
-        },
-        {
-          id: 17,
-          subject: 'Língua Portuguesa',
-          chapter: 'Cap. 2 — Modalização e Argumentação',
-          question: 'Como a modalização e as orações adverbiais atuam na expressão do enunciador e na construção da argumentação?',
-          options: [
-            'A modalização explicita avaliações, julgamentos ou sentimentos (felicidade, tristeza, crítica) do enunciador sobre o que diz, enquanto as orações adverbiais funcionam como recursos argumentativos para defender pontos de vista, justificar ideias e persuadir o interlocutor.',
-            'A modalização garante neutralidade absoluta sem julgamento do falante, enquanto as orações adverbiais impedem a defesa de pontos de vista.',
-            'Ambas são usadas exclusivamente em textos legais para impedir qualquer justificativa ou persuasão.',
-            'A modalização consiste apenas no uso de gírias informais para demonstrar tristeza.'
-          ],
-          correctIndex: 0,
-          explanation: 'Na modalização, o enunciador marca sua atitude, julgamento ou sentimento diante do conteúdo comunicado; já as orações adverbiais operam como recursos argumentativos para justificar ideias, defender pontos de vista e persuadir o interlocutor.'
-        },
-        {
-          id: 18,
-          subject: 'Língua Portuguesa',
-          chapter: 'Cap. 2 — Linguagem Formal e Uso dos "Porquês"',
-          question: 'A produção de textos formais (como seminários e artigos) exige o domínio da norma culta, incluindo o emprego correto dos "porquês". Qual frase emprega todas as formas adequadamente?',
-          options: [
-            '"O autor explicou o por que de o experimento ter falhado, porque faltavam registros."',
-            '"Não sabemos por que o seminário atrasou, mas o professor explicou o porquê da mudança porque precisava reorganizar a pauta. Você sabe dizer por quê?"',
-            '"Porquê os resultados mudaram tanto? Ainda ignoramos o por quê dessa diferença."',
-            '"O evento foi adiado por quê o auditório estava fechado, mas ninguém disse porquê."'
-          ],
-          correctIndex: 1,
-          explanation: 'Na alternativa correta: "por que" (separado e sem acento) equivale a "por qual motivo"; "o porquê" (junto e com acento) é substantivo acompanhado de artigo ("o motivo"); "porque" (junto e sem acento) é conjunção explicativa/causal; e "por quê" (separado e com acento) aparece no final de frase interrogativa.'
-        },
-
-        // ==================== ARTE (6) ====================
-        {
-          id: 19,
-          subject: 'Arte',
-          chapter: 'Cap. 1 — Origem das Exposições e Salões Oficiais',
-          question: 'A prática de reunir obras de artistas em um único espaço remonta ao Renascimento, com o italiano Giorgio Vasari (considerado o pai da História da Arte). Como funcionavam os Salões Oficiais nos séculos XVIII e XIX, especialmente na França?',
-          options: [
-            'Impulsionados pelas academias de belas-artes, conferiam prestígio e aprovação oficial aos artistas cujas obras fossem selecionadas por um júri.',
-            'Eram feiras livres organizadas nas ruas sem vínculo com academias de belas-artes ou avaliação de júri.',
-            'Foram criados por Giorgio Vasari no século XIX para proibir a pintura renascentista na França.',
-            'Aceitavam qualquer obra sem seleção prévia, pois não havia critérios acadêmicos.'
-          ],
-          correctIndex: 0,
-          explanation: 'Iniciada no Renascimento com Giorgio Vasari, a tradição das exposições consolidou-se nos Salões Oficiais franceses (séculos XVIII e XIX), ligados às academias de belas-artes, onde a seleção por um júri representava prestígio e reconhecimento oficial.'
-        },
-        {
-          id: 20,
-          subject: 'Arte',
-          chapter: 'Cap. 1 — Salão dos Recusados e Salão dos Independentes',
-          question: 'Qual foi o papel do Salão dos Recusados (1863) e do Salão dos Independentes (1884) na transformação da arte europeia?',
-          options: [
-            'Reforçaram o controle rígido do júri acadêmico e impediram a exibição de pinturas impressionistas.',
-            'Surgiram como alternativas criadas por artistas rejeitados pelas normas acadêmicas — destacando-se o Salão dos Independentes, sem júri nem prêmios —, impulsionando os impressionistas e abrindo caminho para a arte moderna.',
-            'Substituíram as exposições de pintura por apresentações exclusivas de óperas barrocas.',
-            'Distribuíram prêmios oficiais apenas aos artistas que seguissem rigorosamente as regras acadêmicas.'
-          ],
-          correctIndex: 1,
-          explanation: 'Criados como resposta à rigidez dos salões acadêmicos, o Salão dos Recusados (1863) e o Salão dos Independentes (1884 — sem júri nem prêmios) permitiram o sucesso dos impressionistas e abriram caminho para a arte moderna.'
-        },
-        {
-          id: 21,
-          subject: 'Arte',
-          chapter: 'Cap. 2 — Música no Palco e Salas de Concerto',
-          question: 'Como o surgimento das salas de concerto no século XVIII e, posteriormente, das tecnologias de gravação transformaram a relação do público com a música?',
-          options: [
-            'Antes das gravações, a música só era ouvida ao vivo; no século XVIII surgiram as primeiras salas de concerto exclusivas com cobrança de entrada para o público burguês (como a Holywell Music Room, Inglaterra, 1748), e mais tarde as gravações deram autonomia ao ouvinte e focaram os shows na performance.',
-            'As tecnologias de gravação surgiram no século XVII antes das salas de concerto, eliminando as apresentações ao vivo.',
-            'A Holywell Music Room (1748) foi inaugurada no Brasil para transmitir programas gratuitos de rádio.',
-            'O surgimento das gravações acabou com os shows e concertos ao vivo em toda a Europa.'
-          ],
-          correctIndex: 0,
-          explanation: 'Antes da gravação, a música existia apenas ao vivo. No século XVIII surgiram as primeiras salas de concerto exclusivas com cobrança de ingresso voltadas ao público burguês (como a Holywell Music Room, Inglaterra, 1748); posteriormente, as gravações deram autonomia ao ouvinte e transformaram os shows em experiências centradas na performance.'
-        },
-        {
-          id: 22,
-          subject: 'Arte',
-          chapter: 'Cap. 2 — Óperas, Musicais e Camerata Fiorentina',
-          question: 'Qual é a diferença fundamental entre óperas e musicais, e como se deu o surgimento da ópera?',
-          options: [
-            'Os musicais são inteiramente cantados sem falas, enquanto as óperas surgiram nos EUA no século XX.',
-            'Enquanto os musicais combinam diálogos falados, canto e dança, as óperas contam histórias essencialmente por meio do canto; a ópera surgiu no Renascimento italiano (século XVI) com a Camerata Fiorentina, tendo como marcos "Dafne" (1597) e "Eurídice" (1600), de Jacopo Peri e Ottavio Rinuccini.',
-            'Tanto a ópera quanto o musical foram criados na Grécia Antiga por Giorgio Vasari.',
-            '"Dafne" (1597) foi um musical inglês apresentado na Holywell Music Room sem relação com a Itália.'
-          ],
-          correctIndex: 1,
-          explanation: 'Enquanto os musicais integram diálogos falados, canto e dança, a ópera narra histórias essencialmente pelo canto. Surgiu no Renascimento italiano (século XVI) a partir da Camerata Fiorentina — buscando resgatar o teatro e a música da Grécia Antiga — com Dafne (1597) e Eurídice (1600), de Jacopo Peri e Ottavio Rinuccini.'
-        },
-        {
-          id: 23,
-          subject: 'Arte',
-          chapter: 'Cap. 2 — Sonoplastia no Teatro, Cinema e Jogos',
-          question: 'No teatro, no cinema, no rádio, na TV e nos jogos, qual é o objetivo principal da sonoplastia?',
-          options: [
-            'Criar ou selecionar efeitos sonoros, ruídos, vinhetas e até o silêncio para construir atmosferas, aumentar a dramaticidade das cenas e dar realismo à narrativa de forma natural ("invisível" ao espectador).',
-            'Substituir todos os diálogos e músicas por ruídos altos que desviem a atenção da história.',
-            'Atuar exclusivamente na composição de óperas renascentistas sem aplicação em cinema ou jogos.',
-            'Eliminar o silêncio e os sons ambientes para evitar qualquer realismo nas cenas.'
-          ],
-          correctIndex: 0,
-          explanation: 'A sonoplastia cria ou seleciona efeitos sonoros, ruídos, vinhetas e o próprio silêncio para construir atmosferas, intensificar a dramaticidade e conferir realismo natural ("invisível") às narrativas em teatro, cinema, rádio, TV e jogos.'
-        },
-        {
-          id: 24,
-          subject: 'Arte',
-          chapter: 'Cap. 2 — Arranjos Musicais, Música-Tema e Trilha Sonora',
-          question: 'Em trilhas sonoras, shows e na música brasileira, em que consiste o trabalho do arranjo musical?',
-          options: [
-            'Reproduzir exatamente a partitura original sem alterar ritmo, velocidade ou instrumentos.',
-            'Reelaborar uma música preservando sua essência, mas modificando elementos como ritmo, melodia, harmonia, velocidade ou instrumentação — área em que arranjadores brasileiros como Pixinguinha tiveram papel central na era do rádio.',
-            'Produzir exclusivamente efeitos sonoros de trovões e passos para peças teatrais.',
-            'Apagar a melodia principal da música-tema para torná-la irreconhecível ao público.'
-          ],
-          correctIndex: 1,
-          explanation: 'O arranjo musical reelabora uma obra preservando sua essência, mas modificando elementos como ritmo, melodia, harmonia, velocidade ou instrumentação — papel em que mestres brasileiros como Pixinguinha se destacaram na era do rádio.'
-        }
-      ];
-
-      // Estado da aplicação
-      var state = {
-        activeSubject: 'Todas',
-        questions: QUESTIONS_DB.slice(),
-        currentIndex: 0,
-        answers: {}, // id -> { selectedIndex: number, isCorrect: boolean }
-        isFinished: false
-      };
-
-      // Referências de DOM
-      var filterBarEl = document.getElementById('filter-bar');
-      var scoreDisplayEl = document.getElementById('score-display');
-      var progressLabelEl = document.getElementById('progress-label');
-      var progressPercentEl = document.getElementById('progress-percent');
-      var progressBarEl = document.getElementById('progress-bar');
-      var quizContainerEl = document.getElementById('quiz-container');
-      var btnShuffleEl = document.getElementById('btn-shuffle');
-      var btnRestartEl = document.getElementById('btn-restart');
-
-      // Utilitários
-      function escapeHtml(text) {
-        var div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-      }
-
-      function shuffleList(arr) {
-        var copy = arr.slice();
-        for (var i = copy.length - 1; i > 0; i--) {
-          var j = Math.floor(Math.random() * (i + 1));
-          var temp = copy[i];
-          copy[i] = copy[j];
-          copy[j] = temp;
-        }
-        return copy;
-      }
-
-      function getQuestionsForSubject(subjectKey) {
-        if (subjectKey === 'Todas') {
-          return QUESTIONS_DB.slice();
-        }
-        return QUESTIONS_DB.filter(function (q) {
-          return q.subject === subjectKey;
-        });
-      }
-
-      // Ações de Estado
-      function selectSubject(subjectKey) {
-        state.activeSubject = subjectKey;
-        state.questions = getQuestionsForSubject(subjectKey);
-        state.currentIndex = 0;
-        state.answers = {};
-        state.isFinished = false;
-        render();
-      }
-
-      function resetQuiz(shouldShuffle) {
-        var list = getQuestionsForSubject(state.activeSubject);
-        state.questions = shouldShuffle ? shuffleList(list) : list;
-        state.currentIndex = 0;
-        state.answers = {};
-        state.isFinished = false;
-        render();
-      }
-
-      function selectOption(optionIndex) {
-        var currentQuestion = state.questions[state.currentIndex];
-        if (!currentQuestion || state.answers[currentQuestion.id] !== undefined) {
-          return;
-        }
-        state.answers[currentQuestion.id] = {
-          selectedIndex: optionIndex,
-          isCorrect: optionIndex === currentQuestion.correctIndex
-        };
-        render();
-      }
-
-      function goToPrevious() {
-        if (state.currentIndex > 0) {
-          state.currentIndex -= 1;
-          render();
-        }
-      }
-
-      function goToNext() {
-        var currentQuestion = state.questions[state.currentIndex];
-        if (!currentQuestion || state.answers[currentQuestion.id] === undefined) {
-          return;
-        }
-        if (state.currentIndex < state.questions.length - 1) {
-          state.currentIndex += 1;
-        } else {
-          state.isFinished = true;
-        }
-        render();
-      }
-
-      // Renderização das Abas de Filtro
-      function renderFilterTabs() {
-        var html = '';
-        for (var i = 0; i < FILTER_TABS.length; i++) {
-          var tab = FILTER_TABS[i];
-          var isActive = state.activeSubject === tab.key;
-          var count = tab.key === 'Todas'
-            ? QUESTIONS_DB.length
-            : QUESTIONS_DB.filter(function (q) { return q.subject === tab.key; }).length;
-
-          html +=
-            '<button type="button" class="filter-tab' + (isActive ? ' active' : '') + '" data-subject="' + escapeHtml(tab.key) + '">' +
-              '<span>' + escapeHtml(tab.label) + '</span>' +
-              '<span class="filter-count">' + count + '</span>' +
-            '</button>';
-        }
-        filterBarEl.innerHTML = html;
-
-        var buttons = filterBarEl.querySelectorAll('.filter-tab');
-        for (var b = 0; b < buttons.length; b++) {
-          buttons[b].addEventListener('click', function (e) {
-            var subj = e.currentTarget.getAttribute('data-subject');
-            if (subj) {
-              selectSubject(subj);
-            }
-          });
-        }
-      }
-
-      // Atualização do Placar e Barra de Progresso
-      function renderProgressAndScore() {
-        var total = state.questions.length;
-        var answeredCount = 0;
-        var correctCount = 0;
-
-        for (var i = 0; i < total; i++) {
-          var q = state.questions[i];
-          var ans = state.answers[q.id];
-          if (ans !== undefined) {
-            answeredCount += 1;
-            if (ans.isCorrect) {
-              correctCount += 1;
-            }
-          }
-        }
-
-        scoreDisplayEl.textContent = correctCount + ' / ' + answeredCount;
-
-        if (state.isFinished) {
-          progressLabelEl.textContent = 'Concluído (' + total + ' de ' + total + ' questões)';
-          progressPercentEl.textContent = '100% concluído';
-          progressBarEl.style.width = '100%';
-        } else {
-          var pct = total > 0 ? Math.round((answeredCount / total) * 100) : 0;
-          progressLabelEl.textContent = 'Questão ' + (state.currentIndex + 1) + ' de ' + total;
-          progressPercentEl.textContent = pct + '% concluído';
-          progressBarEl.style.width = pct + '%';
-        }
-      }
-
-      // Renderização da Questão Atual
-      function renderQuestionView() {
-        var q = state.questions[state.currentIndex];
-        var answer = state.answers[q.id];
-        var isAnswered = answer !== undefined;
-        var isLast = state.currentIndex === state.questions.length - 1;
-        var styleInfo = SUBJECT_STYLES[q.subject];
-
-        var optionsHtml = '';
-        for (var i = 0; i < q.options.length; i++) {
-          var letter = OPTION_LETTERS[i];
-          var extraClass = '';
-          var statusIcon = '';
-
-          if (isAnswered) {
-            if (i === q.correctIndex) {
-              extraClass = ' opt-correct';
-              statusIcon = '<span class="option-status-icon" aria-label="Correta">&#10003;</span>';
-            } else if (i === answer.selectedIndex) {
-              extraClass = ' opt-wrong';
-              statusIcon = '<span class="option-status-icon" aria-label="Incorreta">&#10007;</span>';
-            } else {
-              extraClass = ' opt-muted';
-            }
-          }
-
-          optionsHtml +=
-            '<button type="button" class="option-btn' + extraClass + '" data-option-index="' + i + '"' + (isAnswered ? ' disabled' : '') + '>' +
-              '<span class="option-letter">' + letter + '</span>' +
-              '<span class="option-content">' + escapeHtml(q.options[i]) + '</span>' +
-              statusIcon +
-            '</button>';
-        }
-
-        var explanationHtml = '';
-        if (isAnswered) {
-          var expClass = answer.isCorrect ? 'exp-correct' : 'exp-wrong';
-          var expHeading = answer.isCorrect
-            ? 'Resposta correta!'
-            : 'Resposta incorreta — Gabarito: alternativa ' + OPTION_LETTERS[q.correctIndex];
-
-          explanationHtml =
-            '<div class="explanation-box ' + expClass + '" role="status" aria-live="polite">' +
-              '<div class="explanation-header">' +
-                '<span class="explanation-pill">Explicação</span>' +
-                '<span class="explanation-title">' + expHeading + '</span>' +
-              '</div>' +
-              '<p class="explanation-body">' + escapeHtml(q.explanation) + '</p>' +
-            '</div>';
-        }
-
-        var prevBtnHtml = state.currentIndex > 0
-          ? '<button type="button" id="btn-prev" class="btn btn-outline">&#8592; Anterior</button>'
-          : '<div></div>';
-
-        var nextBtnHtml = isAnswered
-          ? '<button type="button" id="btn-next" class="btn btn-primary">' + (isLast ? 'Ver Resultado Final' : 'Próxima Questão &#8594;') + '</button>'
-          : '<span class="hint-text">Selecione uma alternativa para continuar</span>';
-
-        quizContainerEl.innerHTML =
-          '<div class="fade-in">' +
-            '<div class="question-meta">' +
-              '<div class="badge-group">' +
-                '<span class="subject-badge ' + styleInfo.badgeClass + '">' +
-                  '<span class="subject-dot"></span>' +
-                  escapeHtml(q.subject) +
-                '</span>' +
-                '<span class="chapter-label">' + escapeHtml(q.chapter) + '</span>' +
-              '</div>' +
-              '<span class="question-number-tag">' + (state.currentIndex + 1) + ' / ' + state.questions.length + '</span>' +
-            '</div>' +
-            '<h2 class="question-text">' + escapeHtml(q.question) + '</h2>' +
-            '<div class="options-list">' + optionsHtml + '</div>' +
-            explanationHtml +
-            '<div class="card-footer">' +
-              prevBtnHtml +
-              nextBtnHtml +
-            '</div>' +
-          '</div>';
-
-        // Vincular eventos das opções
-        var optionButtons = quizContainerEl.querySelectorAll('.option-btn');
-        for (var j = 0; j < optionButtons.length; j++) {
-          optionButtons[j].addEventListener('click', function (e) {
-            var idx = parseInt(e.currentTarget.getAttribute('data-option-index'), 10);
-            if (!isNaN(idx)) {
-              selectOption(idx);
-            }
-          });
-        }
-
-        // Vincular eventos de navegação
-        var prevBtn = document.getElementById('btn-prev');
-        if (prevBtn) {
-          prevBtn.addEventListener('click', goToPrevious);
-        }
-
-        var nextBtn = document.getElementById('btn-next');
-        if (nextBtn) {
-          nextBtn.addEventListener('click', goToNext);
-        }
-      }
-
-      // Renderização do Resumo Final
-      function renderSummaryView() {
-        var total = state.questions.length;
-        var correctCount = 0;
-        for (var i = 0; i < total; i++) {
-          var ans = state.answers[state.questions[i].id];
-          if (ans && ans.isCorrect) {
-            correctCount += 1;
-          }
-        }
-        var accuracy = total > 0 ? Math.round((correctCount / total) * 100) : 0;
-
-        var headline = 'Bom esforço!';
-        var desc = 'Confira seu desempenho por disciplina e revise as explicações abaixo para fixar todos os tópicos.';
-        if (accuracy >= 85) {
-          headline = 'Excelente desempenho!';
-          desc = 'Você demonstrou domínio sólido dos conteúdos de Geografia, História, Língua Portuguesa e Arte.';
-        } else if (accuracy >= 60) {
-          headline = 'Muito bom resultado!';
-          desc = 'Você acertou a maior parte das questões. Aproveite a revisão abaixo para reforçar os detalhes.';
-        }
-
-        // Desempenho por disciplina
-        var subjectKeys = ['Geografia', 'História', 'Língua Portuguesa', 'Arte'];
-        var subjectsHtml = '';
-        for (var s = 0; s < subjectKeys.length; s++) {
-          var subj = subjectKeys[s];
-          var subjQuestions = state.questions.filter(function (q) { return q.subject === subj; });
-          if (subjQuestions.length === 0) continue;
-
-          var subjCorrect = 0;
-          for (var k = 0; k < subjQuestions.length; k++) {
-            var a = state.answers[subjQuestions[k].id];
-            if (a && a.isCorrect) {
-              subjCorrect += 1;
-            }
-          }
-          var subjPct = Math.round((subjCorrect / subjQuestions.length) * 100);
-          var st = SUBJECT_STYLES[subj];
-
-          subjectsHtml +=
-            '<div class="subject-stat-card">' +
-              '<div class="subject-stat-top">' +
-                '<span class="subject-badge ' + st.badgeClass + '">' +
-                  '<span class="subject-dot"></span>' +
-                  escapeHtml(subj) +
-                '</span>' +
-                '<span class="subject-stat-score">' + subjCorrect + '/' + subjQuestions.length + ' (' + subjPct + '%)</span>' +
-              '</div>' +
-              '<p class="subject-stat-sub">' + escapeHtml(st.subtitle) + '</p>' +
-              '<div class="mini-bar-track">' +
-                '<div class="mini-bar-fill ' + st.fillClass + '" style="width: ' + subjPct + '%;"></div>' +
-              '</div>' +
-            '</div>';
-        }
-
-        // Lista completa de revisão
-        var reviewHtml = '';
-        for (var r = 0; r < total; r++) {
-          var qItem = state.questions[r];
-          var userAns = state.answers[qItem.id];
-          var ok = userAns && userAns.isCorrect;
-          var userLetter = userAns ? OPTION_LETTERS[userAns.selectedIndex] : '-';
-          var rightLetter = OPTION_LETTERS[qItem.correctIndex];
-          var qStyle = SUBJECT_STYLES[qItem.subject];
-
-          reviewHtml +=
-            '<div class="review-item ' + (ok ? 'rev-ok' : 'rev-err') + '">' +
-              '<div class="review-top">' +
-                '<div class="badge-group">' +
-                  '<span class="question-number-tag">Questão ' + (r + 1) + '</span>' +
-                  '<span class="subject-badge ' + qStyle.badgeClass + '">' + escapeHtml(qItem.subject) + '</span>' +
-                '</div>' +
-                '<span class="review-status">' + (ok ? 'Correta' : 'Incorreta') + '</span>' +
-              '</div>' +
-              '<p class="review-q">' + escapeHtml(qItem.question) + '</p>' +
-              '<p class="review-answers">' +
-                'Sua resposta: <strong>' + userLetter + '</strong>' +
-                (!ok ? ' &bull; Resposta correta: <strong>' + rightLetter + '</strong>' : '') +
-              '</p>' +
-              '<p class="review-exp">' + escapeHtml(qItem.explanation) + '</p>' +
-            '</div>';
-        }
-
-        quizContainerEl.innerHTML =
-          '<div class="fade-in">' +
-            '<div class="summary-hero">' +
-              '<span class="summary-badge">Aproveitamento Geral: ' + accuracy + '%</span>' +
-              '<h2 class="summary-title">' + headline + '</h2>' +
-              '<p class="summary-desc">' + desc + '</p>' +
-              '<div class="stats-grid">' +
-                '<div class="stat-item">' +
-                  '<span class="stat-label">Acertos</span>' +
-                  '<span class="stat-num stat-green">' + correctCount + '</span>' +
-                '</div>' +
-                '<div class="stat-item">' +
-                  '<span class="stat-label">Erros</span>' +
-                  '<span class="stat-num stat-red">' + (total - correctCount) + '</span>' +
-                '</div>' +
-                '<div class="stat-item">' +
-                  '<span class="stat-label">Total</span>' +
-                  '<span class="stat-num stat-dark">' + total + '</span>' +
-                '</div>' +
-              '</div>' +
-              '<div class="summary-actions">' +
-                '<button type="button" id="btn-retry" class="btn btn-primary">Refazer Quiz</button>' +
-                '<button type="button" id="btn-retry-shuffle" class="btn btn-outline">Embaralhar e Refazer</button>' +
-              '</div>' +
-            '</div>' +
-            '<h3 class="section-heading">Desempenho por Disciplina</h3>' +
-            '<div class="subjects-grid">' + subjectsHtml + '</div>' +
-            '<h3 class="section-heading">Revisão Completa das Questões</h3>' +
-            '<div class="review-list">' + reviewHtml + '</div>' +
-          '</div>';
-
-        var retryBtn = document.getElementById('btn-retry');
-        if (retryBtn) {
-          retryBtn.addEventListener('click', function () {
-            resetQuiz(false);
-          });
-        }
-
-        var retryShuffleBtn = document.getElementById('btn-retry-shuffle');
-        if (retryShuffleBtn) {
-          retryShuffleBtn.addEventListener('click', function () {
-            resetQuiz(true);
-          });
-        }
-      }
-
-      // Renderização Geral
-      function render() {
-        renderFilterTabs();
-        renderProgressAndScore();
-        if (state.isFinished) {
-          renderSummaryView();
-        } else {
-          renderQuestionView();
-        }
-      }
-
-      // Eventos Globais Fixos
-      btnShuffleEl.addEventListener('click', function () {
-        resetQuiz(true);
-      });
-
-      btnRestartEl.addEventListener('click', function () {
-        resetQuiz(false);
-      });
-
-      document.addEventListener('keydown', function (event) {
-        if (state.isFinished) return;
-        var currentQuestion = state.questions[state.currentIndex];
-        if (!currentQuestion) return;
-
-        var isAnswered = state.answers[currentQuestion.id] !== undefined;
-        var key = event.key.toUpperCase();
-        var letterIdx = OPTION_LETTERS.indexOf(key);
-
-        if (letterIdx !== -1 && !isAnswered) {
-          selectOption(letterIdx);
-        } else if (event.key === 'Enter' && isAnswered) {
-          event.preventDefault();
-          goToNext();
-        }
-      });
-
-      // Inicialização
-      render();
-    })();
-  </script>
-</body>
-</html>
+    <div class="summary-card" id="summary-area">
+      <h2>Resultado Final</h2>
+      <div class="summary-score" id="final-score">0%</div>
+      <p id="final-subtitle" style="color: var(--muted);"></p>
+      <div class="breakdown" id="subject-breakdown"></div>
+      <button type="button" id
