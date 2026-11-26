@@ -1497,7 +1497,30 @@
               return item.subject === state.subject;
             });
 
-        state.list = shouldShuffle ? shuffleArray(filtered) : filtered;
+        var prepared = filtered.map(function (item) {
+          var indexedOptions = item.options.map(function (text, idx) {
+            return { text: text, isCorrect: idx === item.correct };
+          });
+          var mixedOptions = shuffleArray(indexedOptions);
+          var newCorrect = 0;
+          for (var i = 0; i < mixedOptions.length; i++) {
+            if (mixedOptions[i].isCorrect) {
+              newCorrect = i;
+              break;
+            }
+          }
+          return {
+            id: item.id,
+            quizId: item.quizId,
+            subject: item.subject,
+            q: item.q,
+            options: mixedOptions.map(function (opt) { return opt.text; }),
+            correct: newCorrect,
+            exp: item.exp
+          };
+        });
+
+        state.list = shouldShuffle ? shuffleArray(prepared) : prepared;
         state.index = 0;
         state.finished = false;
       }
