@@ -3,28 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portal de Quizzes Interativos — Conhecimentos Gerais e Atletismo</title>
+  <title>Portal de Quizzes Interativos — 47 Questões</title>
   <style>
-    /* Variáveis de tema esportivo e acadêmico com alto contraste */
     :root {
-      --bg-page: #f3f5f9;
+      --bg-page: #f1f5f9;
       --bg-card: #ffffff;
       --bg-subtle: #f8fafc;
       --text-main: #0f172a;
       --text-secondary: #334155;
       --text-muted: #64748b;
-      --border-color: #e2e8f0;
+      --border: #e2e8f0;
 
-      /* Cores de destaque */
       --accent: #d94832;
-      --accent-hover: #be3b27;
+      --accent-hover: #b93622;
       --accent-soft: #fef2f0;
       --accent-border: #fecaca;
+
       --blue: #1d4ed8;
       --blue-soft: #eff6ff;
       --blue-border: #bfdbfe;
 
-      /* Estados de feedback */
       --success: #059669;
       --success-bg: #ecfdf5;
       --success-border: #6ee7b7;
@@ -35,9 +33,9 @@
       --danger-border: #fda4af;
       --danger-text: #881337;
 
-      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
-      --shadow-md: 0 12px 28px -6px rgba(15, 23, 42, 0.08), 0 6px 12px -4px rgba(15, 23, 42, 0.04);
-      --radius-lg: 18px;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+      --radius-lg: 16px;
       --radius-md: 12px;
       --radius-sm: 8px;
     }
@@ -52,13 +50,12 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: var(--bg-page);
       color: var(--text-main);
-      line-height: 1.55;
+      line-height: 1.5;
       min-height: 100vh;
-      padding: 20px 16px 48px;
-      -webkit-font-smoothing: antialiased;
+      padding: 18px 14px 48px;
     }
 
-    .app-wrapper {
+    .container {
       max-width: 880px;
       margin: 0 auto;
     }
@@ -66,22 +63,22 @@
     /* Cabeçalho */
     .header-card {
       background: var(--bg-card);
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 20px 22px;
+      padding: 20px;
       box-shadow: var(--shadow-sm);
       margin-bottom: 16px;
       position: relative;
       overflow: hidden;
     }
 
-    .top-stripe {
+    .top-bar-accent {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       height: 5px;
-      background: linear-gradient(90deg, #d94832 0%, #f97316 50%, #2563eb 100%);
+      background: linear-gradient(90deg, #d94832 0%, #f97316 50%, #1d4ed8 100%);
     }
 
     .header-top {
@@ -89,87 +86,65 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 14px;
       margin-top: 4px;
     }
 
-    .brand-box {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .brand-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--radius-md);
-      background: linear-gradient(135deg, #d94832 0%, #b9331f 100%);
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      box-shadow: 0 4px 10px rgba(217, 72, 50, 0.25);
-    }
-
-    .brand-title {
-      font-size: 1.2rem;
+    .title-group h1 {
+      font-size: 1.22rem;
       font-weight: 800;
       color: var(--text-main);
-      letter-spacing: -0.015em;
     }
 
-    .brand-subtitle {
+    .title-group p {
       font-size: 0.85rem;
       color: var(--text-muted);
       margin-top: 2px;
     }
 
-    .header-actions {
+    .top-actions {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 10px;
     }
 
-    .score-pill {
+    .score-box {
       background: var(--bg-subtle);
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--border);
       border-radius: var(--radius-md);
       padding: 6px 14px;
       text-align: right;
     }
 
-    .score-label {
+    .score-box-label {
       display: block;
       font-size: 0.7rem;
       font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.04em;
     }
 
-    .score-value {
-      font-size: 1.08rem;
+    .score-box-val {
+      font-size: 1.05rem;
       font-weight: 800;
       color: var(--text-main);
     }
 
-    /* Botões */
+    /* Botões Gerais */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
+      gap: 6px;
       font-family: inherit;
-      font-size: 0.875rem;
-      font-weight: 600;
+      font-size: 0.88rem;
+      font-weight: 700;
       padding: 10px 15px;
       border-radius: var(--radius-md);
       border: 1px solid transparent;
       cursor: pointer;
       transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
-      user-select: none;
     }
 
     .btn:active:not(:disabled) {
@@ -187,24 +162,24 @@
       border-color: var(--accent-border);
     }
 
-    .btn-soft:hover {
+    .btn-soft:hover:not(:disabled) {
       background: #fee2e2;
     }
 
     .btn-neutral {
       background: #f1f5f9;
-      color: #334155;
-      border-color: var(--border-color);
+      color: var(--text-secondary);
+      border-color: var(--border);
     }
 
-    .btn-neutral:hover {
+    .btn-neutral:hover:not(:disabled) {
       background: #e2e8f0;
     }
 
     .btn-outline {
       background: #ffffff;
-      color: #334155;
-      border-color: var(--border-color);
+      color: var(--text-secondary);
+      border-color: var(--border);
     }
 
     .btn-outline:hover:not(:disabled) {
@@ -216,24 +191,23 @@
       background: var(--accent);
       color: #ffffff;
       padding: 12px 22px;
-      font-size: 0.95rem;
-      box-shadow: 0 3px 8px rgba(217, 72, 50, 0.25);
+      font-size: 0.94rem;
     }
 
     .btn-primary:hover:not(:disabled) {
       background: var(--accent-hover);
     }
 
-    /* Seletor Manual de Quiz */
-    .selector-section {
-      margin-top: 16px;
+    /* Seções do Cabeçalho */
+    .block-section {
+      margin-top: 15px;
       padding-top: 14px;
-      border-top: 1px solid var(--border-color);
+      border-top: 1px solid var(--border);
     }
 
-    .section-label {
+    .block-label {
       display: block;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
@@ -241,17 +215,17 @@
       margin-bottom: 8px;
     }
 
-    .quiz-selector-grid {
+    .quiz-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
     }
 
-    .quiz-choice-btn {
+    .quiz-tab-btn {
       text-align: left;
       padding: 12px 14px;
       border-radius: var(--radius-md);
-      border: 1.5px solid var(--border-color);
+      border: 2px solid var(--border);
       background: var(--bg-subtle);
       color: var(--text-main);
       font-family: inherit;
@@ -259,49 +233,40 @@
       transition: all 0.15s ease;
     }
 
-    .quiz-choice-btn:hover {
+    .quiz-tab-btn:hover {
       border-color: var(--accent);
       background: #fff8f7;
     }
 
-    .quiz-choice-btn.is-active {
+    .quiz-tab-btn.active {
       background: var(--accent-soft);
       border-color: var(--accent);
-      box-shadow: 0 0 0 2px rgba(217, 72, 50, 0.14);
     }
 
-    .quiz-choice-title {
+    .quiz-tab-title {
       display: block;
       font-size: 0.92rem;
       font-weight: 800;
-      color: var(--text-main);
       margin-bottom: 2px;
     }
 
-    .quiz-choice-sub {
+    .quiz-tab-desc {
       display: block;
       font-size: 0.78rem;
       color: var(--text-muted);
       line-height: 1.35;
     }
 
-    /* Filtros de Disciplina */
-    .filter-section {
-      margin-top: 14px;
-      padding-top: 14px;
-      border-top: 1px dashed var(--border-color);
-    }
-
-    .filter-pills {
+    .subject-pills {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
 
-    .filter-pill-btn {
+    .subject-pill-btn {
       padding: 6px 13px;
       border-radius: 999px;
-      border: 1px solid var(--border-color);
+      border: 1.5px solid var(--border);
       background: #ffffff;
       color: var(--text-secondary);
       font-family: inherit;
@@ -311,93 +276,81 @@
       transition: all 0.15s ease;
     }
 
-    .filter-pill-btn:hover {
+    .subject-pill-btn:hover {
       border-color: var(--blue);
       color: var(--blue);
     }
 
-    .filter-pill-btn.is-active {
+    .subject-pill-btn.active {
       background: var(--blue);
       border-color: var(--blue);
       color: #ffffff;
     }
 
-    /* Navegação Rápida */
-    .quick-nav-wrapper {
-      margin-top: 14px;
-      padding-top: 14px;
-      border-top: 1px dashed var(--border-color);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .quick-nav-pills {
+    /* Grade de Navegação Rápida */
+    .quick-nav-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
     }
 
-    .nav-dot {
+    .nav-num-btn {
       width: 32px;
       height: 32px;
       border-radius: var(--radius-sm);
-      border: 1.5px solid var(--border-color);
+      border: 1.5px solid var(--border);
       background: #ffffff;
       color: var(--text-secondary);
       font-family: inherit;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.15s ease;
+      transition: all 0.12s ease;
     }
 
-    .nav-dot:hover {
+    .nav-num-btn:hover {
       border-color: var(--accent);
       color: var(--accent);
     }
 
-    .nav-dot.dot-correct {
+    .nav-num-btn.is-correct {
       background: var(--success-bg);
       border-color: var(--success);
       color: var(--success-text);
     }
 
-    .nav-dot.dot-wrong {
+    .nav-num-btn.is-wrong {
       background: var(--danger-bg);
       border-color: var(--danger);
       color: var(--danger-text);
     }
 
-    .nav-dot.dot-current {
-      box-shadow: 0 0 0 2.5px rgba(217, 72, 50, 0.3);
+    .nav-num-btn.is-current {
+      box-shadow: 0 0 0 2.5px rgba(217, 72, 50, 0.35);
       border-color: var(--accent);
       font-weight: 800;
     }
 
-    .nav-dot.dot-current:not(.dot-correct):not(.dot-wrong) {
+    .nav-num-btn.is-current:not(.is-correct):not(.is-wrong) {
       background: var(--accent);
       color: #ffffff;
     }
 
     /* Barra de Progresso */
-    .progress-section {
-      margin-bottom: 16px;
+    .progress-wrap {
+      margin-bottom: 14px;
     }
 
-    .progress-meta {
+    .progress-info {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       font-size: 0.84rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--text-secondary);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .progress-track {
@@ -412,276 +365,237 @@
       height: 100%;
       width: 0%;
       background: linear-gradient(90deg, #d94832 0%, #f97316 100%);
-      border-radius: 999px;
       transition: width 0.25s ease;
     }
 
     /* Card Principal */
     .main-card {
       background: var(--bg-card);
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 26px 24px;
+      padding: 24px 22px;
       box-shadow: var(--shadow-md);
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(6px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in {
-      animation: fadeIn 0.2s ease-out;
-    }
-
-    .question-meta {
+    .q-header {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 16px;
+      gap: 8px;
+      margin-bottom: 14px;
     }
 
-    .badges-group {
+    .badges-row {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
       gap: 8px;
     }
 
-    .quiz-tag {
-      display: inline-flex;
-      align-items: center;
-      padding: 4px 11px;
-      border-radius: 999px;
+    .badge-quiz {
       font-size: 0.75rem;
       font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
       background: var(--bg-subtle);
       color: var(--text-secondary);
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--border);
     }
 
-    .topic-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 4px 12px;
-      border-radius: 999px;
+    .badge-subject {
       font-size: 0.78rem;
       font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
       background: var(--blue-soft);
       color: var(--blue);
       border: 1px solid var(--blue-border);
     }
 
-    .topic-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--blue);
-    }
-
-    .question-number-tag {
-      font-size: 0.82rem;
+    .badge-counter {
+      font-size: 0.8rem;
       font-weight: 700;
       color: var(--text-muted);
       background: var(--bg-subtle);
-      border: 1px solid var(--border-color);
-      padding: 3px 10px;
+      border: 1px solid var(--border);
+      padding: 4px 10px;
       border-radius: 999px;
     }
 
-    .question-text {
-      font-size: 1.12rem;
+    .q-title {
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--text-main);
+      margin-bottom: 20px;
       line-height: 1.52;
-      margin-bottom: 22px;
     }
 
-    /* Lista de Alternativas */
-    .options-list {
+    /* Alternativas */
+    .options-col {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 11px;
     }
 
-    .option-btn {
+    .opt-btn {
       width: 100%;
       text-align: left;
       display: flex;
       align-items: flex-start;
-      gap: 14px;
-      padding: 15px 16px;
+      gap: 13px;
+      padding: 14px 16px;
       border-radius: var(--radius-md);
-      border: 2px solid var(--border-color);
+      border: 2px solid var(--border);
       background: #ffffff;
       color: var(--text-main);
       font-family: inherit;
-      font-size: 0.96rem;
-      line-height: 1.5;
+      font-size: 0.95rem;
+      line-height: 1.48;
       cursor: pointer;
-      transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.1s ease;
+      transition: border-color 0.14s ease, background-color 0.14s ease;
     }
 
-    .option-btn:not(:disabled):hover {
+    .opt-btn:not(:disabled):hover {
       border-color: var(--accent);
       background: #fff8f7;
     }
 
-    .option-btn:not(:disabled):active {
-      transform: scale(0.995);
-    }
-
-    .option-btn:disabled {
+    .opt-btn:disabled {
       cursor: default;
     }
 
-    .option-letter {
-      width: 32px;
-      height: 32px;
+    .opt-letter {
+      width: 30px;
+      height: 30px;
       border-radius: var(--radius-sm);
       background: #f1f5f9;
-      color: #334155;
+      color: var(--text-secondary);
       font-weight: 800;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      transition: background-color 0.15s ease, color 0.15s ease;
     }
 
-    .option-btn:not(:disabled):hover .option-letter {
+    .opt-btn:not(:disabled):hover .opt-letter {
       background: var(--accent);
       color: #ffffff;
     }
 
-    .option-content {
+    .opt-text {
       flex: 1;
-      padding-top: 3px;
+      padding-top: 2px;
       font-weight: 500;
     }
 
-    .option-status-icon {
-      flex-shrink: 0;
+    .opt-mark {
       font-weight: 800;
-      font-size: 1.08rem;
-      padding-top: 3px;
+      font-size: 1.05rem;
+      padding-top: 2px;
+      flex-shrink: 0;
     }
 
-    .option-btn.opt-correct {
+    .opt-btn.correct {
       border-color: var(--success);
       background: var(--success-bg);
       color: var(--success-text);
     }
 
-    .option-btn.opt-correct .option-letter {
+    .opt-btn.correct .opt-letter {
       background: var(--success);
       color: #ffffff;
     }
 
-    .option-btn.opt-wrong {
+    .opt-btn.wrong {
       border-color: var(--danger);
       background: var(--danger-bg);
       color: var(--danger-text);
     }
 
-    .option-btn.opt-wrong .option-letter {
+    .opt-btn.wrong .opt-letter {
       background: var(--danger);
       color: #ffffff;
     }
 
-    .option-btn.opt-muted {
+    .opt-btn.muted {
       background: #f8fafc;
       border-color: #e2e8f0;
       color: #64748b;
-      opacity: 0.78;
+      opacity: 0.8;
     }
 
-    /* Caixa de Explicação */
-    .explanation-box {
-      margin-top: 22px;
-      padding: 18px 20px;
+    /* Explicação */
+    .exp-box {
+      margin-top: 20px;
+      padding: 16px 18px;
       border-radius: var(--radius-md);
       border: 1px solid transparent;
-      animation: fadeIn 0.22s ease-out;
     }
 
-    .explanation-box.exp-correct {
+    .exp-box.correct {
       background: var(--success-bg);
       border-color: var(--success-border);
       color: var(--success-text);
     }
 
-    .explanation-box.exp-wrong {
+    .exp-box.wrong {
       background: var(--danger-bg);
       border-color: var(--danger-border);
       color: var(--danger-text);
     }
 
-    .explanation-header {
+    .exp-head {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 8px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+      font-weight: 800;
+      font-size: 0.96rem;
     }
 
-    .explanation-pill {
-      font-size: 0.74rem;
-      font-weight: 800;
+    .exp-tag {
+      font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      padding: 3px 10px;
+      padding: 3px 9px;
       border-radius: 999px;
       color: #ffffff;
     }
 
-    .exp-correct .explanation-pill {
+    .exp-box.correct .exp-tag {
       background: var(--success);
     }
 
-    .exp-wrong .explanation-pill {
+    .exp-box.wrong .exp-tag {
       background: var(--danger);
     }
 
-    .explanation-title {
-      font-size: 0.98rem;
-      font-weight: 800;
+    .exp-body {
+      font-size: 0.92rem;
+      line-height: 1.52;
     }
 
-    .explanation-body {
-      font-size: 0.93rem;
-      line-height: 1.55;
-    }
-
-    /* Rodapé de Navegação */
-    .card-footer {
-      margin-top: 26px;
-      padding-top: 18px;
-      border-top: 1px solid var(--border-color);
+    /* Rodapé do Card */
+    .card-nav {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
     }
 
-    .hint-text {
+    .hint-msg {
       font-size: 0.85rem;
       color: var(--text-muted);
-      font-weight: 500;
+      font-weight: 600;
     }
 
-    .keyboard-tip {
+    .kbd-hint {
       margin-top: 14px;
       text-align: center;
       font-size: 0.78rem;
@@ -692,159 +606,139 @@
       display: inline-block;
       padding: 2px 6px;
       font-size: 0.74rem;
-      font-family: inherit;
       font-weight: 700;
       color: var(--text-secondary);
-      background-color: #ffffff;
+      background: #ffffff;
       border: 1px solid #cbd5e1;
       border-radius: 5px;
-      box-shadow: 0 1px 0 #cbd5e1;
     }
 
-    /* Tela Final de Resultado */
-    .summary-hero {
+    /* Tela Final */
+    .summary-top {
       text-align: center;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .summary-badge {
+    .summary-pill {
       display: inline-block;
-      padding: 5px 15px;
+      padding: 5px 14px;
       border-radius: 999px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
       background: var(--accent-soft);
       color: var(--accent);
       border: 1px solid var(--accent-border);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
-    .summary-title {
-      font-size: 1.65rem;
+    .summary-heading {
+      font-size: 1.55rem;
       font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
-    .summary-desc {
-      font-size: 0.95rem;
+    .summary-sub {
+      font-size: 0.94rem;
       color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto 20px;
+      margin-bottom: 18px;
     }
 
-    .stats-grid {
+    .stats-row {
       display: inline-flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 22px;
+      gap: 24px;
       background: var(--bg-subtle);
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 16px 30px;
-      margin-bottom: 22px;
+      padding: 14px 28px;
+      margin-bottom: 20px;
     }
 
-    .stat-item {
-      min-width: 76px;
-    }
-
-    .stat-label {
+    .stat-cell span {
       display: block;
+    }
+
+    .stat-lbl {
       font-size: 0.74rem;
       font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
     }
 
-    .stat-num {
-      font-size: 1.6rem;
+    .stat-val {
+      font-size: 1.55rem;
       font-weight: 800;
     }
 
-    .stat-green { color: var(--success); }
-    .stat-red { color: var(--danger); }
-    .stat-dark { color: var(--text-main); }
+    .c-green { color: var(--success); }
+    .c-red { color: var(--danger); }
+    .c-dark { color: var(--text-main); }
 
-    .summary-actions {
+    .summary-btns {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 12px;
-    }
-
-    .section-heading {
-      font-size: 1.08rem;
-      font-weight: 800;
-      color: var(--text-main);
-      margin: 24px 0 14px;
-    }
-
-    .breakdown-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 10px;
     }
 
-    .breakdown-card {
+    .sub-heading {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin: 22px 0 12px;
+    }
+
+    .subj-breakdown-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+    }
+
+    .subj-card {
       background: var(--bg-subtle);
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--border);
       border-radius: var(--radius-md);
       padding: 12px 14px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      align-items: center;
       font-size: 0.88rem;
     }
 
-    .breakdown-score {
-      font-weight: 800;
-      color: var(--text-main);
-    }
-
-    .review-list {
+    .review-col {
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
 
-    .review-item {
-      padding: 16px 18px;
+    .rev-card {
+      padding: 15px 16px;
       border-radius: var(--radius-md);
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--border);
     }
 
-    .review-item.rev-ok {
+    .rev-card.ok {
       background: #f6fef9;
       border-color: #bbf7d0;
     }
 
-    .review-item.rev-err {
+    .rev-card.err {
       background: #fff8f9;
       border-color: #fecdd3;
     }
 
-    .review-top {
+    .rev-head {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 8px;
       margin-bottom: 8px;
     }
 
-    .review-meta-left {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .review-status {
+    .rev-status {
       font-size: 0.74rem;
       font-weight: 800;
       padding: 3px 10px;
@@ -852,132 +746,73 @@
       color: #ffffff;
     }
 
-    .rev-ok .review-status { background: var(--success); }
-    .rev-err .review-status { background: var(--danger); }
+    .rev-card.ok .rev-status { background: var(--success); }
+    .rev-card.err .rev-status { background: var(--danger); }
 
-    .review-q {
-      font-size: 0.96rem;
+    .rev-question {
       font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 8px;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
     }
 
-    .review-answers {
+    .rev-ans {
       font-size: 0.86rem;
       color: var(--text-secondary);
-      margin-bottom: 8px;
-      line-height: 1.45;
+      margin-bottom: 6px;
     }
 
-    .review-exp {
-      font-size: 0.85rem;
+    .rev-exp {
+      font-size: 0.84rem;
       color: var(--text-muted);
-      line-height: 1.5;
-      padding-top: 8px;
+      padding-top: 6px;
       border-top: 1px dashed rgba(100, 116, 139, 0.25);
     }
 
     @media (max-width: 720px) {
-      .quiz-selector-grid {
+      .quiz-grid {
         grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .main-card {
-        padding: 20px 16px;
-      }
-      .question-text {
-        font-size: 1.02rem;
-      }
-      .header-actions {
-        width: 100%;
-        justify-content: space-between;
       }
     }
   </style>
 </head>
 <body>
-  <div class="app-wrapper">
-    <!-- Cabeçalho e Seletor Manual de Quizzes -->
+  <div class="container">
     <header class="header-card">
-      <div class="top-stripe" aria-hidden="true"></div>
+      <div class="top-bar-accent"></div>
       <div class="header-top">
-        <div class="brand-box">
-          <div class="brand-icon" aria-hidden="true">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
-              <path d="M8 7h8"></path>
-              <path d="M8 11h6"></path>
-            </svg>
-          </div>
-          <div>
-            <h1 class="brand-title">Portal de Quizzes Interativos</h1>
-            <p class="brand-subtitle">Selecione manualmente o questionário desejado e pratique com feedback imediato</p>
-          </div>
+        <div class="title-group">
+          <h1>Portal de Quizzes Interativos</h1>
+          <p>47 questões divididas por disciplina com feedback imediato e gabarito comentado</p>
         </div>
-
-        <div class="header-actions">
-          <div class="score-pill">
-            <span class="score-label">Acertos / Respondidas</span>
-            <span id="score-display" class="score-value">0 / 0</span>
+        <div class="top-actions">
+          <div class="score-box">
+            <span class="score-box-label">Acertos / Respondidas</span>
+            <span id="score-display" class="score-box-val">0 / 0</span>
           </div>
-          <button type="button" id="btn-shuffle" class="btn btn-soft" title="Embaralhar questões do quiz atual">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="16 3 21 3 21 8"></polyline>
-              <line x1="4" y1="20" x2="21" y2="3"></line>
-              <polyline points="21 16 21 21 16 21"></polyline>
-              <line x1="15" y1="15" x2="21" y2="21"></line>
-              <line x1="4" y1="4" x2="9" y2="9"></line>
-            </svg>
-            <span>Embaralhar</span>
-          </button>
-          <button type="button" id="btn-restart" class="btn btn-neutral" title="Reiniciar quiz atual">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="1 4 1 10 7 10"></polyline>
-              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
-            </svg>
-            <span>Reiniciar</span>
-          </button>
+          <button type="button" id="btn-shuffle" class="btn btn-soft">Embaralhar</button>
+          <button type="button" id="btn-restart" class="btn btn-neutral">Reiniciar</button>
         </div>
       </div>
 
-      <!-- Seletor Manual entre os Questionários -->
-      <div class="selector-section">
-        <span class="section-label">1. Escolha o Questionário Manualmente</span>
-        <div id="quiz-selector-grid" class="quiz-selector-grid" role="tablist" aria-label="Questionários disponíveis">
-          <button type="button" class="quiz-choice-btn is-active" data-quiz-id="gerais">
-            <span class="quiz-choice-title">Conhecimentos Gerais (25)</span>
-            <span class="quiz-choice-sub">Geografia (6), História (6), Língua Portuguesa (6) e Arte — Revisão EVA (7)</span>
-          </button>
-          <button type="button" class="quiz-choice-btn" data-quiz-id="atletismo">
-            <span class="quiz-choice-title">Atletismo e Treinamento (10)</span>
-            <span class="quiz-choice-sub">Pista, campo, saltos, lançamentos e rotina esportiva</span>
-          </button>
-          <button type="button" class="quiz-choice-btn" data-quiz-id="completo">
-            <span class="quiz-choice-title">Simulado Completo (35)</span>
-            <span class="quiz-choice-sub">Todos os conteúdos reunidos em um único quiz</span>
-          </button>
-        </div>
+      <div class="block-section">
+        <span class="block-label">1. Selecione o Questionário</span>
+        <div id="quiz-selector" class="quiz-grid"></div>
       </div>
 
-      <!-- Filtro por Disciplina -->
-      <div id="filter-section" class="filter-section">
-        <span class="section-label">2. Filtrar por Disciplina</span>
-        <div id="filter-pills" class="filter-pills"></div>
+      <div id="subject-filter-section" class="block-section">
+        <span class="block-label">2. Filtrar por Disciplina</span>
+        <div id="subject-pills" class="subject-pills"></div>
       </div>
 
-      <!-- Indicadores de Navegação Rápida -->
-      <nav class="quick-nav-wrapper" aria-label="Navegação rápida entre questões">
-        <span class="section-label" style="margin-bottom: 0;">Navegação Rápida</span>
-        <div id="quick-nav-pills" class="quick-nav-pills"></div>
-      </nav>
+      <div class="block-section">
+        <span class="block-label">3. Navegação Rápida entre Questões</span>
+        <div id="quick-nav" class="quick-nav-grid"></div>
+      </div>
     </header>
 
-    <!-- Barra de Progresso -->
-    <section class="progress-section" aria-label="Progresso do questionário">
-      <div class="progress-meta">
-        <span id="progress-label">Questão 1 de 25</span>
+    <section class="progress-wrap">
+      <div class="progress-info">
+        <span id="progress-label">Questão 1 de 40</span>
         <span id="progress-percent">0% concluído</span>
       </div>
       <div class="progress-track">
@@ -985,1066 +820,1256 @@
       </div>
     </section>
 
-    <!-- Área Principal (Questão ou Tela Final) -->
-    <main id="quiz-container" class="main-card"></main>
+    <main id="main-card" class="main-card"></main>
 
-    <!-- Dica de Atalhos de Teclado -->
-    <p id="keyboard-tip" class="keyboard-tip">
-      Atalhos: pressione <kbd>A</kbd>, <kbd>B</kbd>, <kbd>C</kbd> ou <kbd>D</kbd> para responder e <kbd>Enter</kbd> para avançar.
+    <p id="keyboard-tip" class="kbd-hint">
+      Atalhos de teclado: pressione <kbd>A</kbd>, <kbd>B</kbd>, <kbd>C</kbd> ou <kbd>D</kbd> para responder e <kbd>Enter</kbd> para avançar.
     </p>
   </div>
 
   <script>
     (function () {
-      'use strict';
+      var LETTERS = ["A", "B", "C", "D"];
 
-      var OPTION_LETTERS = ['A', 'B', 'C', 'D'];
-
-      var QUIZ_META = {
-        gerais: {
-          id: 'gerais',
-          label: 'Conhecimentos Gerais',
-          shortLabel: 'Conhecimentos Gerais'
+      var QUIZ_CONFIGS = [
+        {
+          id: "gerais",
+          title: "Conhecimentos Gerais (37)",
+          desc: "Geografia (10), História (10), Língua Portuguesa (10) e Arte — Revisão EVA (7)"
         },
-        atletismo: {
-          id: 'atletismo',
-          label: 'Atletismo e Treinamento Esportivo',
-          shortLabel: 'Atletismo'
+        {
+          id: "atletismo",
+          title: "Atletismo e Treinamento (10)",
+          desc: "Provas de pista e campo, saltos, lançamentos, regras e rotina esportiva"
+        },
+        {
+          id: "completo",
+          title: "Simulado Completo (47)",
+          desc: "Todas as 5 disciplinas reunidas em um único questionário"
         }
-      };
+      ];
 
-      // Banco completo: 25 questões de Conhecimentos Gerais (6 Geografia + 6 História + 6 Língua Portuguesa + 7 Arte — Revisão EVA)
-      // + 10 questões de Atletismo e Treinamento = 35 questões no total
-      var QUESTIONS_DB = [
-        // ================= CONHECIMENTOS GERAIS — GEOGRAFIA (6) =================
+      // Banco de 47 questões (10 Geografia, 10 História, 10 Língua Portuguesa, 7 Arte e 10 Atletismo)
+      var QUESTIONS = [
+        // ================= GEOGRAFIA (10) =================
         {
-          id: 'geo-1',
-          quizId: 'gerais',
-          subject: 'Geografia',
-          question: 'Na divisão regional da África, qual conjunto de características corresponde à África Austral e à África Oriental, respectivamente?',
+          id: "geo-1", quizId: "gerais", subject: "Geografia",
+          q: "Na regionalização do continente africano, quais características naturais e econômicas marcam a África Austral em países como Namíbia e Botsuana?",
           options: [
-            'África Austral: Namíbia, Botsuana, deserto do Kalahari, montanhas Drakensberg e extração de diamantes; África Oriental: Grande Vale do Rift, afastamento de placas tectônicas, terremotos e vulcões',
-            'África Austral: Grande Vale do Rift e vulcões ativos; África Oriental: deserto do Kalahari e montanhas Drakensberg',
-            'África Austral: ilhas vulcânicas do Pacífico e ausência de mineração; África Oriental: planícies glaciais sem atividade tectônica',
-            'África Austral: bacia amazônica e floresta temperada; África Oriental: cordilheira dos Andes e geleiras perenes'
+            "Presença do deserto do Kalahari, das montanhas Drakensberg e de importantes áreas de mineração e extração de diamantes",
+            "Existência exclusiva de florestas equatoriais densas e ausência total de mineração",
+            "Predomínio de geleiras polares permanentes e atividade vulcânica submarina",
+            "Planícies fluviais inundadas o ano inteiro sem qualquer área desértica"
           ],
-          correctIndex: 0,
-          explanation: 'A África Austral (ao sul, incluindo Namíbia e Botsuana) reúne o deserto do Kalahari, as montanhas Drakensberg e áreas de extração de diamantes, enquanto a África Oriental abriga o Grande Vale do Rift, associado ao afastamento de placas tectônicas, terremotos e vulcões.'
+          correct: 0,
+          exp: "A África Austral (ao sul do continente, reunindo países como Namíbia e Botsuana) caracteriza-se pelo deserto do Kalahari, pelas montanhas Drakensberg e pela forte atividade mineradora, especialmente de diamantes."
         },
         {
-          id: 'geo-2',
-          quizId: 'gerais',
-          subject: 'Geografia',
-          question: 'Durante boa parte do século XX, a África do Sul adotou o Apartheid, regime de segregação racial que restringia os direitos dos negros em áreas como educação, trabalho, moradia e participação política. Quem foi uma das principais lideranças na luta contra esse sistema?',
+          id: "geo-2", quizId: "gerais", subject: "Geografia",
+          q: "Qual fenômeno geológico explica a ocorrência de terremotos, vulcões e grandes transformações no relevo da África Oriental?",
           options: [
-            'Otto von Bismarck',
-            'Nelson Mandela',
-            'Matthew C. Perry',
-            'Giorgio Vasari'
+            "O Grande Vale do Rift, formado pelo afastamento de placas tectônicas",
+            "O recuo das marés do oceano Atlântico Sul",
+            "A deposição exclusiva de areia trazida pelos ventos do Saara",
+            "A estabilidade tectônica absoluta sem falhas na crosta terrestre"
           ],
-          correctIndex: 1,
-          explanation: 'Nelson Mandela destacou-se como uma das principais lideranças contra o Apartheid na África do Sul, sistema que impedia a população negra de ter os mesmos direitos que os brancos.'
+          correct: 0,
+          exp: "A África Oriental abriga o Grande Vale do Rift, extensa falha geológica provocada pelo afastamento de placas tectônicas, gerando sismos, vulcanismo e modificações no relevo."
         },
         {
-          id: 'geo-3',
-          quizId: 'gerais',
-          subject: 'Geografia',
-          question: 'Qual é o propósito central do pan-africanismo no contexto histórico, cultural e político do continente africano?',
+          id: "geo-3", quizId: "gerais", subject: "Geografia",
+          q: "Durante grande parte do século XX, o regime do Apartheid na África do Sul impôs segregação racial. Quais direitos eram restringidos à população negra e quem foi uma das principais lideranças contra esse sistema?",
           options: [
-            'Submeter os países africanos ao domínio permanente de monarquias europeias',
-            'Fortalecer a identidade e a união dos povos africanos, defendendo solidariedade, valorização da cultura africana e maior autonomia',
-            'Substituir todas as línguas locais por um único idioma europeu imposto por decreto',
-            'Proibir qualquer intercâmbio cultural ou político entre nações africanas'
+            "Restringia o acesso à educação, ao trabalho, à moradia e à participação política; Nelson Mandela foi uma das principais lideranças na luta contra o regime",
+            "Garantia igualdade plena de voto e moradia desde 1910, liderado por Otto von Bismarck",
+            "Limitava apenas a pesca artesanal no litoral norte, sem afetar direitos civis",
+            "Foi um acordo comercial assinado na Conferência de Berlim em 1885"
           ],
-          correctIndex: 1,
-          explanation: 'O pan-africanismo surgiu para fortalecer a identidade e a união dos povos africanos, promovendo solidariedade, valorização da cultura africana e busca por maior autonomia.'
+          correct: 0,
+          exp: "O Apartheid separava brancos e negros na África do Sul, negando à população negra acesso igualitário à educação, trabalho, moradia e política; Nelson Mandela destacou-se como liderança central da resistência."
         },
         {
-          id: 'geo-4',
-          quizId: 'gerais',
-          subject: 'Geografia',
-          question: 'O que foi a Primavera Árabe iniciada no final de 2010 e qual país exemplifica as mudanças políticas e a queda de governantes provocadas pelo movimento?',
+          id: "geo-4", quizId: "gerais", subject: "Geografia",
+          q: "Qual é o objetivo central do movimento conhecido como pan-africanismo?",
           options: [
-            'Uma série de manifestações populares contra governos autoritários no Norte da África e no Oriente Médio, com queda de governantes em países como a Tunísia',
-            'Um acordo de partilha territorial assinado em Berlim no século XIX entre potências industriais',
-            'Uma campanha agrícola para ampliar o deserto do Kalahari sobre o sul do continente',
-            'Um movimento artístico renascentista voltado à criação de óperas em Florença'
+            "Fortalecer a solidariedade e a união entre os povos da África, valorizando a cultura africana e buscando maior autonomia",
+            "Manter o controle econômico das antigas metrópoles europeias sobre os recursos naturais africanos",
+            "Dividir o continente em pequenos territórios isolados sem cooperação regional",
+            "Substituir as línguas locais exclusivamente pelo idioma alemão"
           ],
-          correctIndex: 0,
-          explanation: 'No final de 2010, protestos populares contra governos autoritários no Norte da África e no Oriente Médio formaram a Primavera Árabe, gerando transformações políticas e a queda de governantes, como ocorreu na Tunísia.'
+          correct: 0,
+          exp: "O pan-africanismo surgiu para fortalecer a identidade e a união dos povos africanos, promovendo solidariedade, valorização cultural e autonomia política."
         },
         {
-          id: 'geo-5',
-          quizId: 'gerais',
-          subject: 'Geografia',
-          question: 'Sobre os recursos naturais e a economia africana, qual relação caracteriza o neocolonialismo econômico e os maiores produtores de petróleo do continente?',
+          id: "geo-5", quizId: "gerais", subject: "Geografia",
+          q: "Iniciada no final de 2010, a Primavera Árabe consistiu em manifestações populares contra governos autoritários em quais regiões, provocando queda de governantes em países como qual exemplo?",
           options: [
-            'Empresas estrangeiras exploram riquezas como ouro, diamantes, petróleo, platina e cobalto e grande parte dos lucros vai para fora, mantendo dependência econômica; Nigéria e Angola são os maiores produtores de petróleo',
-            'Os países africanos controlam 100% do refino global de petróleo e não há exploração estrangeira de minérios',
-            'A Nigéria e Angola não produzem petróleo, dependendo exclusivamente da exportação de cacau',
-            'O neocolonialismo econômico eliminou as desigualdades e encerrou a dependência externa'
+            "Norte da África e Oriente Médio, com mudanças políticas e queda de governantes em países como a Tunísia",
+            "África Austral e América do Sul, com foco na extração de platina na Namíbia",
+            "Europa Central e Japão, logo após o Congresso de Viena",
+            "Apenas no Chifre da África, sem repercussão no Norte africano"
           ],
-          correctIndex: 0,
-          explanation: 'Apesar das grandes riquezas minerais e energéticas (ouro, diamantes, petróleo, platina, cobalto), a atuação de empresas estrangeiras que enviam grande parte dos lucros para outros países vincula-se ao neocolonialismo econômico, sendo Nigéria e Angola os maiores produtores africanos de petróleo.'
+          correct: 0,
+          exp: "A Primavera Árabe mobilizou protestos populares contra regimes autoritários no Norte da África e no Oriente Médio a partir do fim de 2010, resultando na queda de governantes em países como a Tunísia."
         },
         {
-          id: 'geo-6',
-          quizId: 'gerais',
-          subject: 'Geografia',
-          question: 'Quais são os impactos ambientais associados à expansão agrícola e quais regiões africanas apresentam maior vulnerabilidade a secas prolongadas e desertificação?',
+          id: "geo-6", quizId: "gerais", subject: "Geografia",
+          q: "Como o neocolonialismo econômico se relaciona à exploração de recursos naturais africanos (como ouro, diamantes, petróleo, platina e cobalto)?",
           options: [
-            'A expansão da agricultura pode provocar desmatamento, perda de biodiversidade e erosão do solo, sendo o Sahel e o Chifre da África áreas de alta vulnerabilidade a secas prolongadas e desertificação',
-            'A agricultura intensiva impede qualquer erosão ou desmatamento no Sahel e no Chifre da África',
-            'Apenas o litoral atlântico sofre secas, enquanto o Sahel possui clima equatorial úmido o ano todo',
-            'A desertificação ocorre somente por conta de geleiras em derretimento no norte do continente'
+            "Empresas estrangeiras exploram esses recursos e grande parte dos lucros vai para outros países, mantendo a dependência econômica de várias nações africanas",
+            "Todos os lucros permanecem integralmente nas comunidades locais sem participação de empresas externas",
+            "A África não possui reservas minerais significativas e depende apenas da importação de minérios",
+            "O termo refere-se apenas ao reflorestamento de áreas desérticas"
           ],
-          correctIndex: 0,
-          explanation: 'A expansão agrícola pode causar desmatamento, perda de biodiversidade e erosão do solo; regiões como o Sahel e o Chifre da África enfrentam grave vulnerabilidade climática, com secas prolongadas e alto risco de desertificação.'
-        },
-
-        // ================= CONHECIMENTOS GERAIS — HISTÓRIA (6) =================
-        {
-          id: 'his-1',
-          quizId: 'gerais',
-          subject: 'História',
-          question: 'Na segunda metade do século XIX, como se estruturaram as unificações italiana e alemã após as tentativas restauradoras do Congresso de Viena (1815)?',
-          options: [
-            'Na Itália (Risorgimento), atuaram os republicanos Giuseppe Mazzini (Jovem Itália) e Giuseppe Garibaldi e o monarquista conde de Cavour (Sardenha-Piemonte); na Alemanha, a Prússia e Otto von Bismarck criaram o Segundo Reich em 1871 após guerras contra Dinamarca, Áustria e França',
-            'Na Itália, Bismarck liderou a Jovem Itália; na Alemanha, Cavour unificou o país sem nenhum conflito militar',
-            'Ambas as unificações ocorreram sem qualquer influência do nacionalismo no século XIX',
-            'A Unificação Alemã criou o Império Otomano em 1815 após guerra contra o Japão'
-          ],
-          correctIndex: 0,
-          explanation: 'A Unificação Italiana (Risorgimento) reuniu forças republicanas (Mazzini e Garibaldi) e o Reino da Sardenha-Piemonte (conde de Cavour); já a Unificação Alemã foi conduzida pela Prússia e por Otto von Bismarck, resultando no Segundo Reich em 1871 após guerras contra Dinamarca, Áustria e França.'
+          correct: 0,
+          exp: "Apesar das vastas riquezas naturais africanas, a exploração por empresas estrangeiras com remessa da maior parte dos lucros ao exterior caracteriza o neocolonialismo econômico e perpetua a dependência."
         },
         {
-          id: 'his-2',
-          quizId: 'gerais',
-          subject: 'História',
-          question: 'O que impulsionou o imperialismo europeu na África e na Ásia, como foi justificado pelas potências e qual foi o papel da Conferência de Berlim (1885)?',
+          id: "geo-7", quizId: "gerais", subject: "Geografia",
+          q: "Quais são os dois maiores produtores de petróleo do continente africano?",
           options: [
-            'A Segunda Revolução Industrial e os monopólios buscaram matérias-primas, mão de obra barata e mercados, usando ideologias racistas e a suposta missão "civilizatória"; a Conferência de Berlim (1885), reunida por Bismarck, partilhou a África com fronteiras artificiais',
-            'A falta de indústrias na Europa levou à doação de territórios sem interesse econômico',
-            'A Conferência de Berlim (1885) proibiu a partilha da África e preservou todas as fronteiras culturais locais',
-            'O imperialismo foi justificado pela igualdade absoluta entre todas as culturas sem monopólios'
+            "Nigéria e Angola",
+            "Tunísia e Botsuana",
+            "Namíbia e África do Sul",
+            "Lesoto e Madagáscar"
           ],
-          correctIndex: 0,
-          explanation: 'Impulsionadas pela Segunda Revolução Industrial e por grandes monopólios, as potências europeias buscaram insumos, mão de obra barata e mercados consumidores, justificando-se por ideologias racistas e missão "civilizatória", enquanto a Conferência de Berlim (1885) impôs fronteiras artificiais na partilha da África.'
+          correct: 0,
+          exp: "Nigéria e Angola destacam-se como os maiores produtores de petróleo do continente africano."
         },
         {
-          id: 'his-3',
-          quizId: 'gerais',
-          subject: 'História',
-          question: 'Como ocorreram as resistências ao imperialismo na África e na Ásia segundo o resumo histórico?',
+          id: "geo-8", quizId: "gerais", subject: "Geografia",
+          q: "Quais áreas geográficas africanas apresentam maior vulnerabilidade a secas prolongadas, erosão do solo e risco de desertificação?",
           options: [
-            'Na África houve diversas resistências armadas e simbólicas em praticamente todas as regiões, e na Ásia houve forte oposição nacionalista em grandes impérios como a Índia (sob domínio britânico consolidado desde o século XVIII) e a China',
-            'Nem na África nem na Ásia houve qualquer resistência ou levante contra a presença estrangeira',
-            'A resistência ocorreu apenas na América do Sul, sem reações na Índia ou na China',
-            'O domínio britânico sobre a Índia só começou no século XXI por meio de tratados comerciais'
+            "O Sahel e o Chifre da África",
+            "A Bacia do Congo e o litoral do Golfo da Guiné",
+            "As ilhas de Cabo Verde e o delta do rio Nilo",
+            "As planícies costeiras do sul da Europa"
           ],
-          correctIndex: 0,
-          explanation: 'A dominação imperialista não foi aceita passivamente: povos africanos organizaram resistências armadas e simbólicas em quase todo o continente, e na Ásia houve forte oposição nacionalista na Índia e na China.'
+          correct: 0,
+          exp: "O Sahel e o Chifre da África enfrentam condições climáticas severas, com secas prolongadas que dificultam a agropecuária e intensificam a desertificação."
         },
         {
-          id: 'his-4',
-          quizId: 'gerais',
-          subject: 'História',
-          question: 'Como se caracterizou a expansão territorial e imperialista dos Estados Unidos ao longo do século XIX, incluindo a Marcha para o Oeste, a Doutrina Monroe (1823) e a política do Big Stick?',
+          id: "geo-9", quizId: "gerais", subject: "Geografia",
+          q: "Quais impactos ambientais estão associados à expansão da agropecuária sem manejo adequado em regiões frágeis da África?",
           options: [
-            'A Marcha para o Oeste usou o Destino Manifesto e a busca de terras, ouro e prata, enfrentando resistência de povos indígenas (como sioux, apaches e comanches); a Doutrina Monroe (1823) e o Big Stick expandiram a influência e o domínio estadunidense sobre áreas como Havaí, Porto Rico, Cuba e Filipinas',
-            'Os EUA renunciaram à expansão para o Pacífico e devolveram Havaí, Porto Rico, Cuba e Filipinas no século XVIII',
-            'O Destino Manifesto defendia a entrega das terras do Oeste aos impérios europeus',
-            'A Doutrina Monroe (1823) determinou o isolamento absoluto dos EUA sem qualquer atuação no Caribe ou no Pacífico'
+            "Desmatamento, perda de biodiversidade e erosão do solo, agravados em zonas de seca prolongada",
+            "Aumento imediato das reservas de água subterrânea e eliminação da erosão",
+            "Formação de novas cadeias montanhosas vulcânicas",
+            "Redução completa da temperatura média global"
           ],
-          correctIndex: 0,
-          explanation: 'A expansão dos EUA apoiou-se no Destino Manifesto durante a Marcha para o Oeste (com resistência de povos como sioux, apaches e comanches), na Doutrina Monroe (1823) e na política do Big Stick, estendendo o domínio a territórios como Havaí, Porto Rico, Cuba e Filipinas.'
+          correct: 0,
+          exp: "A expansão agrícola sem conservação provoca desmatamento, perda de biodiversidade e erosão dos solos, efeitos ainda mais críticos no Sahel e no Chifre da África."
         },
         {
-          id: 'his-5',
-          quizId: 'gerais',
-          subject: 'História',
-          question: 'Quais grupos se enfrentaram na Guerra Civil Americana (1861–1865), também chamada de Guerra de Secessão, e qual foi o principal ponto de discórdia?',
+          id: "geo-10", quizId: "gerais", subject: "Geografia",
+          q: "Quantas grandes regiões geográficas compõem a divisão regional clássica do continente africano mencionada no resumo de estudos?",
           options: [
-            'Os estados industrializados do Norte e os estados agrários e escravistas do Sul, tendo a manutenção da escravidão como principal ponto de discórdia',
-            'A Prússia e o Reino da Sardenha-Piemonte pela posse do Canal de Suez',
-            'O xogunato Tokugawa e a frota britânica pela abertura dos portos de Tóquio',
-            'As colônias da África Austral contra o Império Austro-Húngaro'
+            "Cinco grandes regiões geográficas",
+            "Duas regiões (Norte e Sul)",
+            "Doze regiões insulares",
+            "Apenas uma região homogênea"
           ],
-          correctIndex: 0,
-          explanation: 'A Guerra Civil Americana (1861–1865), ou Guerra de Secessão, opôs o Norte industrializado ao Sul agrário e escravista, sendo a manutenção da escravidão o principal ponto de divergência.'
-        },
-        {
-          id: 'his-6',
-          quizId: 'gerais',
-          subject: 'História',
-          question: 'Qual foi o contexto da abertura dos portos japoneses em 1853 e da subsequente Era Meiji após o xogunato Tokugawa (1603–1868)?',
-          options: [
-            'Sob o xogunato Tokugawa (1603–1868), o Japão vivia estrutura feudal e isolamento; em 1853, a frota dos EUA comandada por Matthew C. Perry forçou a abertura dos portos e tratados desiguais, levando à Era Meiji de rápida modernização política, econômica e industrial e ao expansionismo japonês',
-            'O Japão nunca teve isolamento internacional e foi a Era Meiji que iniciou o xogunato Tokugawa em 1853',
-            'Matthew C. Perry liderou a unificação da Itália em 1853',
-            'A Era Meiji extinguiu a indústria e adotou o isolamento feudal até o século XX'
-          ],
-          correctIndex: 0,
-          explanation: 'Após séculos de estrutura feudal e isolamento sob o xogunato Tokugawa (1603–1868), a chegada da frota de Matthew C. Perry em 1853 impôs a abertura dos portos e tratados desiguais, estimulando a Era Meiji e a transformação do Japão em potência militar e expansionista.'
+          correct: 0,
+          exp: "A África é dividida em cinco grandes regiões geográficas, entre as quais se destacam a África Austral e a África Oriental."
         },
 
-        // ================= CONHECIMENTOS GERAIS — LÍNGUA PORTUGUESA (6) =================
+        // ================= HISTÓRIA (10) =================
         {
-          id: 'lp-1',
-          quizId: 'gerais',
-          subject: 'Língua Portuguesa',
-          question: 'Como os textos de divulgação científica atuam diante de termos técnicos complexos e quais estratégias de leitura ajudam a compreendê-los?',
+          id: "his-1", quizId: "gerais", subject: "História",
+          q: "Na segunda metade do século XIX, como a 'política das nacionalidades' transformou o mapa político europeu após o Congresso de Viena (1815)?",
           options: [
-            'Tornam avanços e descobertas científicas mais acessíveis ao público leigo, exigindo estratégias como consultar glossários e identificar o contexto para entender o vocabulário especializado',
-            'Eliminam qualquer relação com a ciência e proíbem o uso de glossários ou análise de contexto',
-            'Servem apenas para dificultar a leitura de quem não possui doutorado na área',
-            'Substituem todas as palavras do texto por códigos numéricos sem significado lexical'
+            "Fortaleceu os sentimentos nacionalistas e impulsionou processos de unificação, como a Unificação Italiana e a Unificação Alemã",
+            "Restaurou o feudalismo medieval e extinguiu todos os Estados nacionais europeus",
+            "Impediu qualquer alteração de fronteiras na Europa até o século XXI",
+            "Submeteu a Europa ao domínio político do xogunato Tokugawa"
           ],
-          correctIndex: 0,
-          explanation: 'Os textos de divulgação científica aproximam o público leigo dos avanços da ciência, e a leitura estratégica — como recorrer a glossários e observar o contexto — auxilia na compreensão dos termos técnicos.'
+          correct: 0,
+          exp: "O fortalecimento dos nacionalismos superou as tentativas restauradoras do Congresso de Viena (1815) e conduziu às unificações italiana e alemã."
         },
         {
-          id: 'lp-2',
-          quizId: 'gerais',
-          subject: 'Língua Portuguesa',
-          question: 'O que envolve a seleção lexical em textos informativos e qual é a função das orações subordinadas adverbiais nos períodos compostos?',
+          id: "his-2", quizId: "gerais", subject: "História",
+          q: "Antes da Unificação Italiana (Risorgimento), sob quais domínios o território italiano estava fragmentado e quais líderes conduziram o movimento?",
           options: [
-            'A seleção lexical escolhe e relaciona palavras (substantivos, adjetivos, verbos) para gerar sentido; as orações subordinadas adverbiais atuam como adjuntos adverbiais da oração principal, expressando circunstâncias como tempo, causa, finalidade, condição e concessão',
-            'A seleção lexical proíbe o uso de verbos e adjetivos; as orações adverbiais funcionam sempre como sujeito da oração',
-            'As orações subordinadas adverbiais servem apenas para enfeitar textos poéticos sem indicar circunstância alguma',
-            'A seleção lexical não altera os efeitos de sentido produzidos no interlocutor'
+            "Fragmentado sob domínio da Áustria, da França e da Igreja Católica; liderado pelos republicanos Giuseppe Mazzini (Jovem Itália) e Giuseppe Garibaldi, e pelo monarquista conde de Cavour (Sardenha-Piemonte)",
+            "Unificado sob a Prússia e liderado exclusivamente por Otto von Bismarck",
+            "Controlado pelos Estados Unidos após a Guerra Civil Americana",
+            "Dividido apenas entre Inglaterra e Japão"
           ],
-          correctIndex: 0,
-          explanation: 'Na construção textual, o autor seleciona e relaciona palavras de diferentes classes (substantivos, adjetivos, verbos) para produzir sentidos, enquanto as orações subordinadas adverbiais funcionam como adjuntos adverbiais expressando circunstâncias.'
+          correct: 0,
+          exp: "No Risorgimento, a Itália fragmentada entre Áustria, França e Igreja Católica foi unificada pela atuação de republicanos (Mazzini e Garibaldi) e monarquistas da Sardenha-Piemonte (Cavour)."
         },
         {
-          id: 'lp-3',
-          quizId: 'gerais',
-          subject: 'Língua Portuguesa',
-          question: 'De que forma os fichamentos e os textos organizados em tópicos contribuem para as práticas de estudo e pesquisa?',
+          id: "his-3", quizId: "gerais", subject: "História",
+          q: "Como ocorreu a Unificação Alemã em 1871 e qual estrutura política foi criada ao final desse processo?",
           options: [
-            'Estruturam as ideias principais de textos escolares, acadêmicos e científicos, facilitando o estudo, a síntese e a consulta de informações',
-            'Impedem a organização de ideias e tornam impossível revisar conteúdos antes de provas ou seminários',
-            'Exigem que todo texto seja escrito apenas em parágrafos longos sem tópicos ou fichamentos',
-            'Substituem a necessidade de compreender os conceitos centrais do material estudado'
+            "Conduzida pela Prússia e por Otto von Bismarck após três guerras vitoriosas (contra Dinamarca, Áustria e França), resultando no Segundo Reich (Império Alemão)",
+            "Realizada por meio de plebiscito pacífico liderado por Giuseppe Garibaldi",
+            "Consolidada após a abertura dos portos japoneses por Matthew C. Perry",
+            "Resultou na divisão permanente da Alemanha em trinta reinos independentes"
           ],
-          correctIndex: 0,
-          explanation: 'Diferentes formatos textuais (parágrafos corridos, enumerações ou tópicos) atendem a objetivos distintos; a organização em tópicos e os fichamentos sistematizam as ideias principais para estudo, síntese e consulta.'
+          correct: 0,
+          exp: "Sob liderança da Prússia e de Bismarck, as vitórias contra Dinamarca, Áustria e França levaram à criação do Segundo Reich (Império Alemão) em 1871."
         },
         {
-          id: 'lp-4',
-          quizId: 'gerais',
-          subject: 'Língua Portuguesa',
-          question: 'Como se diferenciam a modalização e a argumentação associadas às orações adverbiais na produção textual?',
+          id: "his-4", quizId: "gerais", subject: "História",
+          q: "Quais fatores econômicos e justificativas ideológicas impulsionaram o imperialismo europeu no século XIX?",
           options: [
-            'Na modalização, o enunciador marca avaliações, julgamentos ou sentimentos (como felicidade, tristeza ou crítica) sobre o que diz; na argumentação, as orações adverbiais atuam para defender pontos de vista, justificar ideias e persuadir o interlocutor',
-            'Modalização significa apagar a opinião do autor e argumentação significa apenas copiar trechos sem justificativa',
-            'A modalização ocorre exclusivamente na fala informal e a argumentação nunca aparece em textos formais',
-            'As orações adverbiais não podem participar nem da modalização nem da argumentação'
+            "A Segunda Revolução Industrial e os monopólios buscaram matérias-primas, mão de obra barata e mercados consumidores, apoiados em ideologias racistas e na ideia de missão 'civilizatória'",
+            "O desejo europeu de financiar gratuitamente a industrialização africana sem obter lucro",
+            "A abolição completa da produção industrial na Europa",
+            "O respeito rigoroso às fronteiras culturais e políticas dos povos locais"
           ],
-          correctIndex: 0,
-          explanation: 'A modalização explicita avaliações, julgamentos ou sentimentos do enunciador sobre o conteúdo, e as orações adverbiais também funcionam como recursos argumentativos para justificar ideias e persuadir.'
+          correct: 0,
+          exp: "Impulsionadas pela Segunda Revolução Industrial e pelos grandes monopólios, as potências buscaram insumos, mão de obra barata e mercados, usando discursos racistas de superioridade e 'missão civilizatória'."
         },
         {
-          id: 'lp-5',
-          quizId: 'gerais',
-          subject: 'Língua Portuguesa',
-          question: 'Em textos formais (como seminários e artigos), por que o domínio da norma culta — incluindo o uso adequado dos "porquês" — é importante?',
+          id: "his-5", quizId: "gerais", subject: "História",
+          q: "Qual foi o resultado central da Conferência de Berlim (1885), reunida por Otto von Bismarck?",
           options: [
-            'Porque a compreensão e a produção de textos formais exigem adequação às normas gramaticais da norma culta, incluindo as diferentes grafias e funções de "por que", "porque", "por quê" e "porquê"',
-            'Porque em textos formais todas as formas de "porquê" são escritas sempre separadas e sem acento em qualquer posição',
-            'Porque a norma culta dispensa regras gramaticais em seminários e artigos acadêmicos',
-            'Porque existe apenas uma grafia possível para todos os contextos de "porquê"'
+            "Consolidou a partilha da África entre as potências europeias, impondo fronteiras artificiais sem respeitar as divisões culturais locais",
+            "Garantiu a independência imediata de todas as colônias africanas e asiáticas",
+            "Proibiu qualquer presença europeia no continente africano",
+            "Criou o regime do Apartheid na América do Norte"
           ],
-          correctIndex: 0,
-          explanation: 'Textos formais demandam domínio da norma culta da língua portuguesa, incluindo o emprego correto das quatro formas dos "porquês" conforme o contexto sintático e semântico.'
+          correct: 0,
+          exp: "A Conferência de Berlim (1885) formalizou a partilha imperialista da África segundo interesses europeus, desconsiderando as identidades étnicas e culturais locais."
         },
         {
-          id: 'lp-6',
-          quizId: 'gerais',
-          subject: 'Língua Portuguesa',
-          question: 'Considerando o emprego dos "porquês" na linguagem formal, qual alternativa preenche corretamente as lacunas da frase: "A pesquisa avançou ____ houve rigor metodológico, mas ninguém entendeu o ____ da demora inicial nem o ____ de tanta hesitação?"',
+          id: "his-6", quizId: "gerais", subject: "História",
+          q: "Como os povos da África e da Ásia reagiram à dominação imperialista?",
           options: [
-            'porque — porquê — porquê',
-            'por que — porque — por quê',
-            'por quê — por que — porque',
-            'porque — por que — porque'
+            "Na África organizaram resistências armadas e simbólicas em quase todas as regiões; na Ásia houve forte oposição nacionalista em impérios como a Índia (sob domínio britânico) e a China",
+            "Aceitaram passivamente a ocupação sem qualquer levante ou oposição",
+            "A resistência ocorreu apenas na França durante o Salão dos Recusados",
+            "Nenhuma potência europeia tentou dominar a Índia ou a China"
           ],
-          correctIndex: 0,
-          explanation: 'Na primeira lacuna, "porque" introduz justificativa/causa; na segunda e na terceira, "o porquê" funciona como substantivo ("o motivo/a razão"), admitindo artigo e plural.'
+          correct: 0,
+          exp: "A dominação imperialista foi amplamente contestada por meio de resistências armadas e simbólicas na África e de movimentos nacionalistas na Ásia, como na Índia e na China."
+        },
+        {
+          id: "his-7", quizId: "gerais", subject: "História",
+          q: "O que foi a ideologia do Destino Manifesto durante a Marcha para o Oeste nos Estados Unidos e quais foram suas consequências para os povos indígenas?",
+          options: [
+            "A crença na missão divina de ocupar e 'civilizar' o continente rumo ao Pacífico, movida por terras, ouro e prata, gerando forte resistência e repressão aos povos indígenas (como sioux, apaches e comanches)",
+            "Um tratado de devolução de terras aos povos indígenas sioux, apaches e comanches",
+            "Uma lei que proibia a expansão territorial estadunidense além da costa atlântica",
+            "A política de isolamento feudal adotada pelo Japão no século XVII"
+          ],
+          correct: 0,
+          exp: "O Destino Manifesto justificou a expansão dos EUA até o Pacífico em busca de terras e metais preciosos, resultando em intensa repressão e conflitos com nações indígenas."
+        },
+        {
+          id: "his-8", quizId: "gerais", subject: "História",
+          q: "Como se articulavam a Doutrina Monroe (1823) e a política do Big Stick na expansão dos Estados Unidos?",
+          options: [
+            "A Doutrina Monroe ('a América para os americanos') buscava afastar interferências europeias no continente, enquanto o Big Stick marcou postura imperialista com domínio sobre áreas como Havaí, Porto Rico, Cuba e Filipinas",
+            "Ambas defendiam que países europeus deveriam recolonizar o continente americano",
+            "A Doutrina Monroe foi assinada na Conferência de Berlim por Bismarck",
+            "O Big Stick limitava-se à agricultura interna sem ações no Caribe ou Pacífico"
+          ],
+          correct: 0,
+          exp: "A Doutrina Monroe (1823) buscou afirmar a hegemonia estadunidense nas Américas frente à Europa, e o Big Stick consolidou o imperialismo dos EUA sobre Havaí, Porto Rico, Cuba e Filipinas."
+        },
+        {
+          id: "his-9", quizId: "gerais", subject: "História",
+          q: "Quais grupos entraram em confronto na Guerra Civil Americana (1861–1865), também chamada de Guerra de Secessão, e qual foi o principal ponto de discórdia?",
+          options: [
+            "Os estados industrializados do Norte contra os estados agrários e escravistas do Sul, tendo a manutenção da escravidão como principal ponto de discórdia",
+            "A Prússia contra a Áustria pelo controle da península itálica",
+            "O Japão contra a China pela abertura dos portos de Tóquio",
+            "A África do Sul contra a Tunísia pelo controle do Saara"
+          ],
+          correct: 0,
+          exp: "A Guerra Civil Americana (1861–1865) opôs o Norte industrializado ao Sul agrário e escravista, sendo a manutenção da escravidão o eixo central do conflito."
+        },
+        {
+          id: "his-10", quizId: "gerais", subject: "História",
+          q: "O que ocorreu no Japão a partir da chegada da frota de Matthew C. Perry (1853) e da implantação da Era Meiji após o xogunato Tokugawa (1603–1868)?",
+          options: [
+            "A abertura forçada dos portos e tratados desiguais levaram à Era Meiji, um rápido processo de modernização política, econômica e industrial que transformou o Japão em potência militar e expansionista na Ásia",
+            "O Japão reforçou o isolamento feudal por mais trezentos anos sem se industrializar",
+            "O país abandonou todas as suas indústrias e tornou-se colônia da Itália",
+            "O imperador Meiji aboliu o exército e entregou o território aos EUA"
+          ],
+          correct: 0,
+          exp: "Diante da pressão ocidental iniciada com Matthew C. Perry em 1853, o Japão superou o isolamento feudal do xogunato Tokugawa e promoveu na Era Meiji uma rápida modernização industrial e militar."
         },
 
-        // ================= CONHECIMENTOS GERAIS — ARTE: REVISÃO EVA (7) =================
+        // ================= LÍNGUA PORTUGUESA (10) =================
         {
-          id: 'art-eva-1',
-          quizId: 'gerais',
-          subject: 'Arte',
-          question: 'Qual é o museu criado por Dom João VI (em 1818, originalmente como Museu Real) que sofreu um grande incêndio em 2018, perdendo grande parte do seu acervo?',
+          id: "lp-1", quizId: "gerais", subject: "Língua Portuguesa",
+          q: "Qual é o objetivo dos textos de divulgação científica e quais estratégias auxiliam na compreensão de seus termos técnicos?",
           options: [
-            'Museu Nacional, no Rio de Janeiro',
-            'Museu de Arte de São Paulo (MASP)',
-            'Pinacoteca do Estado de São Paulo',
-            'Museu Imperial, em Petrópolis'
+            "Tornar descobertas e avanços científicos acessíveis ao público leigo, exigindo estratégias como consulta a glossários e identificação do contexto",
+            "Substituir dados científicos por opiniões sem fundamento e proibir explicações",
+            "Restringir o acesso do conhecimento apenas a cientistas especializados",
+            "Eliminar qualquer substantivo ou termo técnico do texto"
           ],
-          correctIndex: 0,
-          explanation: 'O Museu Nacional, fundado por Dom João VI em 1818 (inicialmente como Museu Real) no Rio de Janeiro, é a mais antiga instituição científica do Brasil e perdeu grande parte de seu acervo histórico e científico no incêndio de 2 de setembro de 2018.'
+          correct: 0,
+          exp: "Textos de divulgação científica tornam o saber científico acessível ao público não especializado, apoiando-se em estratégias como análise contextual e consulta a glossários."
         },
         {
-          id: 'art-eva-2',
-          quizId: 'gerais',
-          subject: 'Arte',
-          question: 'Qual era a função da Galeria Domus no circuito artístico brasileiro (criada em São Paulo, em 1947)?',
+          id: "lp-2", quizId: "gerais", subject: "Língua Portuguesa",
+          q: "De que maneira a seleção lexical opera na construção de textos informativos?",
           options: [
-            'Restringir exposições apenas à arte acadêmica europeia do século XVII e impedir vendas de obras',
-            'Divulgar, expor e comercializar a arte moderna brasileira, abrindo espaço para artistas modernistas e renovando o mercado de arte em São Paulo',
-            'Funcionar exclusivamente como escola de ópera lírica vinculada à corte imperial',
-            'Avaliar e censurar obras modernistas antes de serem enviadas para a Europa'
+            "O autor escolhe e relaciona palavras de diferentes classes gramaticais (substantivos, adjetivos, verbos) para expressar o significado desejado e gerar efeitos de sentido",
+            "As palavras são escolhidas ao acaso sem preocupação com o interlocutor",
+            "Utilizam-se apenas verbos no infinitivo sem substantivos ou adjetivos",
+            "Evita-se qualquer relação semântica entre os termos do parágrafo"
           ],
-          correctIndex: 1,
-          explanation: 'Criada em 1947 por Anna Maria Fiocca e Dino Zammataro em São Paulo, a Galeria Domus foi pioneira na divulgação, exposição e comercialização da arte moderna brasileira, consolidando um espaço profissional para artistas modernistas.'
+          correct: 0,
+          exp: "Na seleção lexical, o produtor do texto escolhe e articula substantivos, adjetivos, verbos e outras classes para construir sentidos precisos e adequados ao propósito comunicativo."
         },
         {
-          id: 'art-eva-3',
-          quizId: 'gerais',
-          subject: 'Arte',
-          question: 'Qual Bienal de arte foi criada em 1895 e se tornou referência internacional na divulgação da arte moderna e contemporânea?',
+          id: "lp-3", quizId: "gerais", subject: "Língua Portuguesa",
+          q: "Qual função sintática e semântica as orações subordinadas adverbiais exercem em períodos compostos por subordinação?",
           options: [
-            'Bienal de São Paulo',
-            'Bienal de Veneza',
-            'Bienal do Mercosul',
-            'Bienal de Havana'
+            "Funcionam como adjuntos adverbiais da oração principal, expressando circunstâncias como tempo, causa, finalidade, condição e concessão",
+            "Substituem o título do texto e não mantêm relação com a oração principal",
+            "Atuam exclusivamente como sujeito simples de verbos de ligação",
+            "Servem apenas para separar sílabas poéticas em poemas"
           ],
-          correctIndex: 1,
-          explanation: 'Criada em 1895 na Itália, a Bienal de Veneza (La Biennale di Venezia) é a mais antiga exposição internacional de arte do mundo e tornou-se referência global na divulgação da arte moderna e contemporânea.'
+          correct: 0,
+          exp: "As orações subordinadas adverbiais desempenham a função de adjunto adverbial da oração principal, indicando circunstâncias que esclarecem o sentido dos enunciados."
         },
         {
-          id: 'art-eva-4',
-          quizId: 'gerais',
-          subject: 'Arte',
-          question: 'Qual sequência representa a evolução histórica dos espaços de apresentação musical?',
+          id: "lp-4", quizId: "gerais", subject: "Língua Portuguesa",
+          q: "Qual é a utilidade dos fichamentos e dos textos topicalizados no campo das práticas de estudo e pesquisa?",
           options: [
-            'Plataformas digitais -> grandes estádios -> salas de concerto públicas -> espaços religiosos e palacianos',
-            'Espaços religiosos e palacianos (igrejas e cortes) -> salas de concerto públicas (século XVIII) -> teatros e casas de espetáculo -> grandes arenas/estádios e plataformas digitais',
-            'Grandes arenas de rock -> cortes feudais -> igrejas medievais -> salas de concerto',
-            'Estúdios de gravação digital -> cortes renascentistas -> teatros municipais -> igrejas'
+            "Estruturam e sintetizam as ideias principais de textos escolares, acadêmicos e científicos, facilitando o estudo e a consulta de informações",
+            "Dificultam a revisão dos conteúdos por misturar ideias sem hierarquia",
+            "Só podem ser aplicados em artigos de lei, nunca em estudos escolares",
+            "Dispensam a identificação dos conceitos centrais do texto"
           ],
-          correctIndex: 1,
-          explanation: 'Historicamente, a música concentrou-se primeiro em igrejas e cortes (espaços religiosos/palacianos), passou às salas de concerto públicas com venda de ingressos no século XVIII, expandiu-se para teatros e casas de espetáculo e chegou às grandes arenas/estádios e plataformas digitais.'
+          correct: 0,
+          exp: "A organização em tópicos e a produção de fichamentos sintetizam as ideias principais, tornando o estudo, a revisão e a consulta muito mais eficazes."
         },
         {
-          id: 'art-eva-5',
-          quizId: 'gerais',
-          subject: 'Arte',
-          question: 'Qual é o espetáculo de 1927, escrito por Oscar Hammerstein II (com música de Jerome Kern), que estabeleceu as bases do teatro musical moderno ao integrar enredo dramático, música e dança?',
+          id: "lp-5", quizId: "gerais", subject: "Língua Portuguesa",
+          q: "O que significa 'modalização' na produção ou análise de um enunciado?",
           options: [
-            'O Fantasma da Ópera (The Phantom of the Opera)',
-            'Show Boat (O Barco das Ilusões)',
-            'Os Miseráveis (Les Misérables)',
-            'A Flauta Mágica (Die Zauberflöte)'
+            "A relação que o enunciador estabelece com o que diz, explicitando avaliações, julgamentos ou sentimentos (como felicidade, tristeza ou crítica) sobre o conteúdo",
+            "A contagem obrigatória de vinte linhas por parágrafo",
+            "A eliminação de qualquer ponto de vista ou avaliação do autor",
+            "A troca de todos os conectivos por sinais matemáticos"
           ],
-          correctIndex: 1,
-          explanation: 'Estreado em 1927 na Broadway, "Show Boat" (O Barco das Ilusões), com libreto e letras de Oscar Hammerstein II e música de Jerome Kern, inaugurou o musical moderno ao integrar narrativa dramática séria, canções e coreografia.'
+          correct: 0,
+          exp: "Na modalização, o enunciador marca seu posicionamento, avaliação, julgamento ou sentimento diante do conteúdo comunicado, recurso frequentemente apoiado por orações adverbiais."
         },
         {
-          id: 'art-eva-6',
-          quizId: 'gerais',
-          subject: 'Arte',
-          question: 'Qual profissional é responsável pela criação e reprodução de ruídos e efeitos sonoros cotidianos para filmes, utilizando objetos físicos e gravações sincronizadas com a imagem?',
+          id: "lp-6", quizId: "gerais", subject: "Língua Portuguesa",
+          q: "Como as orações adverbiais atuam na argumentação em contextos formais e informais?",
           options: [
-            'Maestro regente de orquestra',
-            'Artista de Foley (sonoplasta de Foley)',
-            'Curador de bienal de artes visuais',
-            'Iluminador cênico'
+            "Funcionam como recursos argumentativos para defender pontos de vista, justificar ideias e persuadir o interlocutor",
+            "Impedem a apresentação de justificativas em debates e artigos",
+            "Anulam a relação de causa e consequência entre as ideias",
+            "São usadas apenas para indicar pluralidade dos substantivos"
           ],
-          correctIndex: 1,
-          explanation: 'O artista de Foley (ou sonoplasta de Foley) cria e grava em estúdio ruídos cotidianos — como passos, portas, roupas e objetos — em sincronia com as imagens do filme para dar realismo sonoro às cenas.'
+          correct: 0,
+          exp: "As orações adverbiais articulam relações lógicas (causa, condição, concessão, finalidade) fundamentais para justificar teses e persuadir o interlocutor."
         },
         {
-          id: 'art-eva-7',
-          quizId: 'gerais',
-          subject: 'Arte',
-          question: 'O que é leitmotiv, recurso composicional amplamente utilizado pelo compositor Richard Wagner em suas óperas?',
+          id: "lp-7", quizId: "gerais", subject: "Língua Portuguesa",
+          q: "O que é indispensável na compreensão e produção de textos formais, como seminários e artigos acadêmicos?",
           options: [
-            'Uma pausa silenciosa obrigatória de dez minutos entre todos os atos da ópera',
-            'Um motivo ou tema musical recorrente associado a um personagem, ideia, objeto ou sentimento específico ao longo da obra',
-            'A substituição completa da orquestra por declamações faladas sem acompanhamento',
-            'Um aparelho mecânico usado no século XIX para gravar sons de tempestade no teatro'
+            "O domínio das normas da norma culta da língua portuguesa, incluindo o emprego adequado das diferentes grafias e usos dos 'porquês'",
+            "O uso predominante de gírias e abreviações informais de redes sociais",
+            "A ausência de conectivos e de concordância verbal",
+            "A escrita sem qualquer revisão ortográfica"
           ],
-          correctIndex: 1,
-          explanation: 'O leitmotiv ("motivo condutor") é uma frase ou ideia musical recorrente vinculada a um personagem, conceito, objeto ou emoção, transformando-se ao longo da ópera conforme o desenvolvimento dramático.'
+          correct: 0,
+          exp: "Gêneros formais como seminários e artigos exigem domínio da norma culta, abrangendo concordância, coesão e o emprego correto dos quatro tipos de 'porquês'."
+        },
+        {
+          id: "lp-8", quizId: "gerais", subject: "Língua Portuguesa",
+          q: "Assinale a alternativa em que o uso de 'por que' e 'porque' está inteiramente correto segundo a norma culta:",
+          options: [
+            "Não entendemos por que a pesquisa atrasou, mas o professor explicou porque faltaram fontes.",
+            "Não entendemos porque a pesquisa atrasou, mas o professor explicou por que faltaram fontes.",
+            "Eis o motivo porque todos saíram cedo por que?",
+            "O fichamento ficou ótimo por quê os tópicos foram bem organizados."
+          ],
+          correct: 0,
+          exp: "'Por que' (separado, sem acento) equivale a 'por qual motivo/razão'; 'porque' (junto, sem acento) introduz explicação ou causa."
+        },
+        {
+          id: "lp-9", quizId: "gerais", subject: "Língua Portuguesa",
+          q: "Em qual situação deve-se empregar 'por quê' (separado e com acento circunflexo)?",
+          options: [
+            "No final de frases (interrogativas diretas ou indiretas) ou isolado antes de sinal de pontuação",
+            "Como substantivo antecedido pelo artigo 'o' (ex.: 'o por quê')",
+            "No início de respostas explicativas em substituição a 'pois'",
+            "Antes de verbos no infinitivo no meio da oração afirmativa"
+          ],
+          correct: 0,
+          exp: "'Por quê' recebe acento circunflexo quando aparece no fim da frase ou antes de pontuação final, ponto de interrogação ou exclamação."
+        },
+        {
+          id: "lp-10", quizId: "gerais", subject: "Língua Portuguesa",
+          q: "Qual alternativa apresenta o emprego correto de 'porquê' (junto e com acento circunflexo)?",
+          options: [
+            "Ninguém explicou o porquê da alteração no cronograma do seminário.",
+            "Porquê você não trouxe o fichamento pronto hoje?",
+            "A aula foi adiada porquê houve manutenção na sala.",
+            "Você saiu mais cedo da apresentação porquê?"
+          ],
+          correct: 0,
+          exp: "'Porquê' (junto e com acento) é um substantivo que significa 'motivo' ou 'razão', geralmente acompanhado de artigo ou determinante ('o porquê')."
+        },
+
+        // ================= ARTE — REVISÃO EVA (7) =================
+        {
+          id: "art-1", quizId: "gerais", subject: "Arte",
+          q: "Qual é o museu criado por Dom João VI que sofreu um incêndio em 2018, perdendo parte do seu acervo?",
+          options: [
+            "Museu Nacional, no Rio de Janeiro",
+            "Museu de Arte de São Paulo (MASP)",
+            "Museu Imperial de Petrópolis",
+            "Pinacoteca do Estado de São Paulo"
+          ],
+          correct: 0,
+          exp: "Fundado por Dom João VI em 1818 (como Museu Real), o Museu Nacional, no Rio de Janeiro, foi atingido por um grande incêndio em 2018 que destruiu parcela expressiva de seu acervo."
+        },
+        {
+          id: "art-2", quizId: "gerais", subject: "Arte",
+          q: "Qual era a função da Galeria Domus no circuito artístico brasileiro?",
+          options: [
+            "Divulgar, expor e comercializar obras da arte moderna em São Paulo (a partir de 1947), apoiando artistas modernistas e consolidando o mercado de arte moderna",
+            "Funcionar apenas como sala de concertos barrocos sem exposição de artes visuais",
+            "Restringir-se a cópias de pinturas acadêmicas europeias do século XVII",
+            "Servir exclusivamente como teatro de ópera italiana"
+          ],
+          correct: 0,
+          exp: "A Galeria Domus desempenhou papel pioneiro no circuito artístico moderno brasileiro ao expor, promover e comercializar obras modernistas, fortalecendo o mercado de arte moderna."
+        },
+        {
+          id: "art-3", quizId: "gerais", subject: "Arte",
+          q: "Qual Bienal de arte foi criada em 1895 e se tornou referência na divulgação da arte moderna?",
+          options: [
+            "Bienal de Veneza",
+            "Bienal de São Paulo",
+            "Bienal do Mercosul",
+            "Bienal de Havana"
+          ],
+          correct: 0,
+          exp: "Criada em 1895 na Itália, a Bienal de Veneza consolidou-se como uma das mais importantes referências internacionais para a divulgação da arte moderna e contemporânea."
+        },
+        {
+          id: "art-4", quizId: "gerais", subject: "Arte",
+          q: "Qual sequência representa a evolução histórica dos espaços de apresentação musical?",
+          options: [
+            "Igrejas e cortes palacianas -> salas de concerto públicas (com cobrança de entrada, como no século XVIII) -> teatros e casas de espetáculo -> grandes arenas/estádios e plataformas digitais",
+            "Plataformas de streaming -> grandes estádios -> salas de concerto -> igrejas medievais",
+            "Estádios de futebol -> cortes renascentistas -> teatros líricos -> igrejas",
+            "Cinemas mudos -> cortes reais -> salas de concerto -> praças medievais"
+          ],
+          correct: 0,
+          exp: "Historicamente, a apresentação musical migrou de espaços religiosos e palacianos para salas de concerto pagas (no século XVIII, voltadas ao público burguês), teatros, grandes arenas e mídias digitais."
+        },
+        {
+          id: "art-5", quizId: "gerais", subject: "Arte",
+          q: "Qual é o espetáculo de 1927 escrito por Oscar Hammerstein II (com música de Jerome Kern) que estabeleceu as bases do musical moderno?",
+          options: [
+            "Show Boat",
+            "Eurídice",
+            "Dafne",
+            "O Guarani"
+          ],
+          correct: 0,
+          exp: "Estreado em 1927, 'Show Boat', com libreto e letras de Oscar Hammerstein II, estabeleceu as bases do teatro musical moderno ao integrar enredo dramático sério, música e dança."
+        },
+        {
+          id: "art-6", quizId: "gerais", subject: "Arte",
+          q: "Qual profissional é responsável pela criação de ruídos para filmes utilizando objetos físicos e gravações sincronizadas à imagem?",
+          options: [
+            "O artista de Foley (sonoplasta de Foley)",
+            "O curador de bienal",
+            "O cenógrafo teatral",
+            "O restaurador de pintura"
+          ],
+          correct: 0,
+          exp: "O artista de Foley reproduz e grava ruídos cotidianos e efeitos sonoros em estúdio com objetos diversos, sincronizando-os às cenas de filmes e séries."
+        },
+        {
+          id: "art-7", quizId: "gerais", subject: "Arte",
+          q: "O que é leitmotiv, recurso amplamente utilizado por Richard Wagner?",
+          options: [
+            "Um tema ou motivo musical recorrente associado a um personagem, ideia, objeto ou sentimento ao longo da narrativa dramática",
+            "Um tipo de pincelada usada pelos artistas do Salão Oficial de Paris",
+            "A proibição de qualquer repetição melódica durante uma ópera",
+            "Um equipamento eletrônico usado para medir largadas no atletismo"
+          ],
+          correct: 0,
+          exp: "O leitmotiv ('motivo condutor'), desenvolvido por Richard Wagner, é uma frase ou tema musical recorrente vinculado a personagens, situações ou ideias que reaparece e se transforma na obra."
         },
 
         // ================= ATLETISMO E TREINAMENTO ESPORTIVO (10) =================
         {
-          id: 'atl-1',
-          quizId: 'atletismo',
-          subject: 'Atletismo',
-          question: 'Em uma prova de revezamento 4x100 m, o segundo corredor inicia a corrida dentro da zona de troca e recebe o bastão sem olhar para trás. Qual situação resulta em desclassificação da equipe nessa transição?',
+          id: "atl-1", quizId: "atletismo", subject: "Atletismo",
+          q: "Em uma prova de revezamento 4x100 m, o segundo corredor inicia a corrida dentro da zona de troca e recebe o bastão sem olhar para trás. Qual situação resulta em desclassificação da equipe nessa transição?",
           options: [
-            'O corredor que entrega o bastão desacelera nos últimos 5 metros antes da linha final da zona',
-            'O bastão é entregue e agarrado completamente fora da zona delimitada de troca',
-            'O receptor estende o braço para trás com a palma aberta enquanto acelera',
-            'Os dois atletas mantêm velocidades semelhantes durante os primeiros 15 metros da zona'
+            "O corredor que entrega o bastão desacelera nos últimos 5 metros antes da linha final da zona",
+            "O bastão é entregue e agarrado completamente fora da zona delimitada de troca",
+            "O receptor estende o braço para trás com a palma aberta enquanto acelera",
+            "Os dois atletas mantêm velocidades semelhantes durante os primeiros 15 metros da zona"
           ],
-          correctIndex: 1,
-          explanation: 'No revezamento 4x100 m, a troca ocorre em zona regulamentada específica e às cegas; concluir a passagem fora da área delimitada invalida a troca (confundir zona de troca com entrega livre ou desaceleração é erro comum).'
+          correct: 1,
+          exp: "No revezamento 4x100 m, a troca ocorre em zona regulamentada específica e às cegas; concluir a passagem fora da área delimitada invalida a troca."
         },
         {
-          id: 'atl-2',
-          quizId: 'atletismo',
-          subject: 'Atletismo',
-          question: 'Durante o salto triplo, um atleta faz o impulso inicial com o pé esquerdo, aterrissa na mesma perna, realiza a segunda fase caindo com o pé direito e faz a impulsão final para a caixa de areia. Se o atleta iniciar a prova impulsionando-se com o pé direito, qual será a sequência correta da segunda e da terceira fase?',
+          id: "atl-2", quizId: "atletismo", subject: "Atletismo",
+          q: "Durante o salto triplo, se o atleta iniciar a prova impulsionando-se com o pé direito, qual será a sequência correta da segunda (step) e da terceira fase (jump)?",
           options: [
-            'Queda com o pé direito no step e impulsão com o pé direito no jump',
-            'Queda com os dois pés no step e impulsão com o pé esquerdo no jump',
-            'Queda com o pé esquerdo no step e impulsão com o pé esquerdo no jump',
-            'Queda com o pé esquerdo no step e impulsão com os dois pés no jump'
+            "Queda com o pé direito no step e impulsão com o pé direito no jump",
+            "Queda com os dois pés no step e impulsão com o pé esquerdo no jump",
+            "Queda com o pé esquerdo no step e impulsão com o pé esquerdo no jump",
+            "Queda com o pé esquerdo no step e impulsão com os dois pés no jump"
           ],
-          correctIndex: 2,
-          explanation: 'Na sequência hop, step and jump, o impulso inicial e a queda do hop usam o mesmo pé (direito), o step aterrissa no pé oposto (esquerdo) e o jump impulsiona a partir desse pé oposto (esquerdo) para a caixa de areia.'
+          correct: 2,
+          exp: "Na sequência hop, step and jump, o impulso inicial e a queda do hop usam o mesmo pé (direito), o step aterrissa no pé oposto (esquerdo) e o jump impulsiona a partir desse pé oposto (esquerdo) para a caixa de areia."
         },
         {
-          id: 'atl-3',
-          quizId: 'atletismo',
-          subject: 'Atletismo',
-          question: 'Um atleta amador trabalha em tempo integral, dorme cerca de 5 horas por noite e decide dobrar o volume de treinos semanais para melhorar o desempenho antes de uma prova. Com base nos fatores de treinamento esportivo, qual é o risco mais provável desse comportamento?',
+          id: "atl-3", quizId: "atletismo", subject: "Atletismo",
+          q: "Um atleta amador trabalha em tempo integral, dorme cerca de 5 horas por noite e decide dobrar o volume de treinos semanais antes de uma prova. Com base nos fatores de treinamento esportivo, qual é o risco mais provável?",
           options: [
-            'Aumento imediato da velocidade de reação abaixo de 0,100 s',
-            'Redução da necessidade de sono por adaptação metabólica',
-            'Desenvolvimento de overtraining por soma de estresse diário e recuperação insuficiente',
-            'Eliminação da fadiga muscular durante provas de meio-fundo'
+            "Aumento imediato da velocidade de reação abaixo de 0,100 s",
+            "Redução da necessidade de sono por adaptação metabólica",
+            "Desenvolvimento de overtraining por soma de estresse diário e recuperação insuficiente",
+            "Eliminação da fadiga muscular durante provas de meio-fundo"
           ],
-          correctIndex: 2,
-          explanation: 'Atletas amadores somam demandas de trabalho, estudo ou rotina familiar ao treino; elevar muito a carga sem recuperar favorece o overtraining (confundir com ganho automático de velocidade ou ausência de fadiga ignora a fisiologia da recuperação).'
+          correct: 2,
+          exp: "Atletas amadores somam demandas de trabalho, estudo ou rotina familiar ao treino; elevar muito a carga sem recuperar favorece o overtraining."
         },
         {
-          id: 'atl-4',
-          quizId: 'atletismo',
-          subject: 'Atletismo',
-          question: 'Nas provas de 800 m e 1.500 m em pista, os competidores começam distribuídos em raias individuais e, após o trecho inicial, passam a ocupar a parte mais interna da pista. Qual é o principal motivo tático e regulamentar dessa dinâmica?',
+          id: "atl-4", quizId: "atletismo", subject: "Atletismo",
+          q: "Nas provas de 800 m e 1.500 m em pista, os competidores começam em raias individuais e, após o trecho inicial, passam a ocupar a parte mais interna da pista. Qual é o principal motivo tático e regulamentar dessa dinâmica?",
           options: [
-            'Permitir que todos usem blocos de partida em toda a extensão da prova',
-            'Evitar ultrapassagens durante toda a corrida e manter distâncias fixas',
-            'Reduzir a distância percorrida na curva interna e favorecer o posicionamento tático no pelotão',
-            'Transformar a prova de pista em percurso de rua com distância superior a 20 km'
+            "Permitir que todos usem blocos de partida em toda a extensão da prova",
+            "Evitar ultrapassagens durante toda a corrida e manter distâncias fixas",
+            "Reduzir a distância percorrida na curva interna e favorecer o posicionamento tático no pelotão",
+            "Transformar a prova de pista em percurso de rua com distância superior a 20 km"
           ],
-          correctIndex: 2,
-          explanation: 'Nas provas de meio-fundo (como 800 m e 1.500 m), a convergência para a raia interna após o início visa encurtar o trajeto nas curvas e disputar posição tática (diferente de usar blocos em todo o percurso ou ser prova de rua de longa distância).'
+          correct: 2,
+          exp: "Nas provas de meio-fundo (como 800 m e 1.500 m), a convergência para a raia interna após o início visa encurtar o trajeto nas curvas e disputar posição tática."
         },
         {
-          id: 'atl-5',
-          quizId: 'atletismo',
-          subject: 'Atletismo',
-          question: 'Compare o lançamento de dardo com o lançamento de disco no que diz respeito à fase de preparação e impulsão. Qual afirmação descreve corretamente essa diferença?',
+          id: "atl-5", quizId: "atletismo", subject: "Atletismo",
+          q: "Compare o lançamento de dardo com o lançamento de disco no que diz respeito à fase de preparação e impulsão. Qual afirmação descreve corretamente essa diferença?",
           options: [
-            'O dardo utiliza corrida em linha reta e passada cruzada, enquanto o disco é lançado a partir de um círculo',
-            'O disco utiliza corrida em linha reta, enquanto o dardo é executado dentro de um círculo com giro completo',
-            'Ambas as provas exigem corrida de aproximação de 40 metros sobre piso emborrachado',
-            'Nenhuma das provas permite passada cruzada antes da liberação do implemento'
+            "O dardo utiliza corrida em linha reta e passada cruzada, enquanto o disco é lançado a partir de um círculo",
+            "O disco utiliza corrida em linha reta, enquanto o dardo é executado dentro de um círculo com giro completo",
+            "Ambas as provas exigem corrida de aproximação de 40 metros sobre piso emborrachado",
+            "Nenhuma das provas permite passada cruzada antes da liberação do implemento"
           ],
-          correctIndex: 0,
-          explanation: 'O lançamento de dardo emprega corrida de aproximação em linha reta com passada cruzada (crossover), ao passo que o disco é arremessado/lançado a partir de um círculo delimitado.'
+          correct: 0,
+          exp: "O lançamento de dardo emprega corrida de aproximação em linha reta com passada cruzada (crossover), ao passo que o disco é lançado a partir de um círculo delimitado."
         },
         {
-          id: 'atl-6',
-          quizId: 'atletismo',
-          subject: 'Atletismo',
-          question: 'Em uma competição oficial de 100 m rasos, o sensor dos blocos de partida registra um tempo de reação de 0,084 segundo para um dos corredores. O que acontece com esse atleta segundo a regra das provas de velocidade?',
+          id: "atl-6", quizId: "atletismo", subject: "Atletismo",
+          q: "Em uma competição oficial de 100 m rasos, o sensor dos blocos de partida registra um tempo de reação de 0,084 segundo para um dos corredores. O que acontece segundo a regra das provas de velocidade?",
           options: [
-            'Ele recebe um acréscimo de 0,084 segundo no tempo final da prova',
-            'A largada é anulada por queima e o atleta é desclassificado imediatamente',
-            'Ele é realocado para a raia externa na bateria seguinte',
-            'A prova continua válida e o tempo é ajustado na chegada'
+            "Ele recebe um acréscimo de 0,084 segundo no tempo final da prova",
+            "A largada é anulada por queima e o atleta é desclassificado imediatamente",
+            "Ele é realocado para a raia externa na bateria seguinte",
+            "A prova continua válida e o tempo é ajustado na chegada"
           ],
-          correctIndex: 1,
-          explanation: 'Tempo de reação inferior a 0,100 segundo nas provas de velocidade indica antecipação ao tiro de largada, caracterizando queima de largada e desclassificação imediata.'
+          correct: 1,
+          exp: "Tempo de reação inferior a 0,100 segundo nas provas de velocidade indica antecipação ao tiro de largada, caracterizando queima de largada e desclassificação imediata."
         },
         {
-          id: 'atl-7',
-          quizId: 'atletismo',
-          subject: 'Atletismo',
-          question: 'No salto em altura, a técnica Fosbury Flop tornou-se padrão internacional por alterar a forma como o corpo transpassa o sarrafo. Qual característica define essa técnica?',
+          id: "atl-7", quizId: "atletismo", subject: "Atletismo",
+          q: "No salto em altura, a técnica Fosbury Flop tornou-se padrão internacional por alterar a forma como o corpo transpassa o sarrafo. Qual característica define essa técnica?",
           options: [
-            'Impulsão com os dois pés juntos a partir de uma caixa de madeira',
-            'Transposição de frente com o auxílio de uma vara flexível',
-            'Passagem de costas sobre o sarrafo com arqueamento da coluna e pernas por último',
-            'Corrida em zigue-zague seguida de queda sentada no colchão'
+            "Impulsão com os dois pés juntos a partir de uma caixa de madeira",
+            "Transposição de frente com o auxílio de uma vara flexível",
+            "Passagem de costas sobre o sarrafo com arqueamento da coluna e pernas por último",
+            "Corrida em zigue-zague seguida de queda sentada no colchão"
           ],
-          correctIndex: 2,
-          explanation: 'O Fosbury Flop consiste em passar o corpo de costas sobre o sarrafo, arqueando a região lombar/coluna e elevando as pernas por último, o que otimiza a relação com o centro de gravidade (sem vara e sem impulso duplo em caixa).'
+          correct: 2,
+          exp: "O Fosbury Flop consiste em passar o corpo de costas sobre o sarrafo, arqueando a coluna e elevando as pernas por último, o que otimiza a relação com o centro de gravidade."
         },
         {
-          id: 'atl-8',
-          quizId: 'atletismo',
-          subject: 'Atletismo',
-          question: 'Um atleta de salto em distância realiza uma corrida de aproximação e, ao impulsionar-se na tábua, o pé toca a faixa de plasticina situada logo após a linha de impulsão. Como esse salto é classificado pela arbitragem?',
+          id: "atl-8", quizId: "atletismo", subject: "Atletismo",
+          q: "Um atleta de salto em distância realiza uma corrida de aproximação e, ao impulsionar-se na tábua, o pé toca a faixa de plasticina situada logo após a linha de impulsão. Como esse salto é classificado?",
           options: [
-            'Válido, desde que a aterrisagem ocorra com os dois pés na areia',
-            'Válido com desconto de 10 centímetros na marca final',
-            'Inválido (queimado) por ultrapassar o limite da tábua de impulsão',
-            'Repetido ao final da série caso o atleta não tenha completado três saltos'
+            "Válido, desde que a aterrisagem ocorra com os dois pés na areia",
+            "Válido com desconto de 10 centímetros na marca final",
+            "Inválido (queimado) por ultrapassar o limite da tábua de impulsão",
+            "Repetido ao final da série caso o atleta não tenha completado três saltos"
           ],
-          correctIndex: 2,
-          explanation: 'Tocar a plasticina ou o indicador além da linha da tábua de impulsão torna o salto queimado e inválido na arbitragem (não há desconto automático em centímetros nem repetição automática por essa infração).'
+          correct: 2,
+          exp: "Tocar a plasticina ou o indicador além da borda da tábua de impulsão torna o salto queimado e inválido na arbitragem."
         },
         {
-          id: 'atl-9',
-          quizId: 'atletismo',
-          subject: 'Atletismo',
-          question: 'Qual distância oficial corresponde exatamente a uma maratona, em contraste com a meia maratona de 21,0975 km?',
+          id: "atl-9", quizId: "atletismo", subject: "Atletismo",
+          q: "Qual distância oficial corresponde exatamente a uma maratona, em contraste com a meia maratona de 21,0975 km?",
           options: [
-            '10,000 metros',
-            '25,000 km',
-            '42,195 km',
-            '50,000 km'
+            "10,000 metros",
+            "25,000 km",
+            "42,195 km",
+            "50,000 km"
           ],
-          correctIndex: 2,
-          explanation: 'A distância oficial da maratona é de 42,195 km, enquanto 21,0975 km corresponde à meia maratona.'
+          correct: 2,
+          exp: "A distância oficial da maratona é de 42,195 km, enquanto 21,0975 km corresponde à meia maratona."
         },
         {
-          id: 'atl-10',
-          quizId: 'atletismo',
-          subject: 'Atletismo',
-          question: 'Qual diferença resume melhor a rotina de um atleta profissional em comparação à de um atleta amador?',
+          id: "atl-10", quizId: "atletismo", subject: "Atletismo",
+          q: "Qual diferença resume melhor a rotina de um atleta profissional em comparação à de um atleta amador?",
           options: [
-            'O profissional treina apenas aos fins de semana e o amador faz treinos diários de 6 horas',
-            'O profissional dedica-se exclusivamente ao esporte e o amador concilia treinos com outras obrigações da vida',
-            'O profissional dispensa controle de carga e o amador não precisa de descanso',
-            'O profissional compete apenas em provas de rua e o amador apenas em pista coberta'
+            "O profissional treina apenas aos fins de semana e o amador faz treinos diários de 6 horas",
+            "O profissional dedica-se exclusivamente ao esporte e o amador concilia treinos com outras obrigações da vida",
+            "O profissional dispensa controle de carga e o amador não precisa de descanso",
+            "O profissional compete apenas em provas de rua e o amador apenas em pista coberta"
           ],
-          correctIndex: 1,
-          explanation: 'O atleta profissional tem o esporte como atividade principal e exclusiva, enquanto o amador equilibra os treinos com trabalho, estudos ou outras rotinas cotidianas.'
+          correct: 1,
+          exp: "O atleta profissional tem o esporte como atividade principal e exclusiva, enquanto o amador equilibra os treinos com trabalho, estudos ou outras rotinas cotidianas."
         }
       ];
 
       // Estado da aplicação
       var state = {
-        selectedQuizId: 'gerais', // 'gerais' | 'atletismo' | 'completo'
-        selectedSubject: 'Todas',
-        questions: [],
-        currentIndex: 0,
-        answers: {}, // question.id -> { selectedIndex: number, isCorrect: boolean }
-        isFinished: false
+        quizId: "gerais",
+        subject: "Todas",
+        list: [],
+        index: 0,
+        answers: {},
+        finished: false
       };
 
-      // Elementos do DOM
-      var quizChoiceButtons = document.querySelectorAll('.quiz-choice-btn');
-      var filterSectionEl = document.getElementById('filter-section');
-      var filterPillsEl = document.getElementById('filter-pills');
-      var quickNavPillsEl = document.getElementById('quick-nav-pills');
-      var scoreDisplayEl = document.getElementById('score-display');
-      var progressLabelEl = document.getElementById('progress-label');
-      var progressPercentEl = document.getElementById('progress-percent');
-      var progressBarEl = document.getElementById('progress-bar');
-      var quizContainerEl = document.getElementById('quiz-container');
-      var keyboardTipEl = document.getElementById('keyboard-tip');
-      var btnShuffleEl = document.getElementById('btn-shuffle');
-      var btnRestartEl = document.getElementById('btn-restart');
+      // Referências de DOM
+      var quizSelectorEl = document.getElementById("quiz-selector");
+      var subjectSectionEl = document.getElementById("subject-filter-section");
+      var subjectPillsEl = document.getElementById("subject-pills");
+      var quickNavEl = document.getElementById("quick-nav");
+      var scoreDisplayEl = document.getElementById("score-display");
+      var progressLabelEl = document.getElementById("progress-label");
+      var progressPercentEl = document.getElementById("progress-percent");
+      var progressBarEl = document.getElementById("progress-bar");
+      var mainCardEl = document.getElementById("main-card");
+      var keyboardTipEl = document.getElementById("keyboard-tip");
+      var btnShuffleEl = document.getElementById("btn-shuffle");
+      var btnRestartEl = document.getElementById("btn-restart");
 
-      function escapeHtml(text) {
-        var div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
+      function clearNode(node) {
+        while (node.firstChild) {
+          node.removeChild(node.firstChild);
+        }
       }
 
-      function shuffleList(arr) {
+      function shuffleArray(arr) {
         var copy = arr.slice();
         for (var i = copy.length - 1; i > 0; i--) {
           var j = Math.floor(Math.random() * (i + 1));
-          var temp = copy[i];
+          var tmp = copy[i];
           copy[i] = copy[j];
-          copy[j] = temp;
+          copy[j] = tmp;
         }
         return copy;
       }
 
-      function getQuestionsForQuiz(quizId) {
-        if (quizId === 'completo') {
-          return QUESTIONS_DB.slice();
+      function getQuizPool(quizId) {
+        if (quizId === "completo") {
+          return QUESTIONS.slice();
         }
-        return QUESTIONS_DB.filter(function (item) {
+        return QUESTIONS.filter(function (item) {
           return item.quizId === quizId;
         });
       }
 
-      function getAvailableSubjects(quizId) {
-        var base = getQuestionsForQuiz(quizId);
+      function getSubjectsForPool(pool) {
         var seen = {};
-        var list = [];
-        for (var i = 0; i < base.length; i++) {
-          var subj = base[i].subject;
-          if (!seen[subj]) {
-            seen[subj] = true;
-            list.push(subj);
+        var out = [];
+        for (var i = 0; i < pool.length; i++) {
+          var s = pool[i].subject;
+          if (!seen[s]) {
+            seen[s] = true;
+            out.push(s);
           }
         }
-        return list;
+        return out;
       }
 
-      function loadQuestionSet(shouldShuffle) {
-        var base = getQuestionsForQuiz(state.selectedQuizId);
-        var filtered = state.selectedSubject === 'Todas'
-          ? base.slice()
-          : base.filter(function (item) {
-              return item.subject === state.selectedSubject;
+      function prepareQuestions(shouldShuffle) {
+        var pool = getQuizPool(state.quizId);
+        var filtered = state.subject === "Todas"
+          ? pool.slice()
+          : pool.filter(function (item) {
+              return item.subject === state.subject;
             });
 
-        state.questions = shouldShuffle ? shuffleList(filtered) : filtered;
-        state.currentIndex = 0;
-        state.isFinished = false;
-      }
-
-      function selectQuiz(quizId) {
-        state.selectedQuizId = quizId;
-        state.selectedSubject = 'Todas';
-        state.answers = {};
-        loadQuestionSet(false);
-        render();
-      }
-
-      function selectSubject(subjectName) {
-        state.selectedSubject = subjectName;
-        loadQuestionSet(false);
-        render();
+        state.list = shouldShuffle ? shuffleArray(filtered) : filtered;
+        state.index = 0;
+        state.finished = false;
       }
 
       function getStats() {
-        var total = state.questions.length;
+        var total = state.list.length;
         var answered = 0;
         var correct = 0;
         for (var i = 0; i < total; i++) {
-          var ans = state.answers[state.questions[i].id];
+          var ans = state.answers[state.list[i].id];
           if (ans !== undefined) {
-            answered += 1;
+            answered++;
             if (ans.isCorrect) {
-              correct += 1;
+              correct++;
             }
           }
         }
         return { total: total, answered: answered, correct: correct };
       }
 
-      function jumpToQuestion(index) {
-        if (index >= 0 && index < state.questions.length) {
-          state.isFinished = false;
-          state.currentIndex = index;
-          render();
-        }
+      function handleSelectQuiz(newQuizId) {
+        state.quizId = newQuizId;
+        state.subject = "Todas";
+        state.answers = {};
+        prepareQuestions(false);
+        renderAll();
       }
 
-      function selectOption(optionIndex) {
-        var currentQuestion = state.questions[state.currentIndex];
-        if (!currentQuestion || state.answers[currentQuestion.id] !== undefined) {
+      function handleSelectSubject(newSubject) {
+        state.subject = newSubject;
+        prepareQuestions(false);
+        renderAll();
+      }
+
+      function handleAnswer(optionIdx) {
+        var q = state.list[state.index];
+        if (!q || state.answers[q.id] !== undefined) {
           return;
         }
-        state.answers[currentQuestion.id] = {
-          selectedIndex: optionIndex,
-          isCorrect: optionIndex === currentQuestion.correctIndex
+        state.answers[q.id] = {
+          selected: optionIdx,
+          isCorrect: optionIdx === q.correct
         };
-        render();
+        renderAll();
       }
 
-      function goToPrevious() {
-        if (state.currentIndex > 0) {
-          state.currentIndex -= 1;
-          render();
+      function handlePrev() {
+        if (state.index > 0) {
+          state.index--;
+          renderAll();
         }
       }
 
-      function goToNext() {
-        var currentQuestion = state.questions[state.currentIndex];
-        if (!currentQuestion || state.answers[currentQuestion.id] === undefined) {
+      function handleNext() {
+        var q = state.list[state.index];
+        if (!q || state.answers[q.id] === undefined) {
           return;
         }
-        if (state.currentIndex < state.questions.length - 1) {
-          state.currentIndex += 1;
+        if (state.index < state.list.length - 1) {
+          state.index++;
         } else {
-          state.isFinished = true;
+          state.finished = true;
         }
-        render();
+        renderAll();
       }
 
-      function renderQuizSelectorAndFilters() {
-        for (var i = 0; i < quizChoiceButtons.length; i++) {
-          var btn = quizChoiceButtons[i];
-          var qId = btn.getAttribute('data-quiz-id');
-          if (qId === state.selectedQuizId) {
-            btn.classList.add('is-active');
-            btn.setAttribute('aria-selected', 'true');
-          } else {
-            btn.classList.remove('is-active');
-            btn.setAttribute('aria-selected', 'false');
-          }
+      function handleJump(targetIndex) {
+        if (targetIndex >= 0 && targetIndex < state.list.length) {
+          state.finished = false;
+          state.index = targetIndex;
+          renderAll();
         }
+      }
 
-        var subjects = getAvailableSubjects(state.selectedQuizId);
-        var baseList = getQuestionsForQuiz(state.selectedQuizId);
+      function renderQuizSelector() {
+        clearNode(quizSelectorEl);
+        for (var i = 0; i < QUIZ_CONFIGS.length; i++) {
+          (function (cfg) {
+            var btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "quiz-tab-btn" + (state.quizId === cfg.id ? " active" : "");
+
+            var titleSpan = document.createElement("span");
+            titleSpan.className = "quiz-tab-title";
+            titleSpan.textContent = cfg.title;
+
+            var descSpan = document.createElement("span");
+            descSpan.className = "quiz-tab-desc";
+            descSpan.textContent = cfg.desc;
+
+            btn.appendChild(titleSpan);
+            btn.appendChild(descSpan);
+
+            btn.addEventListener("click", function () {
+              handleSelectQuiz(cfg.id);
+            });
+
+            quizSelectorEl.appendChild(btn);
+          })(QUIZ_CONFIGS[i]);
+        }
+      }
+
+      function renderSubjectFilters() {
+        var pool = getQuizPool(state.quizId);
+        var subjects = getSubjectsForPool(pool);
 
         if (subjects.length <= 1) {
-          filterSectionEl.style.display = 'none';
-          filterPillsEl.innerHTML = '';
+          subjectSectionEl.style.display = "none";
           return;
         }
 
-        filterSectionEl.style.display = 'block';
-        var pillsHtml =
-          '<button type="button" class="filter-pill-btn' + (state.selectedSubject === 'Todas' ? ' is-active' : '') + '" data-subject="Todas">' +
-            'Todas (' + baseList.length + ')' +
-          '</button>';
+        subjectSectionEl.style.display = "block";
+        clearNode(subjectPillsEl);
 
-        for (var s = 0; s < subjects.length; s++) {
-          var subjName = subjects[s];
-          var count = baseList.filter(function (q) {
-            return q.subject === subjName;
-          }).length;
-          var activeCls = state.selectedSubject === subjName ? ' is-active' : '';
-          pillsHtml +=
-            '<button type="button" class="filter-pill-btn' + activeCls + '" data-subject="' + escapeHtml(subjName) + '">' +
-              escapeHtml(subjName) + ' (' + count + ')' +
-            '</button>';
-        }
+        var allItems = ["Todas"].concat(subjects);
+        for (var i = 0; i < allItems.length; i++) {
+          (function (subjName) {
+            var count = subjName === "Todas"
+              ? pool.length
+              : pool.filter(function (q) { return q.subject === subjName; }).length;
 
-        filterPillsEl.innerHTML = pillsHtml;
+            var btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "subject-pill-btn" + (state.subject === subjName ? " active" : "");
+            btn.textContent = subjName + " (" + count + ")";
 
-        var pillBtns = filterPillsEl.querySelectorAll('.filter-pill-btn');
-        for (var p = 0; p < pillBtns.length; p++) {
-          pillBtns[p].addEventListener('click', function (e) {
-            var chosenSubj = e.currentTarget.getAttribute('data-subject');
-            if (chosenSubj) {
-              selectSubject(chosenSubj);
-            }
-          });
+            btn.addEventListener("click", function () {
+              handleSelectSubject(subjName);
+            });
+
+            subjectPillsEl.appendChild(btn);
+          })(allItems[i]);
         }
       }
 
       function renderQuickNav() {
-        var html = '';
-        for (var i = 0; i < state.questions.length; i++) {
-          var q = state.questions[i];
-          var ans = state.answers[q.id];
-          var classes = ['nav-dot'];
+        clearNode(quickNavEl);
+        for (var i = 0; i < state.list.length; i++) {
+          (function (idx) {
+            var q = state.list[idx];
+            var ans = state.answers[q.id];
+            var btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "nav-num-btn";
+            btn.textContent = String(idx + 1);
+            btn.title = "Questão " + (idx + 1) + " (" + q.subject + ")";
 
-          if (!state.isFinished && i === state.currentIndex) {
-            classes.push('dot-current');
-          }
-          if (ans !== undefined) {
-            classes.push(ans.isCorrect ? 'dot-correct' : 'dot-wrong');
-          }
-
-          html +=
-            '<button type="button" class="' + classes.join(' ') + '" data-jump-index="' + i + '" title="Ir para a questão ' + (i + 1) + '">' +
-              (i + 1) +
-            '</button>';
-        }
-        quickNavPillsEl.innerHTML = html;
-
-        var dots = quickNavPillsEl.querySelectorAll('.nav-dot');
-        for (var d = 0; d < dots.length; d++) {
-          dots[d].addEventListener('click', function (e) {
-            var idx = parseInt(e.currentTarget.getAttribute('data-jump-index'), 10);
-            if (!isNaN(idx)) {
-              jumpToQuestion(idx);
+            if (!state.finished && idx === state.index) {
+              btn.classList.add("is-current");
             }
-          });
+            if (ans !== undefined) {
+              btn.classList.add(ans.isCorrect ? "is-correct" : "is-wrong");
+            }
+
+            btn.addEventListener("click", function () {
+              handleJump(idx);
+            });
+
+            quickNavEl.appendChild(btn);
+          })(i);
         }
       }
 
-      function renderProgressAndScore() {
+      function renderProgress() {
         var stats = getStats();
-        scoreDisplayEl.textContent = stats.correct + ' / ' + stats.answered;
+        scoreDisplayEl.textContent = stats.correct + " / " + stats.answered;
 
-        if (state.isFinished) {
-          progressLabelEl.textContent = 'Concluído (' + stats.total + ' de ' + stats.total + ' questões)';
-          progressPercentEl.textContent = '100% concluído';
-          progressBarEl.style.width = '100%';
+        if (state.finished) {
+          progressLabelEl.textContent = "Finalizado (" + stats.total + " de " + stats.total + " questões)";
+          progressPercentEl.textContent = "100% concluído";
+          progressBarEl.style.width = "100%";
         } else {
           var pct = stats.total > 0 ? Math.round((stats.answered / stats.total) * 100) : 0;
-          progressLabelEl.textContent = 'Questão ' + (state.currentIndex + 1) + ' de ' + stats.total;
-          progressPercentEl.textContent = pct + '% concluído';
-          progressBarEl.style.width = pct + '%';
+          progressLabelEl.textContent = "Questão " + (state.index + 1) + " de " + stats.total;
+          progressPercentEl.textContent = pct + "% concluído";
+          progressBarEl.style.width = pct + "%";
         }
       }
 
-      function renderQuestionView() {
-        keyboardTipEl.style.display = 'block';
+      function renderQuestionCard() {
+        keyboardTipEl.style.display = "block";
+        clearNode(mainCardEl);
 
-        var q = state.questions[state.currentIndex];
-        var answer = state.answers[q.id];
-        var isAnswered = answer !== undefined;
-        var isLast = state.currentIndex === state.questions.length - 1;
+        var q = state.list[state.index];
+        var ans = state.answers[q.id];
+        var isAnswered = ans !== undefined;
         var stats = getStats();
-        var allAnswered = stats.answered === stats.total;
+        var isLastOrDone = (state.index === state.list.length - 1) || (stats.answered === stats.total);
 
-        var optionsHtml = '';
+        // Cabeçalho da questão
+        var qHeader = document.createElement("div");
+        qHeader.className = "q-header";
+
+        var badgesRow = document.createElement("div");
+        badgesRow.className = "badges-row";
+
+        var badgeQuiz = document.createElement("span");
+        badgeQuiz.className = "badge-quiz";
+        badgeQuiz.textContent = q.quizId === "gerais" ? "Conhecimentos Gerais" : "Atletismo e Treinamento";
+
+        var badgeSubj = document.createElement("span");
+        badgeSubj.className = "badge-subject";
+        badgeSubj.textContent = q.subject;
+
+        badgesRow.appendChild(badgeQuiz);
+        badgesRow.appendChild(badgeSubj);
+
+        var badgeCounter = document.createElement("span");
+        badgeCounter.className = "badge-counter";
+        badgeCounter.textContent = "Questão " + (state.index + 1) + " de " + state.list.length;
+
+        qHeader.appendChild(badgesRow);
+        qHeader.appendChild(badgeCounter);
+        mainCardEl.appendChild(qHeader);
+
+        // Enunciado
+        var qTitle = document.createElement("h2");
+        qTitle.className = "q-title";
+        qTitle.textContent = q.q;
+        mainCardEl.appendChild(qTitle);
+
+        // Lista de alternativas
+        var optionsCol = document.createElement("div");
+        optionsCol.className = "options-col";
+
         for (var i = 0; i < q.options.length; i++) {
-          var letter = OPTION_LETTERS[i];
-          var extraClass = '';
-          var statusIcon = '';
+          (function (optIdx) {
+            var optBtn = document.createElement("button");
+            optBtn.type = "button";
+            optBtn.className = "opt-btn";
+            optBtn.disabled = isAnswered;
 
-          if (isAnswered) {
-            if (i === q.correctIndex) {
-              extraClass = ' opt-correct';
-              statusIcon = '<span class="option-status-icon" aria-label="Alternativa correta">&#10003;</span>';
-            } else if (i === answer.selectedIndex) {
-              extraClass = ' opt-wrong';
-              statusIcon = '<span class="option-status-icon" aria-label="Alternativa incorreta">&#10007;</span>';
+            var letterBox = document.createElement("span");
+            letterBox.className = "opt-letter";
+            letterBox.textContent = LETTERS[optIdx];
+
+            var textBox = document.createElement("span");
+            textBox.className = "opt-text";
+            textBox.textContent = q.options[optIdx];
+
+            optBtn.appendChild(letterBox);
+            optBtn.appendChild(textBox);
+
+            if (isAnswered) {
+              if (optIdx === q.correct) {
+                optBtn.classList.add("correct");
+                var checkMark = document.createElement("span");
+                checkMark.className = "opt-mark";
+                checkMark.textContent = "✓";
+                optBtn.appendChild(checkMark);
+              } else if (optIdx === ans.selected) {
+                optBtn.classList.add("wrong");
+                var crossMark = document.createElement("span");
+                crossMark.className = "opt-mark";
+                crossMark.textContent = "✕";
+                optBtn.appendChild(crossMark);
+              } else {
+                optBtn.classList.add("muted");
+              }
             } else {
-              extraClass = ' opt-muted';
+              optBtn.addEventListener("click", function () {
+                handleAnswer(optIdx);
+              });
             }
-          }
 
-          optionsHtml +=
-            '<button type="button" class="option-btn' + extraClass + '" data-option-index="' + i + '"' + (isAnswered ? ' disabled' : '') + '>' +
-              '<span class="option-letter">' + letter + '</span>' +
-              '<span class="option-content">' + escapeHtml(q.options[i]) + '</span>' +
-              statusIcon +
-            '</button>';
+            optionsCol.appendChild(optBtn);
+          })(i);
         }
 
-        var explanationHtml = '';
+        mainCardEl.appendChild(optionsCol);
+
+        // Caixa de Explicação
         if (isAnswered) {
-          var expClass = answer.isCorrect ? 'exp-correct' : 'exp-wrong';
-          var expHeading = answer.isCorrect
-            ? 'Resposta correta!'
-            : 'Resposta incorreta — Gabarito: alternativa ' + OPTION_LETTERS[q.correctIndex];
+          var expBox = document.createElement("div");
+          expBox.className = "exp-box " + (ans.isCorrect ? "correct" : "wrong");
 
-          explanationHtml =
-            '<div class="explanation-box ' + expClass + '" role="status" aria-live="polite">' +
-              '<div class="explanation-header">' +
-                '<span class="explanation-pill">Explicação</span>' +
-                '<span class="explanation-title">' + expHeading + '</span>' +
-              '</div>' +
-              '<p class="explanation-body">' + escapeHtml(q.explanation) + '</p>' +
-            '</div>';
+          var expHead = document.createElement("div");
+          expHead.className = "exp-head";
+
+          var expTag = document.createElement("span");
+          expTag.className = "exp-tag";
+          expTag.textContent = "Explicação";
+
+          var expTitle = document.createElement("span");
+          expTitle.textContent = ans.isCorrect
+            ? "Resposta correta!"
+            : "Resposta incorreta — Gabarito: alternativa " + LETTERS[q.correct];
+
+          expHead.appendChild(expTag);
+          expHead.appendChild(expTitle);
+
+          var expBody = document.createElement("p");
+          expBody.className = "exp-body";
+          expBody.textContent = q.exp;
+
+          expBox.appendChild(expHead);
+          expBox.appendChild(expBody);
+          mainCardEl.appendChild(expBox);
         }
 
-        var prevBtnHtml = state.currentIndex > 0
-          ? '<button type="button" id="btn-prev" class="btn btn-outline">&#8592; Anterior</button>'
-          : '<div></div>';
+        // Rodapé de navegação
+        var cardNav = document.createElement("div");
+        cardNav.className = "card-nav";
 
-        var nextLabel = (isLast || allAnswered) ? 'Ver Resultado Final' : 'Próxima Questão &#8594;';
-        var nextBtnHtml = isAnswered
-          ? '<button type="button" id="btn-next" class="btn btn-primary">' + nextLabel + '</button>'
-          : '<span class="hint-text">Selecione uma alternativa para continuar</span>';
-
-        var quizLabel = QUIZ_META[q.quizId] ? QUIZ_META[q.quizId].shortLabel : 'Quiz';
-
-        quizContainerEl.innerHTML =
-          '<div class="fade-in">' +
-            '<div class="question-meta">' +
-              '<div class="badges-group">' +
-                '<span class="quiz-tag">' + escapeHtml(quizLabel) + '</span>' +
-                '<span class="topic-badge">' +
-                  '<span class="topic-dot"></span>' +
-                  escapeHtml(q.subject) +
-                '</span>' +
-              '</div>' +
-              '<span class="question-number-tag">Questão ' + (state.currentIndex + 1) + ' de ' + state.questions.length + '</span>' +
-            '</div>' +
-            '<h2 class="question-text">' + escapeHtml(q.question) + '</h2>' +
-            '<div class="options-list">' + optionsHtml + '</div>' +
-            explanationHtml +
-            '<div class="card-footer">' +
-              prevBtnHtml +
-              nextBtnHtml +
-            '</div>' +
-          '</div>';
-
-        var optionButtons = quizContainerEl.querySelectorAll('.option-btn');
-        for (var j = 0; j < optionButtons.length; j++) {
-          optionButtons[j].addEventListener('click', function (e) {
-            var idx = parseInt(e.currentTarget.getAttribute('data-option-index'), 10);
-            if (!isNaN(idx)) {
-              selectOption(idx);
-            }
-          });
+        if (state.index > 0) {
+          var prevBtn = document.createElement("button");
+          prevBtn.type = "button";
+          prevBtn.className = "btn btn-outline";
+          prevBtn.textContent = "← Anterior";
+          prevBtn.addEventListener("click", handlePrev);
+          cardNav.appendChild(prevBtn);
+        } else {
+          var spacer = document.createElement("div");
+          cardNav.appendChild(spacer);
         }
 
-        var prevBtn = document.getElementById('btn-prev');
-        if (prevBtn) {
-          prevBtn.addEventListener('click', goToPrevious);
+        if (isAnswered) {
+          var nextBtn = document.createElement("button");
+          nextBtn.type = "button";
+          nextBtn.className = "btn btn-primary";
+          nextBtn.textContent = isLastOrDone ? "Ver Resultado Final" : "Próxima Questão →";
+          nextBtn.addEventListener("click", handleNext);
+          cardNav.appendChild(nextBtn);
+        } else {
+          var hint = document.createElement("span");
+          hint.className = "hint-msg";
+          hint.textContent = "Selecione uma alternativa para continuar";
+          cardNav.appendChild(hint);
         }
 
-        var nextBtn = document.getElementById('btn-next');
-        if (nextBtn) {
-          nextBtn.addEventListener('click', goToNext);
-        }
+        mainCardEl.appendChild(cardNav);
       }
 
-      function renderSummaryView() {
-        keyboardTipEl.style.display = 'none';
+      function renderSummaryCard() {
+        keyboardTipEl.style.display = "none";
+        clearNode(mainCardEl);
 
         var stats = getStats();
-        var accuracy = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
+        var pct = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
 
-        var headline = 'Bom treino! Continue praticando';
-        var desc = 'Revise abaixo o desempenho por disciplina e o gabarito comentado de todas as questões.';
-        if (accuracy >= 85) {
-          headline = 'Excelente desempenho!';
-          desc = 'Você obteve ótimo aproveitamento neste questionário. Confira o detalhamento e o gabarito comentado abaixo.';
-        } else if (accuracy >= 60) {
-          headline = 'Bom resultado!';
-          desc = 'Você acertou a maior parte das questões. Revise os comentários abaixo para fixar os pontos restantes.';
+        var topDiv = document.createElement("div");
+        topDiv.className = "summary-top";
+
+        var pill = document.createElement("span");
+        pill.className = "summary-pill";
+        pill.textContent = "Aproveitamento: " + pct + "%";
+
+        var heading = document.createElement("h2");
+        heading.className = "summary-heading";
+        heading.textContent = pct >= 85
+          ? "Excelente desempenho!"
+          : (pct >= 60 ? "Bom resultado!" : "Continue praticando!");
+
+        var sub = document.createElement("p");
+        sub.className = "summary-sub";
+        sub.textContent = "Confira abaixo o desempenho por disciplina e o gabarito comentado de todas as questões.";
+
+        var statsRow = document.createElement("div");
+        statsRow.className = "stats-row";
+
+        var statItems = [
+          { label: "Acertos", value: String(stats.correct), cls: "c-green" },
+          { label: "Erros", value: String(stats.total - stats.correct), cls: "c-red" },
+          { label: "Total", value: String(stats.total), cls: "c-dark" }
+        ];
+
+        for (var i = 0; i < statItems.length; i++) {
+          var cell = document.createElement("div");
+          cell.className = "stat-cell";
+
+          var lbl = document.createElement("span");
+          lbl.className = "stat-lbl";
+          lbl.textContent = statItems[i].label;
+
+          var val = document.createElement("span");
+          val.className = "stat-val " + statItems[i].cls;
+          val.textContent = statItems[i].value;
+
+          cell.appendChild(lbl);
+          cell.appendChild(val);
+          statsRow.appendChild(cell);
         }
+
+        var btnGroup = document.createElement("div");
+        btnGroup.className = "summary-btns";
+
+        var redoBtn = document.createElement("button");
+        redoBtn.type = "button";
+        redoBtn.className = "btn btn-primary";
+        redoBtn.textContent = "Refazer Quiz";
+        redoBtn.addEventListener("click", function () {
+          state.answers = {};
+          prepareQuestions(false);
+          renderAll();
+        });
+
+        var redoShuffleBtn = document.createElement("button");
+        redoShuffleBtn.type = "button";
+        redoShuffleBtn.className = "btn btn-outline";
+        redoShuffleBtn.textContent = "Embaralhar e Refazer";
+        redoShuffleBtn.addEventListener("click", function () {
+          state.answers = {};
+          prepareQuestions(true);
+          renderAll();
+        });
+
+        btnGroup.appendChild(redoBtn);
+        btnGroup.appendChild(redoShuffleBtn);
+
+        topDiv.appendChild(pill);
+        topDiv.appendChild(heading);
+        topDiv.appendChild(sub);
+        topDiv.appendChild(statsRow);
+        topDiv.appendChild(btnGroup);
+        mainCardEl.appendChild(topDiv);
 
         // Desempenho por disciplina
-        var subjectMap = {};
-        var subjectOrder = [];
-        for (var s = 0; s < state.questions.length; s++) {
-          var qSub = state.questions[s];
-          if (!subjectMap[qSub.subject]) {
-            subjectMap[qSub.subject] = { total: 0, correct: 0 };
-            subjectOrder.push(qSub.subject);
+        var subTitle1 = document.createElement("h3");
+        subTitle1.className = "sub-heading";
+        subTitle1.textContent = "Desempenho por Disciplina";
+        mainCardEl.appendChild(subTitle1);
+
+        var subjMap = {};
+        var subjOrder = [];
+        for (var s = 0; s < state.list.length; s++) {
+          var qItem = state.list[s];
+          if (!subjMap[qItem.subject]) {
+            subjMap[qItem.subject] = { total: 0, ok: 0 };
+            subjOrder.push(qItem.subject);
           }
-          subjectMap[qSub.subject].total += 1;
-          if (state.answers[qSub.id] && state.answers[qSub.id].isCorrect) {
-            subjectMap[qSub.subject].correct += 1;
+          subjMap[qItem.subject].total++;
+          if (state.answers[qItem.id] && state.answers[qItem.id].isCorrect) {
+            subjMap[qItem.subject].ok++;
           }
         }
 
-        var breakdownHtml = '';
-        for (var k = 0; k < subjectOrder.length; k++) {
-          var sName = subjectOrder[k];
-          var sData = subjectMap[sName];
-          breakdownHtml +=
-            '<div class="breakdown-card">' +
-              '<span><strong>' + escapeHtml(sName) + '</strong></span>' +
-              '<span class="breakdown-score">' + sData.correct + ' / ' + sData.total + '</span>' +
-            '</div>';
+        var breakdownGrid = document.createElement("div");
+        breakdownGrid.className = "subj-breakdown-grid";
+
+        for (var b = 0; b < subjOrder.length; b++) {
+          var sName = subjOrder[b];
+          var sData = subjMap[sName];
+
+          var card = document.createElement("div");
+          card.className = "subj-card";
+
+          var nameStrong = document.createElement("strong");
+          nameStrong.textContent = sName;
+
+          var scoreStrong = document.createElement("strong");
+          scoreStrong.textContent = sData.ok + " / " + sData.total;
+
+          card.appendChild(nameStrong);
+          card.appendChild(scoreStrong);
+          breakdownGrid.appendChild(card);
         }
 
-        // Gabarito comentado completo
-        var reviewHtml = '';
-        for (var i = 0; i < state.questions.length; i++) {
-          var qItem = state.questions[i];
-          var userAns = state.answers[qItem.id];
-          var ok = userAns && userAns.isCorrect;
-          var userLetter = userAns ? OPTION_LETTERS[userAns.selectedIndex] : 'Não respondida';
-          var userText = userAns ? ' — ' + escapeHtml(qItem.options[userAns.selectedIndex]) : '';
-          var rightLetter = OPTION_LETTERS[qItem.correctIndex];
-          var rightText = escapeHtml(qItem.options[qItem.correctIndex]);
+        mainCardEl.appendChild(breakdownGrid);
 
-          reviewHtml +=
-            '<div class="review-item ' + (ok ? 'rev-ok' : 'rev-err') + '">' +
-              '<div class="review-top">' +
-                '<div class="review-meta-left">' +
-                  '<span class="question-number-tag">Questão ' + (i + 1) + '</span>' +
-                  '<span class="topic-badge">' + escapeHtml(qItem.subject) + '</span>' +
-                '</div>' +
-                '<span class="review-status">' + (ok ? 'Correta' : 'Incorreta') + '</span>' +
-              '</div>' +
-              '<p class="review-q">' + escapeHtml(qItem.question) + '</p>' +
-              '<p class="review-answers">' +
-                '<strong>Sua resposta:</strong> ' + userLetter + userText + '<br>' +
-                (!ok ? '<strong>Resposta correta:</strong> ' + rightLetter + ' — ' + rightText : '') +
-              '</p>' +
-              '<p class="review-exp"><strong>Explicação:</strong> ' + escapeHtml(qItem.explanation) + '</p>' +
-            '</div>';
+        // Gabarito comentado
+        var subTitle2 = document.createElement("h3");
+        subTitle2.className = "sub-heading";
+        subTitle2.textContent = "Gabarito Comentado (" + state.list.length + " Questões)";
+        mainCardEl.appendChild(subTitle2);
+
+        var reviewCol = document.createElement("div");
+        reviewCol.className = "review-col";
+
+        for (var r = 0; r < state.list.length; r++) {
+          var rq = state.list[r];
+          var rans = state.answers[rq.id];
+          var isOk = rans && rans.isCorrect;
+
+          var rCard = document.createElement("div");
+          rCard.className = "rev-card " + (isOk ? "ok" : "err");
+
+          var rHead = document.createElement("div");
+          rHead.className = "rev-head";
+
+          var rLeft = document.createElement("div");
+          rLeft.className = "badges-row";
+
+          var rNum = document.createElement("span");
+          rNum.className = "badge-counter";
+          rNum.textContent = "Questão " + (r + 1);
+
+          var rSubj = document.createElement("span");
+          rSubj.className = "badge-subject";
+          rSubj.textContent = rq.subject;
+
+          rLeft.appendChild(rNum);
+          rLeft.appendChild(rSubj);
+
+          var rStatus = document.createElement("span");
+          rStatus.className = "rev-status";
+          rStatus.textContent = isOk ? "Correta" : "Incorreta";
+
+          rHead.appendChild(rLeft);
+          rHead.appendChild(rStatus);
+
+          var rQ = document.createElement("p");
+          rQ.className = "rev-question";
+          rQ.textContent = rq.q;
+
+          var rAns = document.createElement("p");
+          rAns.className = "rev-ans";
+          var yourTxt = rans
+            ? "Sua resposta: " + LETTERS[rans.selected] + " — " + rq.options[rans.selected]
+            : "Sua resposta: Não respondida";
+          var rightTxt = " | Gabarito: " + LETTERS[rq.correct] + " — " + rq.options[rq.correct];
+          rAns.textContent = yourTxt + (isOk ? "" : rightTxt);
+
+          var rExp = document.createElement("p");
+          rExp.className = "rev-exp";
+          rExp.textContent = "Explicação: " + rq.exp;
+
+          rCard.appendChild(rHead);
+          rCard.appendChild(rQ);
+          rCard.appendChild(rAns);
+          rCard.appendChild(rExp);
+          reviewCol.appendChild(rCard);
         }
 
-        quizContainerEl.innerHTML =
-          '<div class="fade-in">' +
-            '<div class="summary-hero">' +
-              '<span class="summary-badge">Aproveitamento: ' + accuracy + '%</span>' +
-              '<h2 class="summary-title">' + headline + '</h2>' +
-              '<p class="summary-desc">' + desc + '</p>' +
-              '<div class="stats-grid">' +
-                '<div class="stat-item">' +
-                  '<span class="stat-label">Acertos</span>' +
-                  '<span class="stat-num stat-green">' + stats.correct + '</span>' +
-                '</div>' +
-                '<div class="stat-item">' +
-                  '<span class="stat-label">Erros</span>' +
-                  '<span class="stat-num stat-red">' + (stats.total - stats.correct) + '</span>' +
-                '</div>' +
-                '<div class="stat-item">' +
-                  '<span class="stat-label">Total</span>' +
-                  '<span class="stat-num stat-dark">' + stats.total + '</span>' +
-                '</div>' +
-              '</div>' +
-              '<div class="summary-actions">' +
-                '<button type="button" id="btn-retry" class="btn btn-primary">Refazer Quiz</button>' +
-                '<button type="button" id="btn-retry-shuffle" class="btn btn-outline">Embaralhar e Refazer</button>' +
-              '</div>' +
-            '</div>' +
-            '<h3 class="section-heading">Desempenho por Disciplina</h3>' +
-            '<div class="breakdown-grid">' + breakdownHtml + '</div>' +
-            '<h3 class="section-heading">Gabarito Comentado (' + state.questions.length + ' Questões)</h3>' +
-            '<div class="review-list">' + reviewHtml + '</div>' +
-          '</div>';
-
-        var retryBtn = document.getElementById('btn-retry');
-        if (retryBtn) {
-          retryBtn.addEventListener('click', function () {
-            state.answers = {};
-            loadQuestionSet(false);
-            render();
-          });
-        }
-
-        var retryShuffleBtn = document.getElementById('btn-retry-shuffle');
-        if (retryShuffleBtn) {
-          retryShuffleBtn.addEventListener('click', function () {
-            state.answers = {};
-            loadQuestionSet(true);
-            render();
-          });
-        }
+        mainCardEl.appendChild(reviewCol);
       }
 
-      function render() {
-        renderQuizSelectorAndFilters();
+      function renderAll() {
+        renderQuizSelector();
+        renderSubjectFilters();
         renderQuickNav();
-        renderProgressAndScore();
-        if (state.isFinished) {
-          renderSummaryView();
+        renderProgress();
+        if (state.finished) {
+          renderSummaryCard();
         } else {
-          renderQuestionView();
+          renderQuestionCard();
         }
       }
 
-      // Eventos de seleção manual do quiz
-      for (var c = 0; c < quizChoiceButtons.length; c++) {
-        quizChoiceButtons[c].addEventListener('click', function (e) {
-          var chosenQuizId = e.currentTarget.getAttribute('data-quiz-id');
-          if (chosenQuizId) {
-            selectQuiz(chosenQuizId);
-          }
-        });
-      }
-
-      btnShuffleEl.addEventListener('click', function () {
+      btnShuffleEl.addEventListener("click", function () {
         state.answers = {};
-        loadQuestionSet(true);
-        render();
+        prepareQuestions(true);
+        renderAll();
       });
 
-      btnRestartEl.addEventListener('click', function () {
+      btnRestartEl.addEventListener("click", function () {
         state.answers = {};
-        loadQuestionSet(false);
-        render();
+        prepareQuestions(false);
+        renderAll();
       });
 
-      document.addEventListener('keydown', function (event) {
-        if (state.isFinished) return;
-        var currentQuestion = state.questions[state.currentIndex];
-        if (!currentQuestion) return;
+      document.addEventListener("keydown", function (ev) {
+        if (state.finished) {
+          return;
+        }
+        var q = state.list[state.index];
+        if (!q) {
+          return;
+        }
+        var isAnswered = state.answers[q.id] !== undefined;
+        var k = ev.key.toUpperCase();
+        var idx = LETTERS.indexOf(k);
 
-        var isAnswered = state.answers[currentQuestion.id] !== undefined;
-        var key = event.key.toUpperCase();
-        var letterIdx = OPTION_LETTERS.indexOf(key);
-
-        if (letterIdx !== -1 && !isAnswered) {
-          selectOption(letterIdx);
-        } else if (event.key === 'Enter' && isAnswered) {
-          event.preventDefault();
-          goToNext();
+        if (idx !== -1 && !isAnswered) {
+          handleAnswer(idx);
+        } else if (ev.key === "Enter" && isAnswered) {
+          ev.preventDefault();
+          handleNext();
         }
       });
 
-      // Inicialização
-      loadQuestionSet(false);
-      render();
+      prepareQuestions(false);
+      renderAll();
     })();
   </script>
 </body>
