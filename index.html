@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Central de Quizzes Interativos — Conhecimentos Gerais e Atletismo</title>
+  <title>Portal de Quizzes Interativos — Conhecimentos Gerais e Atletismo</title>
   <style>
     /* Variáveis de tema esportivo e acadêmico com alto contraste */
     :root {
@@ -912,7 +912,7 @@
             </svg>
           </div>
           <div>
-            <h1 class="brand-title">Central de Quizzes Interativos</h1>
+            <h1 class="brand-title">Portal de Quizzes Interativos</h1>
             <p class="brand-subtitle">Selecione manualmente o questionário desejado e pratique com feedback imediato</p>
           </div>
         </div>
@@ -947,21 +947,21 @@
         <span class="section-label">1. Escolha o Questionário Manualmente</span>
         <div id="quiz-selector-grid" class="quiz-selector-grid" role="tablist" aria-label="Questionários disponíveis">
           <button type="button" class="quiz-choice-btn is-active" data-quiz-id="gerais">
-            <span class="quiz-choice-title">Conhecimentos Gerais (24)</span>
-            <span class="quiz-choice-sub">Geografia, História, Língua Portuguesa e Arte</span>
+            <span class="quiz-choice-title">Conhecimentos Gerais (25)</span>
+            <span class="quiz-choice-sub">Geografia (6), História (6), Língua Portuguesa (6) e Arte — Revisão EVA (7)</span>
           </button>
           <button type="button" class="quiz-choice-btn" data-quiz-id="atletismo">
             <span class="quiz-choice-title">Atletismo e Treinamento (10)</span>
-            <span class="quiz-choice-sub">Pista, campo, saltos, lançamentos e rotina</span>
+            <span class="quiz-choice-sub">Pista, campo, saltos, lançamentos e rotina esportiva</span>
           </button>
           <button type="button" class="quiz-choice-btn" data-quiz-id="completo">
-            <span class="quiz-choice-title">Simulado Completo (34)</span>
+            <span class="quiz-choice-title">Simulado Completo (35)</span>
             <span class="quiz-choice-sub">Todos os conteúdos reunidos em um único quiz</span>
           </button>
         </div>
       </div>
 
-      <!-- Filtro por Disciplina (exibido quando há mais de uma disciplina) -->
+      <!-- Filtro por Disciplina -->
       <div id="filter-section" class="filter-section">
         <span class="section-label">2. Filtrar por Disciplina</span>
         <div id="filter-pills" class="filter-pills"></div>
@@ -977,7 +977,7 @@
     <!-- Barra de Progresso -->
     <section class="progress-section" aria-label="Progresso do questionário">
       <div class="progress-meta">
-        <span id="progress-label">Questão 1 de 24</span>
+        <span id="progress-label">Questão 1 de 25</span>
         <span id="progress-percent">0% concluído</span>
       </div>
       <div class="progress-track">
@@ -1013,7 +1013,8 @@
         }
       };
 
-      // Banco unificado com 24 questões de Conhecimentos Gerais + 10 questões de Atletismo e Treinamento
+      // Banco completo: 25 questões de Conhecimentos Gerais (6 Geografia + 6 História + 6 Língua Portuguesa + 7 Arte — Revisão EVA)
+      // + 10 questões de Atletismo e Treinamento = 35 questões no total
       var QUESTIONS_DB = [
         // ================= CONHECIMENTOS GERAIS — GEOGRAFIA (6) =================
         {
@@ -1273,90 +1274,104 @@
           explanation: 'Na primeira lacuna, "porque" introduz justificativa/causa; na segunda e na terceira, "o porquê" funciona como substantivo ("o motivo/a razão"), admitindo artigo e plural.'
         },
 
-        // ================= CONHECIMENTOS GERAIS — ARTE (6) =================
+        // ================= CONHECIMENTOS GERAIS — ARTE: REVISÃO EVA (7) =================
         {
-          id: 'art-1',
+          id: 'art-eva-1',
           quizId: 'gerais',
           subject: 'Arte',
-          question: 'Qual é a origem histórica das exposições de arte e como se deu a passagem dos Salões Oficiais para os Salões dos Recusados (1863) e dos Independentes (1884)?',
+          question: 'Qual é o museu criado por Dom João VI (em 1818, originalmente como Museu Real) que sofreu um grande incêndio em 2018, perdendo grande parte do seu acervo?',
           options: [
-            'Reunir obras em um único espaço remonta ao Renascimento com Giorgio Vasari; os Salões Oficiais (séculos XVIII e XIX) exigiam aprovação de júri, enquanto o Salão dos Recusados (1863) e o Salão dos Independentes (1884, sem júri nem prêmios) abriram caminho para os impressionistas e a arte moderna',
-            'As exposições nasceram no século XXI e o Salão dos Independentes impôs júri rigoroso para proibir a arte moderna',
-            'Giorgio Vasari criou o Salão dos Independentes em 1884 na Inglaterra para premiar apenas esculturas medievais',
-            'Os Salões Oficiais não tinham qualquer vínculo com academias de belas-artes ou aprovação de júri'
+            'Museu Nacional, no Rio de Janeiro',
+            'Museu de Arte de São Paulo (MASP)',
+            'Pinacoteca do Estado de São Paulo',
+            'Museu Imperial, em Petrópolis'
           ],
           correctIndex: 0,
-          explanation: 'A reunião de obras remonta ao Renascimento com Giorgio Vasari (pai da História da Arte). Diante da aprovação de júris nos Salões Oficiais, o Salão dos Recusados (1863) e o Salão dos Independentes (1884, sem júri nem prêmios) favoreceram os impressionistas e a arte moderna.'
+          explanation: 'O Museu Nacional, fundado por Dom João VI em 1818 (inicialmente como Museu Real) no Rio de Janeiro, é a mais antiga instituição científica do Brasil e perdeu grande parte de seu acervo histórico e científico no incêndio de 2 de setembro de 2018.'
         },
         {
-          id: 'art-2',
+          id: 'art-eva-2',
           quizId: 'gerais',
           subject: 'Arte',
-          question: 'Qual foi o impacto das tecnologias de gravação na música e quando surgiram as primeiras salas de concerto exclusivas pagas na Europa?',
+          question: 'Qual era a função da Galeria Domus no circuito artístico brasileiro (criada em São Paulo, em 1947)?',
           options: [
-            'As gravações deram autonomia ao ouvinte e tornaram os shows mais focados na performance; as primeiras salas de concerto exclusivas com cobrança de entrada surgiram na Europa no século XVIII, como a Holywell Music Room (Inglaterra, 1748), para o público burguês',
-            'Antes das gravações, a música era ouvida apenas em fones digitais, e a Holywell Music Room surgiu em 1990 no Brasil',
-            'As gravações impediram a realização de shows ao vivo e extinguiram o público burguês no século XVIII',
-            'As salas de concerto pagas surgiram apenas no século XX e eram exclusivas para animais'
+            'Restringir exposições apenas à arte acadêmica europeia do século XVII e impedir vendas de obras',
+            'Divulgar, expor e comercializar a arte moderna brasileira, abrindo espaço para artistas modernistas e renovando o mercado de arte em São Paulo',
+            'Funcionar exclusivamente como escola de ópera lírica vinculada à corte imperial',
+            'Avaliar e censurar obras modernistas antes de serem enviadas para a Europa'
           ],
-          correctIndex: 0,
-          explanation: 'Com as gravações, o ouvinte ganhou autonomia e os concertos/shows passaram a enfatizar a performance; na Europa do século XVIII, espaços pagos como a Holywell Music Room (1748) atenderam ao público burguês.'
+          correctIndex: 1,
+          explanation: 'Criada em 1947 por Anna Maria Fiocca e Dino Zammataro em São Paulo, a Galeria Domus foi pioneira na divulgação, exposição e comercialização da arte moderna brasileira, consolidando um espaço profissional para artistas modernistas.'
         },
         {
-          id: 'art-3',
+          id: 'art-eva-3',
           quizId: 'gerais',
           subject: 'Arte',
-          question: 'Qual é a diferença entre óperas e musicais, e quais são as origens e primeiras obras da ópera mencionadas no resumo?',
+          question: 'Qual Bienal de arte foi criada em 1895 e se tornou referência internacional na divulgação da arte moderna e contemporânea?',
           options: [
-            'Musicais combinam diálogos falados, canto e dança, enquanto óperas contam histórias essencialmente pelo canto; a ópera surgiu no Renascimento italiano (século XVI), na Camerata Fiorentina, com "Dafne" (1597) e "Eurídice" (1600), de Jacopo Peri e Ottavio Rinuccini',
-            'Óperas usam apenas diálogos falados sem canto, e surgiram na Grécia Antiga em 1600 por Pixinguinha',
-            'Musicais surgiram na Camerata Fiorentina em 1597 e proíbem dança ou canto',
-            '"Eurídice" (1600) foi a primeira ópera proibida por ter sido escrita inteiramente em prosa sem música'
+            'Bienal de São Paulo',
+            'Bienal de Veneza',
+            'Bienal do Mercosul',
+            'Bienal de Havana'
           ],
-          correctIndex: 0,
-          explanation: 'Enquanto os musicais unem falas, canto e dança, a ópera narra essencialmente pelo canto. Criada no Renascimento italiano (século XVI) pela Camerata Fiorentina para resgatar o teatro e a música da Grécia Antiga, teve "Dafne" (1597) e "Eurídice" (1600) de Jacopo Peri e Ottavio Rinuccini.'
+          correctIndex: 1,
+          explanation: 'Criada em 1895 na Itália, a Bienal de Veneza (La Biennale di Venezia) é a mais antiga exposição internacional de arte do mundo e tornou-se referência global na divulgação da arte moderna e contemporânea.'
         },
         {
-          id: 'art-4',
+          id: 'art-eva-4',
           quizId: 'gerais',
           subject: 'Arte',
-          question: 'O que é a sonoplastia e qual é o seu objetivo em teatro, cinema, rádio, TV e jogos?',
+          question: 'Qual sequência representa a evolução histórica dos espaços de apresentação musical?',
           options: [
-            'É a técnica de criar ou selecionar efeitos sonoros, ruídos, vinhetas e até o silêncio para construir atmosferas, aumentar a dramaticidade e dar realismo de forma natural ("invisível" ao espectador)',
-            'É a pintura de cenários em tela a óleo sem qualquer relação com sons ou silêncios',
-            'É a obrigação de manter apenas música instrumental alta durante toda a cena sem efeitos',
-            'É um tipo de dança contemporânea executada sem trilha ou som ambiente'
+            'Plataformas digitais -> grandes estádios -> salas de concerto públicas -> espaços religiosos e palacianos',
+            'Espaços religiosos e palacianos (igrejas e cortes) -> salas de concerto públicas (século XVIII) -> teatros e casas de espetáculo -> grandes arenas/estádios e plataformas digitais',
+            'Grandes arenas de rock -> cortes feudais -> igrejas medievais -> salas de concerto',
+            'Estúdios de gravação digital -> cortes renascentistas -> teatros municipais -> igrejas'
           ],
-          correctIndex: 0,
-          explanation: 'A sonoplastia trabalha efeitos sonoros, ruídos, vinhetas e silêncio em diversas mídias para criar atmosferas, ampliar a dramaticidade e conferir realismo natural à narrativa.'
+          correctIndex: 1,
+          explanation: 'Historicamente, a música concentrou-se primeiro em igrejas e cortes (espaços religiosos/palacianos), passou às salas de concerto públicas com venda de ingressos no século XVIII, expandiu-se para teatros e casas de espetáculo e chegou às grandes arenas/estádios e plataformas digitais.'
         },
         {
-          id: 'art-5',
+          id: 'art-eva-5',
           quizId: 'gerais',
           subject: 'Arte',
-          question: 'Em que consiste o arranjo musical e qual foi a importância de figuras como Pixinguinha nesse campo?',
+          question: 'Qual é o espetáculo de 1927, escrito por Oscar Hammerstein II (com música de Jerome Kern), que estabeleceu as bases do teatro musical moderno ao integrar enredo dramático, música e dança?',
           options: [
-            'Consiste em reelaborar uma música preservando sua essência, mas modificando ritmo, melodia, harmonia, velocidade ou instrumentação; no Brasil, arranjadores como Pixinguinha tiveram papel central na era do rádio e seguem essenciais em shows, cinema, teatro e musicais',
-            'Consiste em apagar a melodia original e criar uma composição sem vínculo com a obra anterior',
-            'Consiste apenas em aumentar o volume do som sem alterar ritmo, harmonia ou instrumentação',
-            'Pixinguinha atuou apenas como pintor renascentista nos Salões de Paris'
+            'O Fantasma da Ópera (The Phantom of the Opera)',
+            'Show Boat (O Barco das Ilusões)',
+            'Os Miseráveis (Les Misérables)',
+            'A Flauta Mágica (Die Zauberflöte)'
           ],
-          correctIndex: 0,
-          explanation: 'O arranjo musical mantém a essência da obra original enquanto transforma ritmo, melodia, harmonia, velocidade ou instrumentação, tendo em Pixinguinha um destaque histórico no Brasil desde a era do rádio.'
+          correctIndex: 1,
+          explanation: 'Estreado em 1927 na Broadway, "Show Boat" (O Barco das Ilusões), com libreto e letras de Oscar Hammerstein II e música de Jerome Kern, inaugurou o musical moderno ao integrar narrativa dramática séria, canções e coreografia.'
         },
         {
-          id: 'art-6',
+          id: 'art-eva-6',
           quizId: 'gerais',
           subject: 'Arte',
-          question: 'Qual característica distingue o Salão dos Independentes (1884) dos Salões Oficiais tradicionais do século XIX?',
+          question: 'Qual profissional é responsável pela criação e reprodução de ruídos e efeitos sonoros cotidianos para filmes, utilizando objetos físicos e gravações sincronizadas com a imagem?',
           options: [
-            'A ausência de júri e de prêmios, oferecendo um espaço alternativo que favoreceu artistas rejeitados pelas normas acadêmicas rígidas',
-            'A exigência de aprovação prévia de um júri monárquico e a exclusão de pintores impressionistas',
-            'A realização exclusiva de apresentações de ópera sem obras visuais',
-            'A proibição de qualquer artista expor suas criações'
+            'Maestro regente de orquestra',
+            'Artista de Foley (sonoplasta de Foley)',
+            'Curador de bienal de artes visuais',
+            'Iluminador cênico'
           ],
-          correctIndex: 0,
-          explanation: 'Diferentemente dos Salões Oficiais que dependiam da aprovação de um júri, o Salão dos Independentes (1884) não tinha júri nem prêmios, fortalecendo alternativas às normas acadêmicas rígidas e impulsionando a arte moderna.'
+          correctIndex: 1,
+          explanation: 'O artista de Foley (ou sonoplasta de Foley) cria e grava em estúdio ruídos cotidianos — como passos, portas, roupas e objetos — em sincronia com as imagens do filme para dar realismo sonoro às cenas.'
+        },
+        {
+          id: 'art-eva-7',
+          quizId: 'gerais',
+          subject: 'Arte',
+          question: 'O que é leitmotiv, recurso composicional amplamente utilizado pelo compositor Richard Wagner em suas óperas?',
+          options: [
+            'Uma pausa silenciosa obrigatória de dez minutos entre todos os atos da ópera',
+            'Um motivo ou tema musical recorrente associado a um personagem, ideia, objeto ou sentimento específico ao longo da obra',
+            'A substituição completa da orquestra por declamações faladas sem acompanhamento',
+            'Um aparelho mecânico usado no século XIX para gravar sons de tempestade no teatro'
+          ],
+          correctIndex: 1,
+          explanation: 'O leitmotiv ("motivo condutor") é uma frase ou ideia musical recorrente vinculada a um personagem, conceito, objeto ou emoção, transformando-se ao longo da ópera conforme o desenvolvimento dramático.'
         },
 
         // ================= ATLETISMO E TREINAMENTO ESPORTIVO (10) =================
