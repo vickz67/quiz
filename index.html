@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portal de Quizzes Interativos — 57 Questões</title>
+  <title>Portal de Quizzes Interativos — 47 Questões</title>
   <style>
     :root {
       --bg-page: #f1f5f9;
@@ -782,7 +782,7 @@
       <div class="header-top">
         <div class="title-group">
           <h1>Portal de Quizzes Interativos</h1>
-          <p>57 questões divididas por disciplina com feedback imediato e gabarito comentado</p>
+          <p>47 questões divididas por disciplina com feedback imediato e gabarito comentado</p>
         </div>
         <div class="top-actions">
           <div class="score-box">
@@ -841,30 +841,20 @@
           id: "ingles",
           title: "Língua Inglesa — Revisão (10)",
           desc: "Vocabulary, Order of Adjectives, -ed/-ing, Divergent Thinking, Will/Going to e Used to"
-        },
-        {
-          id: "atletismo",
-          title: "Atletismo e Treinamento (10)",
-          desc: "Provas de pista e campo, saltos, lançamentos, regras e rotina esportiva"
-        },
-        {
-          id: "completo",
-          title: "Simulado Completo (57)",
-          desc: "Todas as 6 disciplinas reunidas em um único questionário"
         }
       ];
 
-      // Banco de 57 questões (10 Geografia, 10 História, 10 Língua Portuguesa, 7 Arte, 10 Inglês e 10 Atletismo)
+      // Banco de 47 questões (10 Geografia, 10 História, 10 Língua Portuguesa, 7 Arte e 10 Inglês)
       var QUESTIONS = [
         // ================= GEOGRAFIA (10) =================
         {
           id: "geo-1", quizId: "gerais", subject: "Geografia",
           q: "Na regionalização do continente africano, quais características naturais e econômicas marcam a África Austral em países como Namíbia e Botsuana?",
           options: [
-            "Presença do deserto do Kalahari, das montanhas Drakensberg e de importantes áreas de mineração e extração de diamantes",
-            "Existência exclusiva de florestas equatoriais densas e ausência total de mineração",
-            "Predomínio de geleiras polares permanentes e atividade vulcânica submarina",
-            "Planícies fluviais inundadas o ano inteiro sem qualquer área desértica"
+            "A presença do deserto do Kalahari, das montanhas Drakensberg e de expressivas áreas voltadas à mineração e à extração de diamantes",
+            "O domínio de florestas equatoriais úmidas na bacia do Congo combinado à extração intensiva de petróleo offshore no Golfo da Guiné",
+            "A ocorrência do Grande Vale do Rift com intenso vulcanismo ativo e planícies aluviais destinadas exclusivamente à rizicultura irrigada",
+            "A predominância de climas mediterrâneos no extremo sul associada à ausência de jazidas minerais e à dependência exclusiva da pesca"
           ],
           correct: 0,
           exp: "A África Austral (ao sul do continente, reunindo países como Namíbia e Botsuana) caracteriza-se pelo deserto do Kalahari, pelas montanhas Drakensberg e pela forte atividade mineradora, especialmente de diamantes."
@@ -873,10 +863,10 @@
           id: "geo-2", quizId: "gerais", subject: "Geografia",
           q: "Qual fenômeno geológico explica a ocorrência de terremotos, vulcões e grandes transformações no relevo da África Oriental?",
           options: [
-            "O Grande Vale do Rift, formado pelo afastamento de placas tectônicas",
-            "O recuo das marés do oceano Atlântico Sul",
-            "A deposição exclusiva de areia trazida pelos ventos do Saara",
-            "A estabilidade tectônica absoluta sem falhas na crosta terrestre"
+            "A formação do Grande Vale do Rift, uma extensa falha geológica originada pelo movimento divergente de afastamento entre placas tectônicas",
+            "O dobramento moderno provocado pela colisão frontal entre a placa Sul-Americana e a placa Euro-Asiática no litoral mediterrâneo",
+            "A erosão eólica contínua causada pelos ventos alísios do deserto do Saara sobre escudos cristalinos totalmente estáveis",
+            "O rebaixamento do nível médio dos oceanos durante o período colonial, que expôs planícies sedimentares sem atividade sísmica"
           ],
           correct: 0,
           exp: "A África Oriental abriga o Grande Vale do Rift, extensa falha geológica provocada pelo afastamento de placas tectônicas, gerando sismos, vulcanismo e modificações no relevo."
@@ -885,10 +875,10 @@
           id: "geo-3", quizId: "gerais", subject: "Geografia",
           q: "Durante grande parte do século XX, o regime do Apartheid na África do Sul impôs segregação racial. Quais direitos eram restringidos à população negra e quem foi uma das principais lideranças contra esse sistema?",
           options: [
-            "Restringia o acesso à educação, ao trabalho, à moradia e à participação política; Nelson Mandela foi uma das principais lideranças na luta contra o regime",
-            "Garantia igualdade plena de voto e moradia desde 1910, liderado por Otto von Bismarck",
-            "Limitava apenas a pesca artesanal no litoral norte, sem afetar direitos civis",
-            "Foi um acordo comercial assinado na Conferência de Berlim em 1885"
+            "Restringia o acesso igualitário à educação, ao trabalho, à moradia e à participação política, tendo Nelson Mandela como uma das principais lideranças na luta contra o regime",
+            "Limitava apenas a representação diplomática no exterior sem interferir na moradia ou no voto interno, tendo sido combatido por Otto von Bismarck",
+            "Impedia exclusivamente o comércio marítimo nos portos do Cabo, enquanto assegurava plena igualdade educacional sob liderança de Giuseppe Garibaldi",
+            "Proibia a propriedade privada para imigrantes europeus na África Austral, sendo derrubado por meio da Conferência de Berlim"
           ],
           correct: 0,
           exp: "O Apartheid separava brancos e negros na África do Sul, negando à população negra acesso igualitário à educação, trabalho, moradia e política; Nelson Mandela destacou-se como liderança central da resistência."
@@ -897,10 +887,10 @@
           id: "geo-4", quizId: "gerais", subject: "Geografia",
           q: "Qual é o objetivo central do movimento conhecido como pan-africanismo?",
           options: [
-            "Fortalecer a solidariedade e a união entre os povos da África, valorizando a cultura africana e buscando maior autonomia",
-            "Manter o controle econômico das antigas metrópoles europeias sobre os recursos naturais africanos",
-            "Dividir o continente em pequenos territórios isolados sem cooperação regional",
-            "Substituir as línguas locais exclusivamente pelo idioma alemão"
+            "Fortalecer a solidariedade e a união política e cultural entre os povos da África, valorizando suas identidades e buscando maior autonomia frente às potências externas",
+            "Consolidar as fronteiras artificiais traçadas pelas metrópoles europeias em 1885 para facilitar o escoamento de matérias-primas",
+            "Estabelecer uma administração centralizada sob tutela das antigas potências coloniais para padronizar a exploração mineral do continente",
+            "Substituir as tradições culturais e linguísticas locais por um modelo uniforme baseado exclusivamente nas instituições europeias do século XIX"
           ],
           correct: 0,
           exp: "O pan-africanismo surgiu para fortalecer a identidade e a união dos povos africanos, promovendo solidariedade, valorização cultural e autonomia política."
@@ -909,10 +899,10 @@
           id: "geo-5", quizId: "gerais", subject: "Geografia",
           q: "Iniciada no final de 2010, a Primavera Árabe consistiu em manifestações populares contra governos autoritários em quais regiões, provocando queda de governantes em países como qual exemplo?",
           options: [
-            "Norte da África e Oriente Médio, com mudanças políticas e queda de governantes em países como a Tunísia",
-            "África Austral e América do Sul, com foco na extração de platina na Namíbia",
-            "Europa Central e Japão, logo após o Congresso de Viena",
-            "Apenas no Chifre da África, sem repercussão no Norte africano"
+            "No Norte da África e no Oriente Médio, desencadeando transformações políticas e a queda de governantes autoritários em países como a Tunísia",
+            "Na África Austral e na América Central, resultando na abolição imediata do Apartheid e na independência da Namíbia e de Botsuana",
+            "Na Europa Oriental e no arquipélago japonês, impulsionando a abertura dos portos comerciais e o fim do isolamento feudal",
+            "Exclusivamente no Chifre da África e na Bacia do Congo, motivadas pela disputa de jazidas de diamantes e platina"
           ],
           correct: 0,
           exp: "A Primavera Árabe mobilizou protestos populares contra regimes autoritários no Norte da África e no Oriente Médio a partir do fim de 2010, resultando na queda de governantes em países como a Tunísia."
@@ -921,10 +911,10 @@
           id: "geo-6", quizId: "gerais", subject: "Geografia",
           q: "Como o neocolonialismo econômico se relaciona à exploração de recursos naturais africanos (como ouro, diamantes, petróleo, platina e cobalto)?",
           options: [
-            "Empresas estrangeiras exploram esses recursos e grande parte dos lucros vai para outros países, mantendo a dependência econômica de várias nações africanas",
-            "Todos os lucros permanecem integralmente nas comunidades locais sem participação de empresas externas",
-            "A África não possui reservas minerais significativas e depende apenas da importação de minérios",
-            "O termo refere-se apenas ao reflorestamento de áreas desérticas"
+            "Corporações estrangeiras controlam grande parte da extração desses recursos e remetem a maior parcela dos lucros ao exterior, perpetuando a dependência econômica local",
+            "Os Estados africanos nacionalizaram integralmente todas as cadeias produtivas minerais, eliminando qualquer participação ou remessa de lucros estrangeiros",
+            "A escassez de minérios estratégicos no subsolo africano obriga o continente a importar petróleo e diamantes das potências europeias",
+            "O conceito designa apenas acordos ambientais internacionais voltados à recuperação de solos degradados pela agricultura extensiva"
           ],
           correct: 0,
           exp: "Apesar das vastas riquezas naturais africanas, a exploração por empresas estrangeiras com remessa da maior parte dos lucros ao exterior caracteriza o neocolonialismo econômico e perpetua a dependência."
@@ -933,10 +923,10 @@
           id: "geo-7", quizId: "gerais", subject: "Geografia",
           q: "Quais são os dois maiores produtores de petróleo do continente africano?",
           options: [
-            "Nigéria e Angola",
-            "Tunísia e Botsuana",
-            "Namíbia e África do Sul",
-            "Lesoto e Madagáscar"
+            "Nigéria e Angola, que concentram as maiores reservas e volumes de extração petrolífera no continente",
+            "Botsuana e Namíbia, cuja economia se baseia exclusivamente no refino de petróleo na África Austral",
+            "Tunísia e África do Sul, responsáveis pela maior parte da exportação de petróleo bruto do hemisfério sul",
+            "Etiópia e Somália, situadas no Chifre da África e líderes na produção de combustíveis fósseis"
           ],
           correct: 0,
           exp: "Nigéria e Angola destacam-se como os maiores produtores de petróleo do continente africano."
@@ -945,10 +935,10 @@
           id: "geo-8", quizId: "gerais", subject: "Geografia",
           q: "Quais áreas geográficas africanas apresentam maior vulnerabilidade a secas prolongadas, erosão do solo e risco de desertificação?",
           options: [
-            "O Sahel e o Chifre da África",
-            "A Bacia do Congo e o litoral do Golfo da Guiné",
-            "As ilhas de Cabo Verde e o delta do rio Nilo",
-            "As planícies costeiras do sul da Europa"
+            "O Sahel e o Chifre da África, onde a irregularidade pluviométrica e a fragilidade ambiental dificultam a agropecuária e aceleram a degradação do solo",
+            "A Bacia Hidrográfica do Congo e o litoral equatorial úmido, caracterizados por índices pluviométricos elevados durante todo o ano",
+            "As cadeias das montanhas Drakensberg e o litoral mediterrâneo do norte, onde o excesso de umidade impede qualquer processo de erosão",
+            "As planícies fluviais do delta do Nilo e as ilhas vulcânicas do Índico, protegidas contra variações climáticas extremas"
           ],
           correct: 0,
           exp: "O Sahel e o Chifre da África enfrentam condições climáticas severas, com secas prolongadas que dificultam a agropecuária e intensificam a desertificação."
@@ -957,10 +947,10 @@
           id: "geo-9", quizId: "gerais", subject: "Geografia",
           q: "Quais impactos ambientais estão associados à expansão da agropecuária sem manejo adequado em regiões frágeis da África?",
           options: [
-            "Desmatamento, perda de biodiversidade e erosão do solo, agravados em zonas de seca prolongada",
-            "Aumento imediato das reservas de água subterrânea e eliminação da erosão",
-            "Formação de novas cadeias montanhosas vulcânicas",
-            "Redução completa da temperatura média global"
+            "O avanço do desmatamento, a perda de biodiversidade e a erosão acentuada do solo, efeitos agravados em zonas sujeitas a secas prolongadas",
+            "A recomposição espontânea da cobertura vegetal nativa acompanhada do aumento permanente dos lençóis freáticos superficiais",
+            "A estabilização tectônica das falhas geológicas e a redução imediata das temperaturas médias em áreas semiáridas",
+            "O bloqueio natural da desertificação no Sahel graças à remoção contínua da vegetação rasteira para pastagens"
           ],
           correct: 0,
           exp: "A expansão agrícola sem conservação provoca desmatamento, perda de biodiversidade e erosão dos solos, efeitos ainda mais críticos no Sahel e no Chifre da África."
@@ -969,10 +959,10 @@
           id: "geo-10", quizId: "gerais", subject: "Geografia",
           q: "Quantas grandes regiões geográficas compõem a divisão regional clássica do continente africano mencionada no resumo de estudos?",
           options: [
-            "Cinco grandes regiões geográficas",
-            "Duas regiões (Norte e Sul)",
-            "Doze regiões insulares",
-            "Apenas uma região homogênea"
+            "Cinco grandes regiões geográficas, entre as quais se destacam a África Austral e a África Oriental",
+            "Três macrorregiões continentais delimitadas exclusivamente pelas bacias hidrográficas do Nilo, do Congo e do Níger",
+            "Sete províncias econômicas instituídas durante a Conferência de Berlim para administrar o comércio marítimo",
+            "Duas grandes zonas climáticas homogêneas separadas apenas pela linha do Trópico de Capricórnio"
           ],
           correct: 0,
           exp: "A África é dividida em cinco grandes regiões geográficas, entre as quais se destacam a África Austral e a África Oriental."
@@ -983,10 +973,10 @@
           id: "his-1", quizId: "gerais", subject: "História",
           q: "Na segunda metade do século XIX, como a 'política das nacionalidades' transformou o mapa político europeu após o Congresso de Viena (1815)?",
           options: [
-            "Fortaleceu os sentimentos nacionalistas e impulsionou processos de unificação, como a Unificação Italiana e a Unificação Alemã",
-            "Restaurou o feudalismo medieval e extinguiu todos os Estados nacionais europeus",
-            "Impediu qualquer alteração de fronteiras na Europa até o século XXI",
-            "Submeteu a Europa ao domínio político do xogunato Tokugawa"
+            "Fortaleceu os sentimentos nacionalistas e impulsionou movimentos de unificação territorial, culminando na formação dos Estados nacionais da Itália e da Alemanha",
+            "Restaurou as fronteiras absolutistas anteriores à Revolução Francesa e dissolveu os movimentos liberais e nacionalistas na Europa Central",
+            "Impediu a formação de novos Estados nacionais na Europa ao submeter os reinos germânicos e itálicos à tutela permanente da Áustria",
+            "Promoveu a fragmentação da França e do Reino Unido em dezenas de principados autônomos sem integração econômica"
           ],
           correct: 0,
           exp: "O fortalecimento dos nacionalismos superou as tentativas restauradoras do Congresso de Viena (1815) e conduziu às unificações italiana e alemã."
@@ -995,10 +985,10 @@
           id: "his-2", quizId: "gerais", subject: "História",
           q: "Antes da Unificação Italiana (Risorgimento), sob quais domínios o território italiano estava fragmentado e quais líderes conduziram o movimento?",
           options: [
-            "Fragmentado sob domínio da Áustria, da França e da Igreja Católica; liderado pelos republicanos Giuseppe Mazzini (Jovem Itália) e Giuseppe Garibaldi, e pelo monarquista conde de Cavour (Sardenha-Piemonte)",
-            "Unificado sob a Prússia e liderado exclusivamente por Otto von Bismarck",
-            "Controlado pelos Estados Unidos após a Guerra Civil Americana",
-            "Dividido apenas entre Inglaterra e Japão"
+            "Estava fragmentado sob domínio da Áustria, da França e da Igreja Católica, sendo conduzido pelos republicanos Giuseppe Mazzini (Jovem Itália) e Giuseppe Garibaldi e pelo monarquista conde de Cavour",
+            "Encontrava-se unificado sob controle da Prússia e da Dinamarca, tendo sido emancipado pela ação diplomática conjunta de Otto von Bismarck e Guilherme I",
+            "Estava dividido entre o Império Britânico e os Estados Unidos, sendo libertado após a assinatura da Doutrina Monroe e da política do Big Stick",
+            "Permanecia sob domínio feudal do xogunato Tokugawa, alcançando a unificação após a abertura comercial promovida por Matthew C. Perry"
           ],
           correct: 0,
           exp: "No Risorgimento, a Itália fragmentada entre Áustria, França e Igreja Católica foi unificada pela atuação de republicanos (Mazzini e Garibaldi) e monarquistas da Sardenha-Piemonte (Cavour)."
@@ -1007,10 +997,10 @@
           id: "his-3", quizId: "gerais", subject: "História",
           q: "Como ocorreu a Unificação Alemã em 1871 e qual estrutura política foi criada ao final desse processo?",
           options: [
-            "Conduzida pela Prússia e por Otto von Bismarck após três guerras vitoriosas (contra Dinamarca, Áustria e França), resultando no Segundo Reich (Império Alemão)",
-            "Realizada por meio de plebiscito pacífico liderado por Giuseppe Garibaldi",
-            "Consolidada após a abertura dos portos japoneses por Matthew C. Perry",
-            "Resultou na divisão permanente da Alemanha em trinta reinos independentes"
+            "Foi conduzida sob liderança da Prússia e de Otto von Bismarck após três guerras vitoriosas contra Dinamarca, Áustria e França, resultando na criação do Segundo Reich (Império Alemão)",
+            "Deu-se por meio de uma revolução republicana liderada por Giuseppe Garibaldi e Mazzini, instaurando uma federação parlamentar sem hegemonia prussiana",
+            "Resultou de um acordo pacífico firmado no Congresso de Viena em 1815, extinguindo a monarquia prussiana e criando a República de Weimar",
+            "Ocorreu após a derrota militar da Prússia frente à França e à Áustria, consolidando a fragmentação econômica da Confederação Germânica"
           ],
           correct: 0,
           exp: "Sob liderança da Prússia e de Bismarck, as vitórias contra Dinamarca, Áustria e França levaram à criação do Segundo Reich (Império Alemão) em 1871."
@@ -1019,10 +1009,10 @@
           id: "his-4", quizId: "gerais", subject: "História",
           q: "Quais fatores econômicos e justificativas ideológicas impulsionaram o imperialismo europeu no século XIX?",
           options: [
-            "A Segunda Revolução Industrial e os monopólios buscaram matérias-primas, mão de obra barata e mercados consumidores, apoiados em ideologias racistas e na ideia de missão 'civilizatória'",
-            "O desejo europeu de financiar gratuitamente a industrialização africana sem obter lucro",
-            "A abolição completa da produção industrial na Europa",
-            "O respeito rigoroso às fronteiras culturais e políticas dos povos locais"
+            "A Segunda Revolução Industrial e os grandes monopólios demandaram matérias-primas, mão de obra barata e mercados consumidores, apoiados em ideologias racistas e na ideia de missão 'civilizatória'",
+            "A crise da produção artesanal levou as potências europeias a buscarem colônias apenas para financiar a industrialização autônoma dos povos africanos e asiáticos",
+            "O declínio dos monopólios financeiros incentivou a Europa a devolver territórios ultramarinos com base no princípio da igualdade cultural entre os povos",
+            "A necessidade de conter a Segunda Revolução Industrial fez com que os governos europeus proibissem a exportação de capitais para fora do continente"
           ],
           correct: 0,
           exp: "Impulsionadas pela Segunda Revolução Industrial e pelos grandes monopólios, as potências buscaram insumos, mão de obra barata e mercados, usando discursos racistas de superioridade e 'missão civilizatória'."
@@ -1031,10 +1021,10 @@
           id: "his-5", quizId: "gerais", subject: "História",
           q: "Qual foi o resultado central da Conferência de Berlim (1885), reunida por Otto von Bismarck?",
           options: [
-            "Consolidou a partilha da África entre as potências europeias, impondo fronteiras artificiais sem respeitar as divisões culturais locais",
-            "Garantiu a independência imediata de todas as colônias africanas e asiáticas",
-            "Proibiu qualquer presença europeia no continente africano",
-            "Criou o regime do Apartheid na América do Norte"
+            "Consolidou a partilha do continente africano entre as potências europeias por meio de fronteiras artificiais traçadas segundo interesses imperialistas, desrespeitando as divisões culturais locais",
+            "Estabeleceu um cronograma de descolonização imediata da África e da Ásia, reconhecendo a soberania política das lideranças étnicas tradicionais",
+            "Proibiu a presença militar e comercial de países europeus na África Austral e Oriental, garantindo a neutralidade econômica do continente",
+            "Criou uma união aduaneira entre os Estados africanos para impedir a entrada de manufaturados vindos da Segunda Revolução Industrial"
           ],
           correct: 0,
           exp: "A Conferência de Berlim (1885) formalizou a partilha imperialista da África segundo interesses europeus, desconsiderando as identidades étnicas e culturais locais."
@@ -1043,10 +1033,10 @@
           id: "his-6", quizId: "gerais", subject: "História",
           q: "Como os povos da África e da Ásia reagiram à dominação imperialista?",
           options: [
-            "Na África organizaram resistências armadas e simbólicas em quase todas as regiões; na Ásia houve forte oposição nacionalista em impérios como a Índia (sob domínio britânico) e a China",
-            "Aceitaram passivamente a ocupação sem qualquer levante ou oposição",
-            "A resistência ocorreu apenas na França durante o Salão dos Recusados",
-            "Nenhuma potência europeia tentou dominar a Índia ou a China"
+            "Na África organizaram diversas formas de resistência armada e simbólica em quase todas as regiões; na Ásia enfrentaram o avanço estrangeiro com forte oposição nacionalista em impérios como a Índia e a China",
+            "Submeteram-se de forma pacífica e consensual à administração europeia, sem registrar levantes armados ou movimentos nacionalistas relevantes",
+            "Limitaram-se a assinar tratados comerciais favoráveis às metrópoles, transferindo voluntariamente o controle de seus territórios às potências ocidentais",
+            "Reagiram apenas por meio de embargos econômicos decretados na Conferência de Berlim contra a Índia britânica e o Japão Meiji"
           ],
           correct: 0,
           exp: "A dominação imperialista foi amplamente contestada por meio de resistências armadas e simbólicas na África e de movimentos nacionalistas na Ásia, como na Índia e na China."
@@ -1055,10 +1045,10 @@
           id: "his-7", quizId: "gerais", subject: "História",
           q: "O que foi a ideologia do Destino Manifesto durante a Marcha para o Oeste nos Estados Unidos e quais foram suas consequências para os povos indígenas?",
           options: [
-            "A crença na missão divina de ocupar e 'civilizar' o continente rumo ao Pacífico, movida por terras, ouro e prata, gerando forte resistência e repressão aos povos indígenas (como sioux, apaches e comanches)",
-            "Um tratado de devolução de terras aos povos indígenas sioux, apaches e comanches",
-            "Uma lei que proibia a expansão territorial estadunidense além da costa atlântica",
-            "A política de isolamento feudal adotada pelo Japão no século XVII"
+            "A crença na missão divina de ocupar e 'civilizar' o continente rumo ao Pacífico em busca de terras, ouro e prata, provocando intensa repressão e conflitos com povos indígenas como sioux, apaches e comanches",
+            "Uma política pacifista de demarcação permanente de terras indígenas que impediu a exploração de ouro e prata no oeste estadunidense",
+            "Um acordo diplomático firmado com a Europa para limitar a expansão territorial dos Estados Unidos exclusivamente às treze colônias da costa atlântica",
+            "A doutrina japonesa que justificou o isolamento feudal do xogunato Tokugawa diante da chegada de navios estrangeiros"
           ],
           correct: 0,
           exp: "O Destino Manifesto justificou a expansão dos EUA até o Pacífico em busca de terras e metais preciosos, resultando em intensa repressão e conflitos com nações indígenas."
@@ -1067,10 +1057,10 @@
           id: "his-8", quizId: "gerais", subject: "História",
           q: "Como se articulavam a Doutrina Monroe (1823) e a política do Big Stick na expansão dos Estados Unidos?",
           options: [
-            "A Doutrina Monroe ('a América para os americanos') buscava afastar interferências europeias no continente, enquanto o Big Stick marcou postura imperialista com domínio sobre áreas como Havaí, Porto Rico, Cuba e Filipinas",
-            "Ambas defendiam que países europeus deveriam recolonizar o continente americano",
-            "A Doutrina Monroe foi assinada na Conferência de Berlim por Bismarck",
-            "O Big Stick limitava-se à agricultura interna sem ações no Caribe ou Pacífico"
+            "A Doutrina Monroe ('a América para os americanos') buscava afastar interferências europeias no continente, enquanto o Big Stick consolidou uma postura abertamente imperialista sobre áreas como Havaí, Porto Rico, Cuba e Filipinas",
+            "A Doutrina Monroe defendia a recolonização europeia da América Latina, ao passo que o Big Stick determinava a retirada militar estadunidense do Caribe e do Pacífico",
+            "Ambas as políticas restringiam a atuação econômica dos Estados Unidos ao mercado interno, proibindo intervenções externas no século XIX",
+            "A Doutrina Monroe foi formulada por Otto von Bismarck em 1885 e aplicada pelo Big Stick durante a Unificação Alemã"
           ],
           correct: 0,
           exp: "A Doutrina Monroe (1823) buscou afirmar a hegemonia estadunidense nas Américas frente à Europa, e o Big Stick consolidou o imperialismo dos EUA sobre Havaí, Porto Rico, Cuba e Filipinas."
@@ -1079,10 +1069,10 @@
           id: "his-9", quizId: "gerais", subject: "História",
           q: "Quais grupos entraram em confronto na Guerra Civil Americana (1861–1865), também chamada de Guerra de Secessão, e qual foi o principal ponto de discórdia?",
           options: [
-            "Os estados industrializados do Norte contra os estados agrários e escravistas do Sul, tendo a manutenção da escravidão como principal ponto de discórdia",
-            "A Prússia contra a Áustria pelo controle da península itálica",
-            "O Japão contra a China pela abertura dos portos de Tóquio",
-            "A África do Sul contra a Tunísia pelo controle do Saara"
+            "Os estados industrializados do Norte enfrentaram os estados agrários e escravistas do Sul, tendo a manutenção da escravidão como principal eixo de discórdia política, econômica e social",
+            "As colônias do litoral atlântico enfrentaram o Império Britânico pela independência política, tendo a cobrança de impostos sobre o chá como única causa do conflito",
+            "Os estados agrários do Norte lutaram contra o Sul industrializado para impedir a abertura dos portos ao comércio com o Japão da Era Meiji",
+            "As nações indígenas sioux e apaches uniram-se aos estados do Sul para restaurar o regime colonial espanhol no oeste estadunidense"
           ],
           correct: 0,
           exp: "A Guerra Civil Americana (1861–1865) opôs o Norte industrializado ao Sul agrário e escravista, sendo a manutenção da escravidão o eixo central do conflito."
@@ -1091,10 +1081,10 @@
           id: "his-10", quizId: "gerais", subject: "História",
           q: "O que ocorreu no Japão a partir da chegada da frota de Matthew C. Perry (1853) e da implantação da Era Meiji após o xogunato Tokugawa (1603–1868)?",
           options: [
-            "A abertura forçada dos portos e tratados desiguais levaram à Era Meiji, um rápido processo de modernização política, econômica e industrial que transformou o Japão em potência militar e expansionista na Ásia",
-            "O Japão reforçou o isolamento feudal por mais trezentos anos sem se industrializar",
-            "O país abandonou todas as suas indústrias e tornou-se colônia da Itália",
-            "O imperador Meiji aboliu o exército e entregou o território aos EUA"
+            "A abertura forçada dos portos e a assinatura de tratados desiguais levaram à Era Meiji, um rápido processo de modernização política, econômica e industrial que transformou o Japão em potência militar e expansionista na Ásia",
+            "O governo japonês fortaleceu a estrutura feudal do xogunato Tokugawa e fechou definitivamente todos os portos ao comércio internacional por mais dois séculos",
+            "O arquipélago japonês foi anexado formalmente como colônia dos Estados Unidos, perdendo sua soberania e interrompendo sua industrialização",
+            "A Era Meiji promoveu a desmilitarização completa do país e a substituição das indústrias por uma economia exclusivamente feudal e agrária"
           ],
           correct: 0,
           exp: "Diante da pressão ocidental iniciada com Matthew C. Perry em 1853, o Japão superou o isolamento feudal do xogunato Tokugawa e promoveu na Era Meiji uma rápida modernização industrial e militar."
@@ -1105,10 +1095,10 @@
           id: "lp-1", quizId: "gerais", subject: "Língua Portuguesa",
           q: "Qual é o objetivo dos textos de divulgação científica e quais estratégias auxiliam na compreensão de seus termos técnicos?",
           options: [
-            "Tornar descobertas e avanços científicos acessíveis ao público leigo, exigindo estratégias como consulta a glossários e identificação do contexto",
-            "Substituir dados científicos por opiniões sem fundamento e proibir explicações",
-            "Restringir o acesso do conhecimento apenas a cientistas especializados",
-            "Eliminar qualquer substantivo ou termo técnico do texto"
+            "Tornar descobertas e avanços da ciência mais acessíveis ao público leigo, exigindo estratégias de leitura como a consulta a glossários e a identificação do contexto",
+            "Substituir o rigor conceitual da pesquisa acadêmica por relatos ficcionais sem compromisso com a precisão das informações",
+            "Restringir a circulação dos resultados científicos exclusivamente aos especialistas da área por meio de vocabulário hermético",
+            "Eliminar qualquer explicação contextual ou definição de termos especializados para manter a estrutura rígida dos artigos de lei"
           ],
           correct: 0,
           exp: "Textos de divulgação científica tornam o saber científico acessível ao público não especializado, apoiando-se em estratégias como análise contextual e consulta a glossários."
@@ -1117,10 +1107,10 @@
           id: "lp-2", quizId: "gerais", subject: "Língua Portuguesa",
           q: "De que maneira a seleção lexical opera na construção de textos informativos?",
           options: [
-            "O autor escolhe e relaciona palavras de diferentes classes gramaticais (substantivos, adjetivos, verbos) para expressar o significado desejado e gerar efeitos de sentido",
-            "As palavras são escolhidas ao acaso sem preocupação com o interlocutor",
-            "Utilizam-se apenas verbos no infinitivo sem substantivos ou adjetivos",
-            "Evita-se qualquer relação semântica entre os termos do parágrafo"
+            "O autor escolhe e relaciona palavras de diferentes classes gramaticais (como substantivos, adjetivos e verbos) para expressar o significado desejado e produzir determinados efeitos de sentido no interlocutor",
+            "O redator seleciona vocábulos de maneira aleatória e neutra, uma vez que a escolha entre diferentes substantivos ou verbos não altera o efeito de sentido",
+            "A construção informativa limita-se ao emprego de verbos no infinitivo, evitando adjetivos para impedir qualquer relação semântica entre os enunciados",
+            "A seleção lexical consiste exclusivamente na substituição de termos da norma culta por expressões coloquiais em seminários acadêmicos"
           ],
           correct: 0,
           exp: "Na seleção lexical, o produtor do texto escolhe e articula substantivos, adjetivos, verbos e outras classes para construir sentidos precisos e adequados ao propósito comunicativo."
@@ -1129,10 +1119,10 @@
           id: "lp-3", quizId: "gerais", subject: "Língua Portuguesa",
           q: "Qual função sintática e semântica as orações subordinadas adverbiais exercem em períodos compostos por subordinação?",
           options: [
-            "Funcionam como adjuntos adverbiais da oração principal, expressando circunstâncias como tempo, causa, finalidade, condição e concessão",
-            "Substituem o título do texto e não mantêm relação com a oração principal",
-            "Atuam exclusivamente como sujeito simples de verbos de ligação",
-            "Servem apenas para separar sílabas poéticas em poemas"
+            "Funcionam como adjuntos adverbiais de uma oração principal, expressando circunstâncias (como tempo, causa, finalidade, condição e concessão) que orientam o sentido dos enunciados",
+            "Atuam como sujeito simples ou objeto direto obrigatório de verbos transitivos, dispensando qualquer relação circunstancial com a oração principal",
+            "Exercem exclusivamente a função de aposto explicativo entre vírgulas, sem estabelecer relações lógicas de causa, condição ou finalidade",
+            "Substituem as conjunções subordinativas do período, impedindo a articulação lógica entre os fatos apresentados em textos científicos"
           ],
           correct: 0,
           exp: "As orações subordinadas adverbiais desempenham a função de adjunto adverbial da oração principal, indicando circunstâncias que esclarecem o sentido dos enunciados."
@@ -1141,10 +1131,10 @@
           id: "lp-4", quizId: "gerais", subject: "Língua Portuguesa",
           q: "Qual é a utilidade dos fichamentos e dos textos topicalizados no campo das práticas de estudo e pesquisa?",
           options: [
-            "Estruturam e sintetizam as ideias principais de textos escolares, acadêmicos e científicos, facilitando o estudo e a consulta de informações",
-            "Dificultam a revisão dos conteúdos por misturar ideias sem hierarquia",
-            "Só podem ser aplicados em artigos de lei, nunca em estudos escolares",
-            "Dispensam a identificação dos conceitos centrais do texto"
+            "Estruturam e sintetizam as ideias principais de textos escolares, acadêmicos e científicos, facilitando o estudo, a organização e a consulta rápida de informações",
+            "Substituem a leitura analítica das fontes originais por parágrafos corridos extensos e sem hierarquia temática",
+            "Aplicam-se exclusivamente à redação de artigos de lei, sendo inadequados para a síntese de textos científicos ou preparação de seminários",
+            "Têm como finalidade ocultar as teses centrais do autor original para estimular interpretações subjetivas sem base textual"
           ],
           correct: 0,
           exp: "A organização em tópicos e a produção de fichamentos sintetizam as ideias principais, tornando o estudo, a revisão e a consulta muito mais eficazes."
@@ -1153,10 +1143,10 @@
           id: "lp-5", quizId: "gerais", subject: "Língua Portuguesa",
           q: "O que significa 'modalização' na produção ou análise de um enunciado?",
           options: [
-            "A relação que o enunciador estabelece com o que diz, explicitando avaliações, julgamentos ou sentimentos (como felicidade, tristeza ou crítica) sobre o conteúdo",
-            "A contagem obrigatória de vinte linhas por parágrafo",
-            "A eliminação de qualquer ponto de vista ou avaliação do autor",
-            "A troca de todos os conectivos por sinais matemáticos"
+            "A relação que o enunciador estabelece com o que diz, explicitando avaliações, julgamentos ou sentimentos (como felicidade, tristeza ou crítica) sobre o conteúdo comunicado",
+            "A organização gráfica do texto em tópicos numerados ou parágrafos corridos sem qualquer marca de subjetividade ou julgamento",
+            "A neutralização completa do ponto de vista do autor por meio da supressão de adjetivos e orações subordinadas adverbiais",
+            "O processo de conversão automática de um texto oral informal em um artigo jurídico submetido à norma culta"
           ],
           correct: 0,
           exp: "Na modalização, o enunciador marca seu posicionamento, avaliação, julgamento ou sentimento diante do conteúdo comunicado, recurso frequentemente apoiado por orações adverbiais."
@@ -1165,10 +1155,10 @@
           id: "lp-6", quizId: "gerais", subject: "Língua Portuguesa",
           q: "Como as orações adverbiais atuam na argumentação em contextos formais e informais?",
           options: [
-            "Funcionam como recursos argumentativos para defender pontos de vista, justificar ideias e persuadir o interlocutor",
-            "Impedem a apresentação de justificativas em debates e artigos",
-            "Anulam a relação de causa e consequência entre as ideias",
-            "São usadas apenas para indicar pluralidade dos substantivos"
+            "Funcionam como recursos argumentativos estratégicos para defender pontos de vista, justificar ideias e persuadir o interlocutor por meio de relações lógicas",
+            "Atuam apenas como elementos decorativos do período, sem interferir na defesa de teses ou na justificativa de argumentos",
+            "Impedem a progressão temática do texto argumentativo ao isolar a oração principal de qualquer justificativa causal ou concessiva",
+            "Restringem-se a textos poéticos informais, sendo evitadas em seminários e artigos acadêmicos por comprometerem a objetividade"
           ],
           correct: 0,
           exp: "As orações adverbiais articulam relações lógicas (causa, condição, concessão, finalidade) fundamentais para justificar teses e persuadir o interlocutor."
@@ -1177,10 +1167,10 @@
           id: "lp-7", quizId: "gerais", subject: "Língua Portuguesa",
           q: "O que é indispensável na compreensão e produção de textos formais, como seminários e artigos acadêmicos?",
           options: [
-            "O domínio das normas da norma culta da língua portuguesa, incluindo o emprego adequado das diferentes grafias e usos dos 'porquês'",
-            "O uso predominante de gírias e abreviações informais de redes sociais",
-            "A ausência de conectivos e de concordância verbal",
-            "A escrita sem qualquer revisão ortográfica"
+            "O domínio das regras gramaticais da norma culta da língua portuguesa, incluindo o emprego adequado das diferentes grafias e usos dos 'porquês'",
+            "O predomínio de marcas da oralidade espontânea e de abreviações informais para aproximar o discurso acadêmico do público leigo",
+            "A dispensa das convenções ortográficas da norma culta sempre que o texto estiver estruturado em formato de tópicos ou fichamentos",
+            "A substituição sistemática das orações subordinadas adverbiais por frases nominais curtas sem conectivos lógicos"
           ],
           correct: 0,
           exp: "Gêneros formais como seminários e artigos exigem domínio da norma culta, abrangendo concordância, coesão e o emprego correto dos quatro tipos de 'porquês'."
@@ -1189,10 +1179,10 @@
           id: "lp-8", quizId: "gerais", subject: "Língua Portuguesa",
           q: "Assinale a alternativa em que o uso de 'por que' e 'porque' está inteiramente correto segundo a norma culta:",
           options: [
-            "Não entendemos por que a pesquisa atrasou, mas o professor explicou porque faltaram fontes.",
-            "Não entendemos porque a pesquisa atrasou, mas o professor explicou por que faltaram fontes.",
-            "Eis o motivo porque todos saíram cedo por que?",
-            "O fichamento ficou ótimo por quê os tópicos foram bem organizados."
+            "Não entendemos por que a pesquisa atrasou, mas o professor explicou porque faltaram fontes documentais revisadas.",
+            "Não entendemos porque a pesquisa atrasou, mas o professor explicou por que faltaram fontes documentais revisadas.",
+            "Eis o motivo porque todos entregaram o fichamento atrasado na apresentação do seminário por que?",
+            "O artigo de divulgação científica ficou claro por quê os termos técnicos foram explicados no glossário."
           ],
           correct: 0,
           exp: "'Por que' (separado, sem acento) equivale a 'por qual motivo/razão'; 'porque' (junto, sem acento) introduz explicação ou causa."
@@ -1201,10 +1191,10 @@
           id: "lp-9", quizId: "gerais", subject: "Língua Portuguesa",
           q: "Em qual situação deve-se empregar 'por quê' (separado e com acento circunflexo)?",
           options: [
-            "No final de frases (interrogativas diretas ou indiretas) ou isolado antes de sinal de pontuação",
-            "Como substantivo antecedido pelo artigo 'o' (ex.: 'o por quê')",
-            "No início de respostas explicativas em substituição a 'pois'",
-            "Antes de verbos no infinitivo no meio da oração afirmativa"
+            "No final de frases (interrogativas diretas ou indiretas) ou em posição isolada imediatamente antes de um sinal de pontuação",
+            "Quando funciona como substantivo antecedido por artigo definido ou pronome (como em 'ninguém soube o por quê')",
+            "No início de orações subordinadas adverbiais causais, substituindo conjunções explicativas como 'pois' ou 'já que'",
+            "No meio de períodos afirmativos quando puder ser substituído pela expressão 'pelo qual' ou 'pelos quais'"
           ],
           correct: 0,
           exp: "'Por quê' recebe acento circunflexo quando aparece no fim da frase ou antes de pontuação final, ponto de interrogação ou exclamação."
@@ -1213,10 +1203,10 @@
           id: "lp-10", quizId: "gerais", subject: "Língua Portuguesa",
           q: "Qual alternativa apresenta o emprego correto de 'porquê' (junto e com acento circunflexo)?",
           options: [
-            "Ninguém explicou o porquê da alteração no cronograma do seminário.",
-            "Porquê você não trouxe o fichamento pronto hoje?",
-            "A aula foi adiada porquê houve manutenção na sala.",
-            "Você saiu mais cedo da apresentação porquê?"
+            "Ninguém explicou o porquê da alteração repentina no cronograma de apresentação dos seminários.",
+            "Porquê os textos de divulgação científica precisam adaptar o vocabulário especializado para o público leigo?",
+            "A revisão bibliográfica foi concluída rapidamente porquê a equipe organizou todas as ideias em fichamentos.",
+            "Você ainda não entregou a versão final do artigo acadêmico porquê?"
           ],
           correct: 0,
           exp: "'Porquê' (junto e com acento) é um substantivo que significa 'motivo' ou 'razão', geralmente acompanhado de artigo ou determinante ('o porquê')."
@@ -1227,10 +1217,10 @@
           id: "art-1", quizId: "gerais", subject: "Arte",
           q: "Qual é o museu criado por Dom João VI que sofreu um incêndio em 2018, perdendo parte do seu acervo?",
           options: [
-            "Museu Nacional, no Rio de Janeiro",
-            "Museu de Arte de São Paulo (MASP)",
-            "Museu Imperial de Petrópolis",
-            "Pinacoteca do Estado de São Paulo"
+            "O Museu Nacional, fundado no Rio de Janeiro em 1818 (como Museu Real), que perdeu parcela expressiva de seu acervo histórico e científico no incêndio de 2018",
+            "O Museu de Arte de São Paulo (MASP), criado no século XIX por Dom João VI e atingido por um incêndio em sua pinacoteca em 2018",
+            "O Museu Imperial de Petrópolis, instituído por Dom João VI no Rio de Janeiro e destruído parcialmente por um incêndio em 2018",
+            "A Pinacoteca do Estado de São Paulo, fundada pela família real portuguesa em 1818 e interditada após o incêndio de 2018"
           ],
           correct: 0,
           exp: "Fundado por Dom João VI em 1818 (como Museu Real), o Museu Nacional, no Rio de Janeiro, foi atingido por um grande incêndio em 2018 que destruiu parcela expressiva de seu acervo."
@@ -1239,10 +1229,10 @@
           id: "art-2", quizId: "gerais", subject: "Arte",
           q: "Qual era a função da Galeria Domus no circuito artístico brasileiro?",
           options: [
-            "Divulgar, expor e comercializar obras da arte moderna em São Paulo (a partir de 1947), apoiando artistas modernistas e consolidando o mercado de arte moderna",
-            "Funcionar apenas como sala de concertos barrocos sem exposição de artes visuais",
-            "Restringir-se a cópias de pinturas acadêmicas europeias do século XVII",
-            "Servir exclusivamente como teatro de ópera italiana"
+            "Atuar como espaço pioneiro em São Paulo (a partir de 1947) dedicado a expor, divulgar e comercializar obras modernistas, consolidando o mercado de arte moderna no Brasil",
+            "Funcionar como academia oficial responsável por aplicar júris rígidos e premiar exclusivamente pinturas neoclássicas do século XIX",
+            "Servir como sala de concertos barrocos voltada à apresentação de óperas italianas da Camerata Fiorentina sem vínculo com artes visuais",
+            "Operar como arquivo público destinado à guarda de documentos imperiais após o incêndio do Museu Nacional"
           ],
           correct: 0,
           exp: "A Galeria Domus desempenhou papel pioneiro no circuito artístico moderno brasileiro ao expor, promover e comercializar obras modernistas, fortalecendo o mercado de arte moderna."
@@ -1251,10 +1241,10 @@
           id: "art-3", quizId: "gerais", subject: "Arte",
           q: "Qual Bienal de arte foi criada em 1895 e se tornou referência na divulgação da arte moderna?",
           options: [
-            "Bienal de Veneza",
-            "Bienal de São Paulo",
-            "Bienal do Mercosul",
-            "Bienal de Havana"
+            "A Bienal de Veneza, fundada na Itália em 1895 e consolidada como um dos principais eventos internacionais de difusão da arte moderna e contemporânea",
+            "A Bienal Internacional de São Paulo, criada em 1895 como desdobramento direto do Salão dos Recusados de Paris",
+            "A Bienal do Mercosul, inaugurada em 1895 para promover exclusivamente a escultura acadêmica renascentista",
+            "A Bienal de Havana, fundada em 1895 com o objetivo de substituir os salões oficiais das academias francesas"
           ],
           correct: 0,
           exp: "Criada em 1895 na Itália, a Bienal de Veneza consolidou-se como uma das mais importantes referências internacionais para a divulgação da arte moderna e contemporânea."
@@ -1263,10 +1253,10 @@
           id: "art-4", quizId: "gerais", subject: "Arte",
           q: "Qual sequência representa a evolução histórica dos espaços de apresentação musical?",
           options: [
-            "Igrejas e cortes palacianas -> salas de concerto públicas (com cobrança de entrada, como no século XVIII) -> teatros e casas de espetáculo -> grandes arenas/estádios e plataformas digitais",
-            "Plataformas de streaming -> grandes estádios -> salas de concerto -> igrejas medievais",
-            "Estádios de futebol -> cortes renascentistas -> teatros líricos -> igrejas",
-            "Cinemas mudos -> cortes reais -> salas de concerto -> praças medievais"
+            "Igrejas e cortes palacianas -> salas de concerto públicas com cobrança de entrada (século XVIII) -> teatros e casas de espetáculo -> grandes arenas/estádios e plataformas digitais",
+            "Plataformas digitais de streaming -> grandes estádios e arenas -> salas de concerto burguesas -> igrejas e cortes palacianas",
+            "Teatros líricos modernos -> estúdios de gravação fonográfica -> cortes renascentistas -> praças públicas medievais",
+            "Cinemas sonoros -> salas de concerto exclusivas do século XVIII -> arenas esportivas -> templos e cortes reais"
           ],
           correct: 0,
           exp: "Historicamente, a apresentação musical migrou de espaços religiosos e palacianos para salas de concerto pagas (no século XVIII, voltadas ao público burguês), teatros, grandes arenas e mídias digitais."
@@ -1275,10 +1265,10 @@
           id: "art-5", quizId: "gerais", subject: "Arte",
           q: "Qual é o espetáculo de 1927 escrito por Oscar Hammerstein II (com música de Jerome Kern) que estabeleceu as bases do musical moderno?",
           options: [
-            "Show Boat",
-            "Eurídice",
-            "Dafne",
-            "O Guarani"
+            "Show Boat, obra de 1927 que integrou enredo dramático consistente, canções e dança, estabelecendo os fundamentos do teatro musical moderno",
+            "Eurídice, composição de 1927 criada na Camerata Fiorentina para resgatar o teatro trágico da Grécia Antiga",
+            "Dafne, espetáculo de 1927 em que a narrativa era conduzida exclusivamente pelo canto lírico sem diálogos falados",
+            "O Guarani, musical de 1927 escrito por Oscar Hammerstein II e arranjado por Pixinguinha para a era do rádio"
           ],
           correct: 0,
           exp: "Estreado em 1927, 'Show Boat', com libreto e letras de Oscar Hammerstein II, estabeleceu as bases do teatro musical moderno ao integrar enredo dramático sério, música e dança."
@@ -1287,10 +1277,10 @@
           id: "art-6", quizId: "gerais", subject: "Arte",
           q: "Qual profissional é responsável pela criação de ruídos para filmes utilizando objetos físicos e gravações sincronizadas à imagem?",
           options: [
-            "O artista de Foley (sonoplasta de Foley)",
-            "O curador de bienal",
-            "O cenógrafo teatral",
-            "O restaurador de pintura"
+            "O artista de Foley (sonoplasta de Foley), que recria e grava em estúdio sons cotidianos com objetos diversos sincronizados às cenas audiovisuais",
+            "O maestro arranjador, encarregado de reescrever a harmonia e a instrumentação da música-tema sem produzir efeitos sonoros",
+            "O curador de exposição, responsável por selecionar obras plásticas e organizar o catálogo crítico de uma bienal",
+            "O libretista de ópera, que escreve os textos cantados pelos solistas e pelo coro antes da composição da partitura"
           ],
           correct: 0,
           exp: "O artista de Foley reproduz e grava ruídos cotidianos e efeitos sonoros em estúdio com objetos diversos, sincronizando-os às cenas de filmes e séries."
@@ -1299,135 +1289,13 @@
           id: "art-7", quizId: "gerais", subject: "Arte",
           q: "O que é leitmotiv, recurso amplamente utilizado por Richard Wagner?",
           options: [
-            "Um tema ou motivo musical recorrente associado a um personagem, ideia, objeto ou sentimento ao longo da narrativa dramática",
-            "Um tipo de pincelada usada pelos artistas do Salão Oficial de Paris",
-            "A proibição de qualquer repetição melódica durante uma ópera",
-            "Um equipamento eletrônico usado para medir largadas no atletismo"
+            "Um tema ou motivo musical recorrente associado a um personagem, ideia, objeto ou sentimento que retorna e se transforma ao longo da obra dramática",
+            "Uma técnica de pintura ao ar livre empregada pelos artistas recusados nos salões oficiais franceses do século XIX",
+            "A regra dramática que proíbe a repetição de qualquer célula melódica ou harmônica durante uma ópera completa",
+            "O conjunto de ruídos incidentais gravados em estúdio com objetos físicos para substituir os diálogos no cinema"
           ],
           correct: 0,
           exp: "O leitmotiv ('motivo condutor'), desenvolvido por Richard Wagner, é uma frase ou tema musical recorrente vinculado a personagens, situações ou ideias que reaparece e se transforma na obra."
-        },
-
-        // ================= ATLETISMO E TREINAMENTO ESPORTIVO (10) =================
-        {
-          id: "atl-1", quizId: "atletismo", subject: "Atletismo",
-          q: "Em uma prova de revezamento 4x100 m, o segundo corredor inicia a corrida dentro da zona de troca e recebe o bastão sem olhar para trás. Qual situação resulta em desclassificação da equipe nessa transição?",
-          options: [
-            "O corredor que entrega o bastão desacelera nos últimos 5 metros antes da linha final da zona",
-            "O bastão é entregue e agarrado completamente fora da zona delimitada de troca",
-            "O receptor estende o braço para trás com a palma aberta enquanto acelera",
-            "Os dois atletas mantêm velocidades semelhantes durante os primeiros 15 metros da zona"
-          ],
-          correct: 1,
-          exp: "No revezamento 4x100 m, a troca ocorre em zona regulamentada específica e às cegas; concluir a passagem fora da área delimitada invalida a troca."
-        },
-        {
-          id: "atl-2", quizId: "atletismo", subject: "Atletismo",
-          q: "Durante o salto triplo, se o atleta iniciar a prova impulsionando-se com o pé direito, qual será a sequência correta da segunda (step) e da terceira fase (jump)?",
-          options: [
-            "Queda com o pé direito no step e impulsão com o pé direito no jump",
-            "Queda com os dois pés no step e impulsão com o pé esquerdo no jump",
-            "Queda com o pé esquerdo no step e impulsão com o pé esquerdo no jump",
-            "Queda com o pé esquerdo no step e impulsão com os dois pés no jump"
-          ],
-          correct: 2,
-          exp: "Na sequência hop, step and jump, o impulso inicial e a queda do hop usam o mesmo pé (direito), o step aterrissa no pé oposto (esquerdo) e o jump impulsiona a partir desse pé oposto (esquerdo) para a caixa de areia."
-        },
-        {
-          id: "atl-3", quizId: "atletismo", subject: "Atletismo",
-          q: "Um atleta amador trabalha em tempo integral, dorme cerca de 5 horas por noite e decide dobrar o volume de treinos semanais antes de uma prova. Com base nos fatores de treinamento esportivo, qual é o risco mais provável?",
-          options: [
-            "Aumento imediato da velocidade de reação abaixo de 0,100 s",
-            "Redução da necessidade de sono por adaptação metabólica",
-            "Desenvolvimento de overtraining por soma de estresse diário e recuperação insuficiente",
-            "Eliminação da fadiga muscular durante provas de meio-fundo"
-          ],
-          correct: 2,
-          exp: "Atletas amadores somam demandas de trabalho, estudo ou rotina familiar ao treino; elevar muito a carga sem recuperar favorece o overtraining."
-        },
-        {
-          id: "atl-4", quizId: "atletismo", subject: "Atletismo",
-          q: "Nas provas de 800 m e 1.500 m em pista, os competidores começam em raias individuais e, após o trecho inicial, passam a ocupar a parte mais interna da pista. Qual é o principal motivo tático e regulamentar dessa dinâmica?",
-          options: [
-            "Permitir que todos usem blocos de partida em toda a extensão da prova",
-            "Evitar ultrapassagens durante toda a corrida e manter distâncias fixas",
-            "Reduzir a distância percorrida na curva interna e favorecer o posicionamento tático no pelotão",
-            "Transformar a prova de pista em percurso de rua com distância superior a 20 km"
-          ],
-          correct: 2,
-          exp: "Nas provas de meio-fundo (como 800 m e 1.500 m), a convergência para a raia interna após o início visa encurtar o trajeto nas curvas e disputar posição tática."
-        },
-        {
-          id: "atl-5", quizId: "atletismo", subject: "Atletismo",
-          q: "Compare o lançamento de dardo com o lançamento de disco no que diz respeito à fase de preparação e impulsão. Qual afirmação descreve corretamente essa diferença?",
-          options: [
-            "O dardo utiliza corrida em linha reta e passada cruzada, enquanto o disco é lançado a partir de um círculo",
-            "O disco utiliza corrida em linha reta, enquanto o dardo é executado dentro de um círculo com giro completo",
-            "Ambas as provas exigem corrida de aproximação de 40 metros sobre piso emborrachado",
-            "Nenhuma das provas permite passada cruzada antes da liberação do implemento"
-          ],
-          correct: 0,
-          exp: "O lançamento de dardo emprega corrida de aproximação em linha reta com passada cruzada (crossover), ao passo que o disco é lançado a partir de um círculo delimitado."
-        },
-        {
-          id: "atl-6", quizId: "atletismo", subject: "Atletismo",
-          q: "Em uma competição oficial de 100 m rasos, o sensor dos blocos de partida registra um tempo de reação de 0,084 segundo para um dos corredores. O que acontece segundo a regra das provas de velocidade?",
-          options: [
-            "Ele recebe um acréscimo de 0,084 segundo no tempo final da prova",
-            "A largada é anulada por queima e o atleta é desclassificado imediatamente",
-            "Ele é realocado para a raia externa na bateria seguinte",
-            "A prova continua válida e o tempo é ajustado na chegada"
-          ],
-          correct: 1,
-          exp: "Tempo de reação inferior a 0,100 segundo nas provas de velocidade indica antecipação ao tiro de largada, caracterizando queima de largada e desclassificação imediata."
-        },
-        {
-          id: "atl-7", quizId: "atletismo", subject: "Atletismo",
-          q: "No salto em altura, a técnica Fosbury Flop tornou-se padrão internacional por alterar a forma como o corpo transpassa o sarrafo. Qual característica define essa técnica?",
-          options: [
-            "Impulsão com os dois pés juntos a partir de uma caixa de madeira",
-            "Transposição de frente com o auxílio de uma vara flexível",
-            "Passagem de costas sobre o sarrafo com arqueamento da coluna e pernas por último",
-            "Corrida em zigue-zague seguida de queda sentada no colchão"
-          ],
-          correct: 2,
-          exp: "O Fosbury Flop consiste em passar o corpo de costas sobre o sarrafo, arqueando a coluna e elevando as pernas por último, o que otimiza a relação com o centro de gravidade."
-        },
-        {
-          id: "atl-8", quizId: "atletismo", subject: "Atletismo",
-          q: "Um atleta de salto em distância realiza uma corrida de aproximação e, ao impulsionar-se na tábua, o pé toca a faixa de plasticina situada logo após a linha de impulsão. Como esse salto é classificado?",
-          options: [
-            "Válido, desde que a aterrisagem ocorra com os dois pés na areia",
-            "Válido com desconto de 10 centímetros na marca final",
-            "Inválido (queimado) por ultrapassar o limite da tábua de impulsão",
-            "Repetido ao final da série caso o atleta não tenha completado três saltos"
-          ],
-          correct: 2,
-          exp: "Tocar a plasticina ou o indicador além da borda da tábua de impulsão torna o salto queimado e inválido na arbitragem."
-        },
-        {
-          id: "atl-9", quizId: "atletismo", subject: "Atletismo",
-          q: "Qual distância oficial corresponde exatamente a uma maratona, em contraste com a meia maratona de 21,0975 km?",
-          options: [
-            "10,000 metros",
-            "25,000 km",
-            "42,195 km",
-            "50,000 km"
-          ],
-          correct: 2,
-          exp: "A distância oficial da maratona é de 42,195 km, enquanto 21,0975 km corresponde à meia maratona."
-        },
-        {
-          id: "atl-10", quizId: "atletismo", subject: "Atletismo",
-          q: "Qual diferença resume melhor a rotina de um atleta profissional em comparação à de um atleta amador?",
-          options: [
-            "O profissional treina apenas aos fins de semana e o amador faz treinos diários de 6 horas",
-            "O profissional dedica-se exclusivamente ao esporte e o amador concilia treinos com outras obrigações da vida",
-            "O profissional dispensa controle de carga e o amador não precisa de descanso",
-            "O profissional compete apenas em provas de rua e o amador apenas em pista coberta"
-          ],
-          correct: 1,
-          exp: "O atleta profissional tem o esporte como atividade principal e exclusiva, enquanto o amador equilibra os treinos com trabalho, estudos ou outras rotinas cotidianas."
         },
 
         // ================= LÍNGUA INGLESA — REVISÃO (10) =================
@@ -1435,10 +1303,10 @@
           id: "eng-1", quizId: "ingles", subject: "Língua Inglesa",
           q: "Associe corretamente as profissões em inglês ao seu significado em português: 'Plumber', 'Carpenter' e 'Architect'.",
           options: [
-            "Encanador, carpinteiro e arquiteto",
-            "Construtor, engenheiro e desenvolvedor",
-            "Encanador, engenheiro e construtor",
-            "Arquiteto, encanador e analista"
+            "Encanador ('Plumber'), carpinteiro ('Carpenter') e arquiteto ('Architect'), distinguindo-se de 'Builder' (construtor) e 'Engineer' (engenheiro)",
+            "Construtor ('Plumber'), engenheiro ('Carpenter') e desenvolvedor ('Architect'), termos ligados exclusivamente à área de tecnologia",
+            "Carpinteiro ('Plumber'), arquiteto ('Carpenter') e encanador ('Architect'), formando uma sequência invertida em relação ao inglês",
+            "Engenheiro ('Plumber'), construtor ('Carpenter') e analista de redes ('Architect'), profissões típicas do setor digital"
           ],
           correct: 0,
           exp: "No vocabulário de profissões: 'Plumber' significa encanador, 'Carpenter' significa carpinteiro e 'Architect' significa arquiteto (já 'Builder' é construtor e 'Engineer' é engenheiro)."
@@ -1447,10 +1315,10 @@
           id: "eng-2", quizId: "ingles", subject: "Língua Inglesa",
           q: "Qual alternativa apresenta a tradução correta dos adjetivos de personalidade: 'Responsible', 'Curious', 'Adventurous' e 'Relaxed'?",
           options: [
-            "Responsável, curioso, aventureiro e relaxado",
-            "Relaxado, aventureiro, responsável e curioso",
-            "Curioso, responsável, relaxado e chocado",
-            "Aventureiro, curioso, chocante e responsável"
+            "Responsável ('Responsible'), curioso ('Curious'), aventureiro ('Adventurous') e relaxado ('Relaxed')",
+            "Relaxado ('Responsible'), aventureiro ('Curious'), responsável ('Adventurous') e curioso ('Relaxed')",
+            "Curioso ('Responsible'), responsável ('Curious'), chocado ('Adventurous') e chocante ('Relaxed')",
+            "Aventureiro ('Responsible'), relaxado ('Curious'), curioso ('Adventurous') e responsável ('Relaxed')"
           ],
           correct: 0,
           exp: "'Responsible' = responsável, 'Curious' = curioso, 'Adventurous' = aventureiro e 'Relaxed' = relaxado."
@@ -1459,10 +1327,10 @@
           id: "eng-3", quizId: "ingles", subject: "Língua Inglesa",
           q: "Seguindo a ordem correta dos adjetivos em inglês (OPINION – SIZE – MATERIAL – NOUN), qual frase está gramaticalmente correta?",
           options: [
-            "A beautiful small leather bag",
-            "A leather small beautiful bag",
-            "A small leather beautiful bag",
-            "A beautiful leather small bag"
+            "A beautiful small leather bag (Opinion: 'beautiful' + Size: 'small' + Material: 'leather' + Noun: 'bag')",
+            "A leather small beautiful bag (Material + Size + Opinion + Noun, invertendo a hierarquia padrão do inglês)",
+            "A small leather beautiful bag (Size + Material + Opinion + Noun, colocando a opinião imediatamente antes do substantivo)",
+            "A beautiful leather small bag (Opinion + Material + Size + Noun, posicionando o material antes do tamanho)"
           ],
           correct: 0,
           exp: "A sequência correta antes do substantivo ('bag' - NOUN) é: opinião ('beautiful' - OPINION) + tamanho ('small' - SIZE) + material ('leather' - MATERIAL)."
@@ -1471,10 +1339,10 @@
           id: "eng-4", quizId: "ingles", subject: "Língua Inglesa",
           q: "Sobre o uso dos adjetivos terminados em -ED e -ING (como 'Shocked' e 'Shocking'), assinale a alternativa que completa corretamente: 'The news was _____, so everyone felt _____.'",
           options: [
-            "shocking / shocked",
-            "shocked / shocking",
-            "shocked / shocked",
-            "shocking / shocking"
+            "shocking / shocked — pois '-ing' descreve a característica do que provoca a sensação e '-ed' expressa como a pessoa se sente",
+            "shocked / shocking — pois '-ed' qualifica eventos ou notícias e '-ing' indica o estado emocional de quem recebe a informação",
+            "shocked / shocked — pois ambos os adjetivos terminados em '-ed' servem tanto para a causa quanto para o sentimento provocado",
+            "shocking / shocking — pois a terminação '-ing' substitui qualquer adjetivo participial na descrição de emoções humanas"
           ],
           correct: 0,
           exp: "Adjetivos com -ING ('shocking' = chocante) descrevem o que provoca a sensação (a notícia), enquanto -ED ('shocked' = chocado) expressa como a pessoa se sente."
@@ -1483,10 +1351,10 @@
           id: "eng-5", quizId: "ingles", subject: "Língua Inglesa",
           q: "No vocabulário ligado ao mercado de trabalho e tecnologia, o que significam 'Technological advances', 'Social media analyst' e 'App developer'?",
           options: [
-            "Avanços tecnológicos, analista de redes sociais e desenvolvedor de aplicativos",
-            "Trabalho manual, construtor civil e engenheiro elétrico",
-            "Avanços históricos, arquiteto de interiores e carpinteiro",
-            "Pensamento divergente, encanador e analista financeiro"
+            "Avanços tecnológicos ('Technological advances'), analista de redes sociais ('Social media analyst') e desenvolvedor de aplicativos ('App developer')",
+            "Trabalho artesanal ('Technological advances'), construtor civil ('Social media analyst') e engenheiro mecânico ('App developer')",
+            "Pensamento divergente ('Technological advances'), arquiteto urbano ('Social media analyst') e encanador ('App developer')",
+            "Hábitos do passado ('Technological advances'), carpinteiro ('Social media analyst') e jornalista impresso ('App developer')"
           ],
           correct: 0,
           exp: "'Job' = trabalho; 'Technological advances' = avanços tecnológicos; 'Social media analyst' = analista de redes sociais; 'App developer' = desenvolvedor de aplicativos."
@@ -1495,10 +1363,10 @@
           id: "eng-6", quizId: "ingles", subject: "Língua Inglesa",
           q: "What is Divergent Thinking (Pensamento Divergente)?",
           options: [
-            "É a capacidade de encontrar diferentes soluções para o mesmo problema utilizando a criatividade",
-            "É a memorização de uma única resposta padrão para problemas matemáticos",
-            "É a estrutura gramatical usada apenas para falar de hábitos no passado",
-            "É o nome dado a decisões imediatas tomadas no futuro com 'will'"
+            "É a capacidade cognitiva de explorar múltiplas possibilidades e encontrar diferentes soluções para o mesmo problema utilizando a criatividade",
+            "É a aplicação rígida de uma única fórmula padronizada para chegar sempre ao mesmo resultado sem variação criativa",
+            "É a regra gramatical da língua inglesa que determina a ordem fixa entre tamanho, material e substantivo",
+            "É o tempo verbal utilizado exclusivamente para descrever hábitos antigos que deixaram de ocorrer no presente"
           ],
           correct: 0,
           exp: "Divergent Thinking (pensamento divergente) é a habilidade de explorar múltiplas ideias e encontrar diferentes soluções criativas para um mesmo problema."
@@ -1507,10 +1375,10 @@
           id: "eng-7", quizId: "ingles", subject: "Língua Inglesa",
           q: "Quando usamos 'Will' (S + will + verb) e quando usamos 'Going to' (S + to be + going to + verb) para falar do futuro em inglês?",
           options: [
-            "'Will' expressa decisões imediatas, promessas e previsões (ex.: 'The sun will rise tomorrow'); 'Going to' expressa planos e intenções futuras (ex.: 'She is going to travel')",
-            "'Will' é usado exclusivamente para hábitos passados e 'Going to' para ações já concluídas ontem",
-            "'Going to' exige sempre o verbo principal terminado em -ing, enquanto 'Will' exige -ed",
-            "Ambos são usados apenas para indicar que alguém está se adaptando a uma rotina"
+            "'Will' expressa decisões imediatas, promessas e previsões (ex.: 'The sun will rise tomorrow'), enquanto 'Going to' expressa planos e intenções futuras (ex.: 'She is going to travel')",
+            "'Will' é empregado exclusivamente para planos previamente organizados, enquanto 'Going to' indica apenas hábitos encerrados no passado",
+            "'Going to' exige o verbo principal flexionado no gerúndio (-ing), ao passo que 'Will' exige o verbo auxiliar 'to be' antes do sujeito",
+            "Ambas as estruturas são intercambiáveis apenas em frases negativas sobre adaptação a novas rotinas de trabalho"
           ],
           correct: 0,
           exp: "Usa-se 'will' + verbo base para decisões tomadas na hora, promessas e previsões; usa-se 'to be + going to' + verbo base para planos e intenções previamente decididos."
@@ -1519,10 +1387,10 @@
           id: "eng-8", quizId: "ingles", subject: "Língua Inglesa",
           q: "Observe a frase: 'I used to drink coffee every morning.' Qual ideia a estrutura 'Used to + verb' expressa?",
           options: [
-            "Um hábito ou rotina que acontecia no passado, mas não acontece mais",
-            "Uma ação que está acontecendo exatamente agora no momento da fala",
-            "Um plano futuro já organizado para a próxima semana",
-            "O processo atual de estar se acostumando a algo novo"
+            "Um hábito ou rotina frequente que acontecia no passado, mas que não faz mais parte do presente do falante",
+            "Uma ação que está em pleno andamento no exato momento em que a frase está sendo pronunciada",
+            "Um processo gradual de adaptação a uma nova rotina de trabalho que começou recentemente",
+            "Uma decisão espontânea tomada no momento da fala sobre o que fazer na manhã seguinte"
           ],
           correct: 0,
           exp: "'Used to + verbo na forma base' ('I used to drink') indica um hábito ou estado frequente no passado que não faz mais parte do presente."
@@ -1531,10 +1399,10 @@
           id: "eng-9", quizId: "ingles", subject: "Língua Inglesa",
           q: "Qual é a diferença de sentido e estrutura entre 'I am used to drinking' e 'I am getting used to drinking'?",
           options: [
-            "'Be used to + verb-ing' indica que a pessoa já está acostumada; 'Get used to + verb-ing' indica o processo de acostumar-se ou adaptar-se a algo",
-            "Ambas as expressões significam apenas um hábito encerrado no passado distante",
-            "'Be used to' exige verbo no infinitivo sem -ing, enquanto 'Get used to' é usado para previsões",
-            "Não há diferença: ambas expressam decisões imediatas no futuro"
+            "'Be used to + verb-ing' indica que o sujeito já está acostumado a algo, enquanto 'Get used to + verb-ing' expressa o processo de acostumar-se ou adaptar-se",
+            "'Be used to' refere-se a um hábito abandonado no passado, enquanto 'Get used to' expressa uma previsão futura sem evidências",
+            "Ambas exigem o verbo principal no infinitivo sem '-ing' e possuem exatamente o mesmo significado de hábito passado",
+            "'Be used to + verb-ing' indica rejeição a uma mudança, enquanto 'Get used to + verb-ing' marca uma promessa feita com 'will'"
           ],
           correct: 0,
           exp: "'Be used to + verb-ing' ('I am used to drinking') expressa estar acostumado; 'Get used to + verb-ing' ('I am getting used to drinking') indica estar em processo de adaptação."
@@ -1543,10 +1411,10 @@
           id: "eng-10", quizId: "ingles", subject: "Língua Inglesa",
           q: "Complete a frase corretamente de acordo com as regras de 'used to / be used to / get used to': 'At first the new job was hard, but now she is _____ early.'",
           options: [
-            "getting used to waking up",
-            "used to wake up",
-            "going to woke up",
-            "will waking up"
+            "getting used to waking up — pois 'get used to' seguido de verbo com '-ing' expressa o processo atual de adaptação à nova rotina",
+            "used to wake up — pois 'used to' seguido de infinitivo indica que a ação acontece apenas no futuro planejado",
+            "going to woke up — pois 'going to' exige o verbo principal conjugado no passado simples após o auxiliar 'to be'",
+            "will waking up — pois 'will' combinado com '-ing' expressa um hábito passado que já foi completamente superado"
           ],
           correct: 0,
           exp: "Como indica o processo de adaptação ('acostumando-se a acordar cedo'), emprega-se 'is getting used to' seguido do verbo com -ing ('waking up')."
@@ -1595,13 +1463,8 @@
       }
 
       function getQuizPool(quizId) {
-        if (quizId === "completo") {
-          return QUESTIONS.slice();
-        }
         if (quizId === "gerais") {
-          return QUESTIONS.filter(function (item) {
-            return item.quizId === "gerais" || item.quizId === "ingles";
-          });
+          return QUESTIONS.slice();
         }
         return QUESTIONS.filter(function (item) {
           return item.quizId === quizId;
@@ -1851,9 +1714,7 @@
 
         var badgeQuiz = document.createElement("span");
         badgeQuiz.className = "badge-quiz";
-        badgeQuiz.textContent = (q.quizId === "gerais" || (q.quizId === "ingles" && state.quizId === "gerais"))
-          ? "Conhecimentos Gerais"
-          : (q.quizId === "ingles" ? "Língua Inglesa" : "Atletismo e Treinamento");
+        badgeQuiz.textContent = state.quizId === "ingles" ? "Língua Inglesa" : "Conhecimentos Gerais";
 
         var badgeSubj = document.createElement("span");
         badgeSubj.className = "badge-subject";
