@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portal de Quizzes Interativos — 47 Questões</title>
+  <title>Portal de Quizzes Interativos — 57 Questões</title>
   <style>
     :root {
       --bg-page: #f1f5f9;
@@ -217,7 +217,7 @@
 
     .quiz-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
     }
 
@@ -782,7 +782,7 @@
       <div class="header-top">
         <div class="title-group">
           <h1>Portal de Quizzes Interativos</h1>
-          <p>47 questões divididas por disciplina com feedback imediato e gabarito comentado</p>
+          <p>57 questões divididas por disciplina com feedback imediato e gabarito comentado</p>
         </div>
         <div class="top-actions">
           <div class="score-box">
@@ -834,8 +834,13 @@
       var QUIZ_CONFIGS = [
         {
           id: "gerais",
-          title: "Conhecimentos Gerais (37)",
-          desc: "Geografia (10), História (10), Língua Portuguesa (10) e Arte — Revisão EVA (7)"
+          title: "Conhecimentos Gerais (47)",
+          desc: "Geografia (10), História (10), Língua Portuguesa (10), Arte (7) e Língua Inglesa (10)"
+        },
+        {
+          id: "ingles",
+          title: "Língua Inglesa — Revisão (10)",
+          desc: "Vocabulary, Order of Adjectives, -ed/-ing, Divergent Thinking, Will/Going to e Used to"
         },
         {
           id: "atletismo",
@@ -844,12 +849,12 @@
         },
         {
           id: "completo",
-          title: "Simulado Completo (47)",
-          desc: "Todas as 5 disciplinas reunidas em um único questionário"
+          title: "Simulado Completo (57)",
+          desc: "Todas as 6 disciplinas reunidas em um único questionário"
         }
       ];
 
-      // Banco de 47 questões (10 Geografia, 10 História, 10 Língua Portuguesa, 7 Arte e 10 Atletismo)
+      // Banco de 57 questões (10 Geografia, 10 História, 10 Língua Portuguesa, 7 Arte, 10 Inglês e 10 Atletismo)
       var QUESTIONS = [
         // ================= GEOGRAFIA (10) =================
         {
@@ -1423,6 +1428,128 @@
           ],
           correct: 1,
           exp: "O atleta profissional tem o esporte como atividade principal e exclusiva, enquanto o amador equilibra os treinos com trabalho, estudos ou outras rotinas cotidianas."
+        },
+
+        // ================= LÍNGUA INGLESA — REVISÃO (10) =================
+        {
+          id: "eng-1", quizId: "ingles", subject: "Língua Inglesa",
+          q: "Associe corretamente as profissões em inglês ao seu significado em português: 'Plumber', 'Carpenter' e 'Architect'.",
+          options: [
+            "Encanador, carpinteiro e arquiteto",
+            "Construtor, engenheiro e desenvolvedor",
+            "Encanador, engenheiro e construtor",
+            "Arquiteto, encanador e analista"
+          ],
+          correct: 0,
+          exp: "No vocabulário de profissões: 'Plumber' significa encanador, 'Carpenter' significa carpinteiro e 'Architect' significa arquiteto (já 'Builder' é construtor e 'Engineer' é engenheiro)."
+        },
+        {
+          id: "eng-2", quizId: "ingles", subject: "Língua Inglesa",
+          q: "Qual alternativa apresenta a tradução correta dos adjetivos de personalidade: 'Responsible', 'Curious', 'Adventurous' e 'Relaxed'?",
+          options: [
+            "Responsável, curioso, aventureiro e relaxado",
+            "Relaxado, aventureiro, responsável e curioso",
+            "Curioso, responsável, relaxado e chocado",
+            "Aventureiro, curioso, chocante e responsável"
+          ],
+          correct: 0,
+          exp: "'Responsible' = responsável, 'Curious' = curioso, 'Adventurous' = aventureiro e 'Relaxed' = relaxado."
+        },
+        {
+          id: "eng-3", quizId: "ingles", subject: "Língua Inglesa",
+          q: "Seguindo a ordem correta dos adjetivos em inglês (OPINION – SIZE – MATERIAL – NOUN), qual frase está gramaticalmente correta?",
+          options: [
+            "A beautiful small leather bag",
+            "A leather small beautiful bag",
+            "A small leather beautiful bag",
+            "A beautiful leather small bag"
+          ],
+          correct: 0,
+          exp: "A sequência correta antes do substantivo ('bag' - NOUN) é: opinião ('beautiful' - OPINION) + tamanho ('small' - SIZE) + material ('leather' - MATERIAL)."
+        },
+        {
+          id: "eng-4", quizId: "ingles", subject: "Língua Inglesa",
+          q: "Sobre o uso dos adjetivos terminados em -ED e -ING (como 'Shocked' e 'Shocking'), assinale a alternativa que completa corretamente: 'The news was _____, so everyone felt _____.'",
+          options: [
+            "shocking / shocked",
+            "shocked / shocking",
+            "shocked / shocked",
+            "shocking / shocking"
+          ],
+          correct: 0,
+          exp: "Adjetivos com -ING ('shocking' = chocante) descrevem o que provoca a sensação (a notícia), enquanto -ED ('shocked' = chocado) expressa como a pessoa se sente."
+        },
+        {
+          id: "eng-5", quizId: "ingles", subject: "Língua Inglesa",
+          q: "No vocabulário ligado ao mercado de trabalho e tecnologia, o que significam 'Technological advances', 'Social media analyst' e 'App developer'?",
+          options: [
+            "Avanços tecnológicos, analista de redes sociais e desenvolvedor de aplicativos",
+            "Trabalho manual, construtor civil e engenheiro elétrico",
+            "Avanços históricos, arquiteto de interiores e carpinteiro",
+            "Pensamento divergente, encanador e analista financeiro"
+          ],
+          correct: 0,
+          exp: "'Job' = trabalho; 'Technological advances' = avanços tecnológicos; 'Social media analyst' = analista de redes sociais; 'App developer' = desenvolvedor de aplicativos."
+        },
+        {
+          id: "eng-6", quizId: "ingles", subject: "Língua Inglesa",
+          q: "What is Divergent Thinking (Pensamento Divergente)?",
+          options: [
+            "É a capacidade de encontrar diferentes soluções para o mesmo problema utilizando a criatividade",
+            "É a memorização de uma única resposta padrão para problemas matemáticos",
+            "É a estrutura gramatical usada apenas para falar de hábitos no passado",
+            "É o nome dado a decisões imediatas tomadas no futuro com 'will'"
+          ],
+          correct: 0,
+          exp: "Divergent Thinking (pensamento divergente) é a habilidade de explorar múltiplas ideias e encontrar diferentes soluções criativas para um mesmo problema."
+        },
+        {
+          id: "eng-7", quizId: "ingles", subject: "Língua Inglesa",
+          q: "Quando usamos 'Will' (S + will + verb) e quando usamos 'Going to' (S + to be + going to + verb) para falar do futuro em inglês?",
+          options: [
+            "'Will' expressa decisões imediatas, promessas e previsões (ex.: 'The sun will rise tomorrow'); 'Going to' expressa planos e intenções futuras (ex.: 'She is going to travel')",
+            "'Will' é usado exclusivamente para hábitos passados e 'Going to' para ações já concluídas ontem",
+            "'Going to' exige sempre o verbo principal terminado em -ing, enquanto 'Will' exige -ed",
+            "Ambos são usados apenas para indicar que alguém está se adaptando a uma rotina"
+          ],
+          correct: 0,
+          exp: "Usa-se 'will' + verbo base para decisões tomadas na hora, promessas e previsões; usa-se 'to be + going to' + verbo base para planos e intenções previamente decididos."
+        },
+        {
+          id: "eng-8", quizId: "ingles", subject: "Língua Inglesa",
+          q: "Observe a frase: 'I used to drink coffee every morning.' Qual ideia a estrutura 'Used to + verb' expressa?",
+          options: [
+            "Um hábito ou rotina que acontecia no passado, mas não acontece mais",
+            "Uma ação que está acontecendo exatamente agora no momento da fala",
+            "Um plano futuro já organizado para a próxima semana",
+            "O processo atual de estar se acostumando a algo novo"
+          ],
+          correct: 0,
+          exp: "'Used to + verbo na forma base' ('I used to drink') indica um hábito ou estado frequente no passado que não faz mais parte do presente."
+        },
+        {
+          id: "eng-9", quizId: "ingles", subject: "Língua Inglesa",
+          q: "Qual é a diferença de sentido e estrutura entre 'I am used to drinking' e 'I am getting used to drinking'?",
+          options: [
+            "'Be used to + verb-ing' indica que a pessoa já está acostumada; 'Get used to + verb-ing' indica o processo de acostumar-se ou adaptar-se a algo",
+            "Ambas as expressões significam apenas um hábito encerrado no passado distante",
+            "'Be used to' exige verbo no infinitivo sem -ing, enquanto 'Get used to' é usado para previsões",
+            "Não há diferença: ambas expressam decisões imediatas no futuro"
+          ],
+          correct: 0,
+          exp: "'Be used to + verb-ing' ('I am used to drinking') expressa estar acostumado; 'Get used to + verb-ing' ('I am getting used to drinking') indica estar em processo de adaptação."
+        },
+        {
+          id: "eng-10", quizId: "ingles", subject: "Língua Inglesa",
+          q: "Complete a frase corretamente de acordo com as regras de 'used to / be used to / get used to': 'At first the new job was hard, but now she is _____ early.'",
+          options: [
+            "getting used to waking up",
+            "used to wake up",
+            "going to woke up",
+            "will waking up"
+          ],
+          correct: 0,
+          exp: "Como indica o processo de adaptação ('acostumando-se a acordar cedo'), emprega-se 'is getting used to' seguido do verbo com -ing ('waking up')."
         }
       ];
 
@@ -1470,6 +1597,11 @@
       function getQuizPool(quizId) {
         if (quizId === "completo") {
           return QUESTIONS.slice();
+        }
+        if (quizId === "gerais") {
+          return QUESTIONS.filter(function (item) {
+            return item.quizId === "gerais" || item.quizId === "ingles";
+          });
         }
         return QUESTIONS.filter(function (item) {
           return item.quizId === quizId;
@@ -1719,7 +1851,9 @@
 
         var badgeQuiz = document.createElement("span");
         badgeQuiz.className = "badge-quiz";
-        badgeQuiz.textContent = q.quizId === "gerais" ? "Conhecimentos Gerais" : "Atletismo e Treinamento";
+        badgeQuiz.textContent = (q.quizId === "gerais" || (q.quizId === "ingles" && state.quizId === "gerais"))
+          ? "Conhecimentos Gerais"
+          : (q.quizId === "ingles" ? "Língua Inglesa" : "Atletismo e Treinamento");
 
         var badgeSubj = document.createElement("span");
         badgeSubj.className = "badge-subject";
