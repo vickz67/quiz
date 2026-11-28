@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portal de Quizzes Interativos — 52 Questões</title>
+  <title>Portal de Quizzes Interativos — 53 Questões</title>
   <style>
     :root {
       --bg-page: #f1f5f9;
@@ -217,7 +217,7 @@
 
     .quiz-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       gap: 10px;
     }
 
@@ -426,8 +426,27 @@
       font-size: 1.1rem;
       font-weight: 700;
       color: var(--text-main);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       line-height: 1.52;
+    }
+
+    .q-figure-box {
+      margin: 0 auto 20px;
+      padding: 14px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 440px;
+    }
+
+    .q-figure-box svg {
+      width: 100%;
+      height: auto;
+      max-height: 210px;
+      display: block;
     }
 
     /* Alternativas */
@@ -782,7 +801,7 @@
       <div class="header-top">
         <div class="title-group">
           <h1>Portal de Quizzes Interativos</h1>
-          <p>52 questões divididas por disciplina com feedback imediato e gabarito comentado</p>
+          <p>53 questões divididas por disciplina com feedback imediato e gabarito comentado</p>
         </div>
         <div class="top-actions">
           <div class="score-box">
@@ -834,22 +853,12 @@
       var QUIZ_CONFIGS = [
         {
           id: "gerais",
-          title: "Conhecimentos Gerais (52)",
-          desc: "Geografia (10), História (10), Língua Portuguesa (10), Arte (7), Língua Inglesa (10) e Química (5)"
-        },
-        {
-          id: "ingles",
-          title: "Língua Inglesa — Revisão (10)",
-          desc: "Vocabulary, Order of Adjectives, -ed/-ing, Divergent Thinking, Will/Going to e Used to"
-        },
-        {
-          id: "quimica",
-          title: "Química — EVA (5)",
-          desc: "Ligações iônicas e covalentes, ligas metálicas (latão), condutividade elétrica e reciclagem"
+          title: "Conhecimentos Gerais (53)",
+          desc: "Geografia (10), História (8), Língua Portuguesa (10), Arte (7), Língua Inglesa (10), Química (5) e Matemática (3)"
         }
       ];
 
-      // Banco de 52 questões (10 Geografia, 10 História, 10 Língua Portuguesa, 7 Arte, 10 Inglês e 5 Química)
+      // Banco de 53 questões (10 Geografia, 8 História, 10 Língua Portuguesa, 7 Arte, 10 Inglês, 5 Química e 3 Matemática)
       var QUESTIONS = [
         // ================= GEOGRAFIA (10) =================
         {
@@ -973,126 +982,102 @@
           exp: "A África é dividida em cinco grandes regiões geográficas, entre as quais se destacam a África Austral e a África Oriental."
         },
 
-        // ================= HISTÓRIA (10) =================
+        // ================= HISTÓRIA — REVISÃO EVA (8) =================
         {
-          id: "his-1", quizId: "gerais", subject: "História",
-          q: "Na segunda metade do século XIX, como a 'política das nacionalidades' transformou o mapa político europeu após o Congresso de Viena (1815)?",
+          id: "his-eva-1", quizId: "historia_eva", subject: "História",
+          q: "Como ficou conhecida a união aduaneira liderada pela Prússia no processo de Unificação Alemã e o que ela representava?",
           options: [
-            "Fortaleceu os sentimentos nacionalistas e impulsionou movimentos de unificação territorial, culminando na formação dos Estados nacionais da Itália e da Alemanha",
-            "Restaurou as fronteiras absolutistas anteriores à Revolução Francesa e dissolveu os movimentos liberais e nacionalistas na Europa Central",
-            "Impediu a formação de novos Estados nacionais na Europa ao submeter os reinos germânicos e itálicos à tutela permanente da Áustria",
-            "Promoveu a fragmentação da França e do Reino Unido em dezenas de principados autônomos sem integração econômica"
+            "Ficou conhecida como Zollverein, uma liga alfandegária entre Estados germânicos que eliminou barreiras internas e estabeleceu tarifas externas comuns para integrar economicamente a região",
+            "Ficou conhecida como Risorgimento, um pacto militar entre os reinos italianos para expulsar a França e restaurar o absolutismo na Europa Central",
+            "Ficou conhecida como Congresso de Viena, uma aliança monárquica destinada a manter as alfândegas fragmentadas e impedir a industrialização prussiana",
+            "Ficou conhecida como Xogunato Tokugawa, um tratado comercial que fechou os portos europeus às mercadorias britânicas no século XIX"
           ],
           correct: 0,
-          exp: "O fortalecimento dos nacionalismos superou as tentativas restauradoras do Congresso de Viena (1815) e conduziu às unificações italiana e alemã."
+          exp: "O Zollverein (1834) foi a união aduaneira liderada pela Prússia que suprimiu tarifas alfandegárias entre diversos Estados germânicos, preparando a integração econômica antes da unificação política."
         },
         {
-          id: "his-2", quizId: "gerais", subject: "História",
-          q: "Antes da Unificação Italiana (Risorgimento), sob quais domínios o território italiano estava fragmentado e quais líderes conduziram o movimento?",
+          id: "his-eva-2", quizId: "historia_eva", subject: "História",
+          q: "A expansão imperialista europeia na África e na Ásia contribuiu para qual tipo de modernização nos territórios colonizados?",
           options: [
-            "Estava fragmentado sob domínio da Áustria, da França e da Igreja Católica, sendo conduzido pelos republicanos Giuseppe Mazzini (Jovem Itália) e Giuseppe Garibaldi e pelo monarquista conde de Cavour",
-            "Encontrava-se unificado sob controle da Prússia e da Dinamarca, tendo sido emancipado pela ação diplomática conjunta de Otto von Bismarck e Guilherme I",
-            "Estava dividido entre o Império Britânico e os Estados Unidos, sendo libertado após a assinatura da Doutrina Monroe e da política do Big Stick",
-            "Permanecia sob domínio feudal do xogunato Tokugawa, alcançando a unificação após a abertura comercial promovida por Matthew C. Perry"
+            "Uma modernização seletiva e dependente da infraestrutura de transportes e comunicações (ferrovias, portos e telégrafos), voltada prioritariamente a escoar matérias-primas e controlar as colônias",
+            "Uma industrialização pesada autônoma e igualitária que garantiu soberania tecnológica e pleno bem-estar social às populações nativas",
+            "Uma reforma agrária redistributiva que eliminou as monoculturas de exportação e fortaleceu exclusivamente o mercado interno africano",
+            "A substituição completa da exploração mineral por universidades e centros científicos dirigidos pelas lideranças tradicionais locais"
           ],
           correct: 0,
-          exp: "No Risorgimento, a Itália fragmentada entre Áustria, França e Igreja Católica foi unificada pela atuação de republicanos (Mazzini e Garibaldi) e monarquistas da Sardenha-Piemonte (Cavour)."
+          exp: "O imperialismo promoveu uma modernização parcial da infraestrutura (ferrovias, portos, telégrafos), concebida para atender aos interesses econômicos e militares das metrópoles, e não ao desenvolvimento autônomo local."
         },
         {
-          id: "his-3", quizId: "gerais", subject: "História",
-          q: "Como ocorreu a Unificação Alemã em 1871 e qual estrutura política foi criada ao final desse processo?",
+          id: "his-eva-3", quizId: "historia_eva", subject: "História",
+          q: "O que as diversas revoltas e levantes que aconteceram na África durante o período imperialista tinham em comum?",
           options: [
-            "Foi conduzida sob liderança da Prússia e de Otto von Bismarck após três guerras vitoriosas contra Dinamarca, Áustria e França, resultando na criação do Segundo Reich (Império Alemão)",
-            "Deu-se por meio de uma revolução republicana liderada por Giuseppe Garibaldi e Mazzini, instaurando uma federação parlamentar sem hegemonia prussiana",
-            "Resultou de um acordo pacífico firmado no Congresso de Viena em 1815, extinguindo a monarquia prussiana e criando a República de Weimar",
-            "Ocorreu após a derrota militar da Prússia frente à França e à Áustria, consolidando a fragmentação econômica da Confederação Germânica"
+            "O caráter de resistência anticolonial contra a ocupação estrangeira, a expropriação de terras, os impostos abusivos e a imposição cultural das potências europeias",
+            "A defesa da ampliação das fronteiras traçadas na Conferência de Berlim para acelerar a entrega de riquezas minerais às metrópoles",
+            "A submissão voluntária ao trabalho forçado em troca da substituição imediata das línguas nativas pelos idiomas europeus",
+            "O apoio militar às companhias monopolistas estrangeiras para derrotar os reinos vizinhos e consolidar o domínio colonial"
           ],
           correct: 0,
-          exp: "Sob liderança da Prússia e de Bismarck, as vitórias contra Dinamarca, Áustria e França levaram à criação do Segundo Reich (Império Alemão) em 1871."
+          exp: "Apesar das diferenças regionais, as revoltas africanas compartilhavam a luta contra a invasão imperialista, a perda de autonomia política, a exploração econômica e a aculturação forçada."
         },
         {
-          id: "his-4", quizId: "gerais", subject: "História",
-          q: "Quais fatores econômicos e justificativas ideológicas impulsionaram o imperialismo europeu no século XIX?",
+          id: "his-eva-4", quizId: "historia_eva", subject: "História",
+          q: "A Revolta dos Boxers (1899–1901), ocorrida na China, foi movida principalmente pelo quê?",
           options: [
-            "A Segunda Revolução Industrial e os grandes monopólios demandaram matérias-primas, mão de obra barata e mercados consumidores, apoiados em ideologias racistas e na ideia de missão 'civilizatória'",
-            "A crise da produção artesanal levou as potências europeias a buscarem colônias apenas para financiar a industrialização autônoma dos povos africanos e asiáticos",
-            "O declínio dos monopólios financeiros incentivou a Europa a devolver territórios ultramarinos com base no princípio da igualdade cultural entre os povos",
-            "A necessidade de conter a Segunda Revolução Industrial fez com que os governos europeus proibissem a exportação de capitais para fora do continente"
+            "Pelo forte sentimento nacionalista e anti-imperialista contra a interferência estrangeira, os tratados desiguais, a partilha de áreas de influência e a imposição cultural ocidental na China",
+            "Pelo desejo dos camponeses chineses de entregar os portos imperiais ao controle direto das potências europeias e dos Estados Unidos",
+            "Pela tentativa de restaurar o regime escravista agrário no sul dos Estados Unidos após o término da Guerra de Secessão",
+            "Pela disputa entre a Prússia e a Áustria pelo controle das tarifas alfandegárias do Zollverein na Europa Central"
           ],
           correct: 0,
-          exp: "Impulsionadas pela Segunda Revolução Industrial e pelos grandes monopólios, as potências buscaram insumos, mão de obra barata e mercados, usando discursos racistas de superioridade e 'missão civilizatória'."
+          exp: "Liderada pela sociedade secreta dos 'Punhos Harmoniosos e Justiceiros' (Boxers), a revolta teve caráter nacionalista e xenófobo contra a dominação imperialista e a influência ocidental na China."
         },
         {
-          id: "his-5", quizId: "gerais", subject: "História",
-          q: "Qual foi o resultado central da Conferência de Berlim (1885), reunida por Otto von Bismarck?",
+          id: "his-eva-5", quizId: "historia_eva", subject: "História",
+          q: "Qual era o objetivo declarado pela Doutrina Monroe, formulada pelo presidente estadunidense James Monroe em 1823?",
           options: [
-            "Consolidou a partilha do continente africano entre as potências europeias por meio de fronteiras artificiais traçadas segundo interesses imperialistas, desrespeitando as divisões culturais locais",
-            "Estabeleceu um cronograma de descolonização imediata da África e da Ásia, reconhecendo a soberania política das lideranças étnicas tradicionais",
-            "Proibiu a presença militar e comercial de países europeus na África Austral e Oriental, garantindo a neutralidade econômica do continente",
-            "Criou uma união aduaneira entre os Estados africanos para impedir a entrada de manufaturados vindos da Segunda Revolução Industrial"
+            "Declarar a oposição dos Estados Unidos a qualquer tentativa de recolonização ou interferência política e militar das potências europeias no continente americano",
+            "Autorizar as monarquias europeias da Santa Aliança a reconquistar as antigas colônias recém-emancipadas da América Latina",
+            "Determinar a anexação imediata do arquipélago japonês e da China ao território continental dos Estados Unidos",
+            "Estabelecer a livre circulação de exércitos europeus no Caribe para garantir o equilíbrio comercial após o Congresso de Viena"
           ],
           correct: 0,
-          exp: "A Conferência de Berlim (1885) formalizou a partilha imperialista da África segundo interesses europeus, desconsiderando as identidades étnicas e culturais locais."
+          exp: "Em 1823, a Doutrina Monroe declarou oficialmente que o continente americano não deveria mais ser objeto de colonização ou intervenção europeia."
         },
         {
-          id: "his-6", quizId: "gerais", subject: "História",
-          q: "Como os povos da África e da Ásia reagiram à dominação imperialista?",
+          id: "his-eva-6", quizId: "historia_eva", subject: "História",
+          q: "Explique o que justificava a ideologia do Destino Manifesto durante a expansão territorial dos Estados Unidos no século XIX.",
           options: [
-            "Na África organizaram diversas formas de resistência armada e simbólica em quase todas as regiões; na Ásia enfrentaram o avanço estrangeiro com forte oposição nacionalista em impérios como a Índia e a China",
-            "Submeteram-se de forma pacífica e consensual à administração europeia, sem registrar levantes armados ou movimentos nacionalistas relevantes",
-            "Limitaram-se a assinar tratados comerciais favoráveis às metrópoles, transferindo voluntariamente o controle de seus territórios às potências ocidentais",
-            "Reagiram apenas por meio de embargos econômicos decretados na Conferência de Berlim contra a Índia britânica e o Japão Meiji"
+            "A crença religiosa e nacionalista de que os estadunidenses foram escolhidos por Deus para expandir suas fronteiras até o Oceano Pacífico e levar sua suposta 'civilização' ao continente",
+            "A defesa jurídica da soberania permanente dos povos indígenas sobre as terras do Oeste, proibindo a mineração de ouro e prata",
+            "A necessidade de devolver os territórios anexados do México e restaurar o domínio colonial britânico na América do Norte",
+            "O compromisso diplomático de restringir o crescimento populacional e econômico dos Estados Unidos às treze colônias originais"
           ],
           correct: 0,
-          exp: "A dominação imperialista foi amplamente contestada por meio de resistências armadas e simbólicas na África e de movimentos nacionalistas na Ásia, como na Índia e na China."
+          exp: "O Destino Manifesto baseava-se na ideia de uma missão divina e civilizatória atribuída ao povo estadunidense, utilizada para legitimar a Marcha para o Oeste, guerras e a expulsão de povos indígenas."
         },
         {
-          id: "his-7", quizId: "gerais", subject: "História",
-          q: "O que foi a ideologia do Destino Manifesto durante a Marcha para o Oeste nos Estados Unidos e quais foram suas consequências para os povos indígenas?",
+          id: "his-eva-7", quizId: "historia_eva", subject: "História",
+          q: "Quais foram os movimentos e práticas institucionalizadas que nasceram após a Guerra de Secessão nos Estados Unidos perpetuando o racismo e o que eles buscavam?",
           options: [
-            "A crença na missão divina de ocupar e 'civilizar' o continente rumo ao Pacífico em busca de terras, ouro e prata, provocando intensa repressão e conflitos com povos indígenas como sioux, apaches e comanches",
-            "Uma política pacifista de demarcação permanente de terras indígenas que impediu a exploração de ouro e prata no oeste estadunidense",
-            "Um acordo diplomático firmado com a Europa para limitar a expansão territorial dos Estados Unidos exclusivamente às treze colônias da costa atlântica",
-            "A doutrina japonesa que justificou o isolamento feudal do xogunato Tokugawa diante da chegada de navios estrangeiros"
+            "Organizações supremacistas brancas (como a Ku Klux Klan) e as leis de segregação racial (leis Jim Crow), que buscavam intimidar a população negra, anular seus direitos civis e impedir o voto e a igualdade social",
+            "Associações abolicionistas lideradas por ex-escravizados que buscavam distribuir terras gratuitamente e garantir plena representação política no Sul",
+            "Movimentos sindicais europeus voltados exclusivamente à regulamentação das tarifas alfandegárias entre os estados industriais do Norte",
+            "Ligas anticoloniais pan-africanistas criadas para impedir a expansão estadunidense sobre o Havaí, Porto Rico e Filipinas"
           ],
           correct: 0,
-          exp: "O Destino Manifesto justificou a expansão dos EUA até o Pacífico em busca de terras e metais preciosos, resultando em intensa repressão e conflitos com nações indígenas."
+          exp: "Após o fim da escravidão (1865), surgiram grupos terroristas supremacistas como a Ku Klux Klan e regimes legais de segregação (leis Jim Crow), que buscavam manter a subordinação racial e restringir direitos civis e políticos da população negra."
         },
         {
-          id: "his-8", quizId: "gerais", subject: "História",
-          q: "Como se articulavam a Doutrina Monroe (1823) e a política do Big Stick na expansão dos Estados Unidos?",
+          id: "his-eva-8", quizId: "historia_eva", subject: "História",
+          q: "A política externa associada ao lema 'América para os americanos' tinha como principal objetivo prático o quê?",
           options: [
-            "A Doutrina Monroe ('a América para os americanos') buscava afastar interferências europeias no continente, enquanto o Big Stick consolidou uma postura abertamente imperialista sobre áreas como Havaí, Porto Rico, Cuba e Filipinas",
-            "A Doutrina Monroe defendia a recolonização europeia da América Latina, ao passo que o Big Stick determinava a retirada militar estadunidense do Caribe e do Pacífico",
-            "Ambas as políticas restringiam a atuação econômica dos Estados Unidos ao mercado interno, proibindo intervenções externas no século XIX",
-            "A Doutrina Monroe foi formulada por Otto von Bismarck em 1885 e aplicada pelo Big Stick durante a Unificação Alemã"
+            "Afastar a influência das potências europeias do continente americano para consolidar a hegemonia política, econômica e estratégica dos Estados Unidos sobre as Américas",
+            "Promover uma federação igualitária entre todos os países latino-americanos sem qualquer interferência diplomática ou militar de Washington",
+            "Incentivar as nações europeias a estabelecer novas colônias comerciais na América do Sul e no Caribe em parceria com os Estados Unidos",
+            "Isolar completamente os Estados Unidos do comércio marítimo internacional, proibindo investimentos no Caribe e na América Central"
           ],
           correct: 0,
-          exp: "A Doutrina Monroe (1823) buscou afirmar a hegemonia estadunidense nas Américas frente à Europa, e o Big Stick consolidou o imperialismo dos EUA sobre Havaí, Porto Rico, Cuba e Filipinas."
-        },
-        {
-          id: "his-9", quizId: "gerais", subject: "História",
-          q: "Quais grupos entraram em confronto na Guerra Civil Americana (1861–1865), também chamada de Guerra de Secessão, e qual foi o principal ponto de discórdia?",
-          options: [
-            "Os estados industrializados do Norte enfrentaram os estados agrários e escravistas do Sul, tendo a manutenção da escravidão como principal eixo de discórdia política, econômica e social",
-            "As colônias do litoral atlântico enfrentaram o Império Britânico pela independência política, tendo a cobrança de impostos sobre o chá como única causa do conflito",
-            "Os estados agrários do Norte lutaram contra o Sul industrializado para impedir a abertura dos portos ao comércio com o Japão da Era Meiji",
-            "As nações indígenas sioux e apaches uniram-se aos estados do Sul para restaurar o regime colonial espanhol no oeste estadunidense"
-          ],
-          correct: 0,
-          exp: "A Guerra Civil Americana (1861–1865) opôs o Norte industrializado ao Sul agrário e escravista, sendo a manutenção da escravidão o eixo central do conflito."
-        },
-        {
-          id: "his-10", quizId: "gerais", subject: "História",
-          q: "O que ocorreu no Japão a partir da chegada da frota de Matthew C. Perry (1853) e da implantação da Era Meiji após o xogunato Tokugawa (1603–1868)?",
-          options: [
-            "A abertura forçada dos portos e a assinatura de tratados desiguais levaram à Era Meiji, um rápido processo de modernização política, econômica e industrial que transformou o Japão em potência militar e expansionista na Ásia",
-            "O governo japonês fortaleceu a estrutura feudal do xogunato Tokugawa e fechou definitivamente todos os portos ao comércio internacional por mais dois séculos",
-            "O arquipélago japonês foi anexado formalmente como colônia dos Estados Unidos, perdendo sua soberania e interrompendo sua industrialização",
-            "A Era Meiji promoveu a desmilitarização completa do país e a substituição das indústrias por uma economia exclusivamente feudal e agrária"
-          ],
-          correct: 0,
-          exp: "Diante da pressão ocidental iniciada com Matthew C. Perry em 1853, o Japão superou o isolamento feudal do xogunato Tokugawa e promoveu na Era Meiji uma rápida modernização industrial e militar."
+          exp: "Sob a aparência de defesa continental contra a Europa, o lema 'América para os americanos' visava assegurar a área de influência e o predomínio geopolítico e econômico dos Estados Unidos no continente."
         },
 
         // ================= LÍNGUA PORTUGUESA (10) =================
@@ -1488,6 +1473,49 @@
           ],
           correct: 0,
           exp: "A garrafa PET (politereftalato de etileno) é um plástico amplamente reciclável. Já fraldas descartáveis, absorventes, fotografias e espelhos (devido ao revestimento metálico/químico) são considerados rejeitos não recicláveis na coleta seletiva convencional."
+        },
+
+        // ================= MATEMÁTICA (3) =================
+        {
+          id: "mat-1", quizId: "matematica", subject: "Matemática",
+          figure: "trapezio",
+          q: "Um terreno tem a forma de um trapézio retângulo ABCD, com as dimensões indicadas na figura (base maior = 20 m, base menor = 12 m e altura = 10 m). Sabendo que cada metro quadrado desse terreno vale R$ 40,00, o valor total do terreno é:",
+          options: [
+            "R$ 6.400,00",
+            "R$ 16.000,00",
+            "R$ 12.000,00",
+            "R$ 8.000,00",
+            "R$ 4.800,00"
+          ],
+          correct: 0,
+          exp: "A área do trapézio é dada por A = ((B + b) × h) / 2 = ((20 + 12) × 10) / 2 = 320 / 2 = 160 m². Multiplicando pelo valor do metro quadrado (160 × R$ 40,00), obtém-se o valor total de R$ 6.400,00."
+        },
+        {
+          id: "mat-2", quizId: "matematica", subject: "Matemática",
+          q: "Um cubo mágico tradicional tem 6 faces, e cada face é formada por 9 quadradinhos coloridos, totalizando 54 quadradinhos visíveis na superfície externa. Sabendo que cada quadradinho tem 6 cm², a área total da superfície externa desse cubo mágico é:",
+          options: [
+            "324 cm²",
+            "486 cm²",
+            "432 cm²",
+            "216 cm²",
+            "108 cm²"
+          ],
+          correct: 0,
+          exp: "Como a superfície externa possui 6 faces × 9 quadradinhos = 54 quadradinhos e cada um mede 6 cm², a área total é 54 × 6 = 324 cm²."
+        },
+        {
+          id: "mat-3", quizId: "matematica", subject: "Matemática",
+          figure: "placa_circulos",
+          q: "Uma indústria utiliza placas retangulares de metal de 6 cm por 3 cm, como mostra a figura, na qual toda a região sombreada fora dos dois círculos é desperdiçada. Considerando π = 3, a área desperdiçada em cada placa é de:",
+          options: [
+            "4,5 cm²",
+            "18 cm²",
+            "13,5 cm²",
+            "9 cm²",
+            "6,75 cm²"
+          ],
+          correct: 0,
+          exp: "A área da placa retangular é 6 × 3 = 18 cm². Como cabem dois círculos tangentes ao longo dos 6 cm de comprimento e 3 cm de altura, cada círculo tem diâmetro d = 3 cm (raio r = 1,5 cm). Com π = 3, a área dos dois círculos é 2 × (3 × 1,5²) = 2 × 6,75 = 13,5 cm². Subtraindo da área do retângulo: 18 - 13,5 = 4,5 cm²."
         }
       ];
 
@@ -1578,6 +1606,7 @@
             id: item.id,
             quizId: item.quizId,
             subject: item.subject,
+            figure: item.figure || null,
             q: item.q,
             options: mixedOptions.map(function (opt) { return opt.text; }),
             correct: newCorrect,
@@ -1588,6 +1617,121 @@
         state.list = shouldShuffle ? shuffleArray(prepared) : prepared;
         state.index = 0;
         state.finished = false;
+      }
+
+      function createSvgEl(tag, attrs) {
+        var el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+        for (var k in attrs) {
+          if (Object.prototype.hasOwnProperty.call(attrs, k)) {
+            el.setAttribute(k, String(attrs[k]));
+          }
+        }
+        return el;
+      }
+
+      function buildQuestionFigure(figureType) {
+        var wrapper = document.createElement("div");
+        wrapper.className = "q-figure-box";
+
+        if (figureType === "trapezio") {
+          var svg = createSvgEl("svg", { viewBox: "0 0 360 190", role: "img", "aria-label": "Trapézio retângulo com base maior 20, base menor 12 e altura 10" });
+
+          // Trapézio retângulo: base maior = 20 (240px), base menor = 12 (144px), altura = 10 (110px)
+          svg.appendChild(createSvgEl("polygon", {
+            points: "40,150 280,150 280,40 136,40",
+            fill: "#eff6ff",
+            stroke: "#0f172a",
+            "stroke-width": "2.5",
+            "stroke-linejoin": "round"
+          }));
+
+          // Ângulos retos nos vértices da direita
+          svg.appendChild(createSvgEl("polyline", {
+            points: "264,40 264,56 280,56",
+            fill: "none",
+            stroke: "#0f172a",
+            "stroke-width": "2"
+          }));
+          svg.appendChild(createSvgEl("polyline", {
+            points: "264,150 264,134 280,134",
+            fill: "none",
+            stroke: "#0f172a",
+            "stroke-width": "2"
+          }));
+
+          // Cotas numéricas
+          var tTop = createSvgEl("text", { x: "208", y: "28", "text-anchor": "middle", fill: "#0f172a", "font-size": "17", "font-weight": "700" });
+          tTop.textContent = "12 m";
+          svg.appendChild(tTop);
+
+          var tRight = createSvgEl("text", { x: "294", y: "100", "text-anchor": "start", fill: "#0f172a", "font-size": "17", "font-weight": "700" });
+          tRight.textContent = "10 m";
+          svg.appendChild(tRight);
+
+          var tBottom = createSvgEl("text", { x: "160", y: "176", "text-anchor": "middle", fill: "#0f172a", "font-size": "17", "font-weight": "700" });
+          tBottom.textContent = "20 m";
+          svg.appendChild(tBottom);
+
+          wrapper.appendChild(svg);
+        } else if (figureType === "placa_circulos") {
+          var svg2 = createSvgEl("svg", { viewBox: "0 0 380 205", role: "img", "aria-label": "Placa retangular de 6 cm por 3 cm com dois círculos tangentes internos" });
+
+          var defs = createSvgEl("defs", {});
+          var pattern = createSvgEl("pattern", { id: "hatch-waste", width: "6", height: "6", patternTransform: "rotate(45 0 0)", patternUnits: "userSpaceOnUse" });
+          pattern.appendChild(createSvgEl("line", { x1: "0", y1: "0", x2: "0", y2: "6", stroke: "#64748b", "stroke-width": "2" }));
+          defs.appendChild(pattern);
+          svg2.appendChild(defs);
+
+          // Fundo sombreado do retângulo (240px x 120px)
+          svg2.appendChild(createSvgEl("rect", {
+            x: "95", y: "22", width: "240", height: "120",
+            fill: "#cbd5e1",
+            stroke: "#0f172a",
+            "stroke-width": "2.5"
+          }));
+          svg2.appendChild(createSvgEl("rect", {
+            x: "95", y: "22", width: "240", height: "120",
+            fill: "url(#hatch-waste)"
+          }));
+
+          // Dois círculos tangentes (r = 60px -> d = 120px)
+          svg2.appendChild(createSvgEl("circle", {
+            cx: "155", cy: "82", r: "60",
+            fill: "#ffffff",
+            stroke: "#0f172a",
+            "stroke-width": "2.5"
+          }));
+          svg2.appendChild(createSvgEl("circle", {
+            cx: "275", cy: "82", r: "60",
+            fill: "#ffffff",
+            stroke: "#0f172a",
+            "stroke-width": "2.5"
+          }));
+
+          // Centros dos círculos
+          svg2.appendChild(createSvgEl("circle", { cx: "155", cy: "82", r: "2.5", fill: "#0f172a" }));
+          svg2.appendChild(createSvgEl("circle", { cx: "275", cy: "82", r: "2.5", fill: "#0f172a" }));
+
+          // Cota vertical (3 cm)
+          svg2.appendChild(createSvgEl("line", { x1: "72", y1: "22", x2: "90", y2: "22", stroke: "#0f172a", "stroke-width": "1.5" }));
+          svg2.appendChild(createSvgEl("line", { x1: "72", y1: "142", x2: "90", y2: "142", stroke: "#0f172a", "stroke-width": "1.5" }));
+          svg2.appendChild(createSvgEl("line", { x1: "80", y1: "22", x2: "80", y2: "142", stroke: "#0f172a", "stroke-width": "1.8" }));
+          var tHeight = createSvgEl("text", { x: "66", y: "88", "text-anchor": "end", fill: "#0f172a", "font-size": "16", "font-weight": "700" });
+          tHeight.textContent = "3 cm";
+          svg2.appendChild(tHeight);
+
+          // Cota horizontal (6 cm)
+          svg2.appendChild(createSvgEl("line", { x1: "95", y1: "147", x2: "95", y2: "167", stroke: "#0f172a", "stroke-width": "1.5" }));
+          svg2.appendChild(createSvgEl("line", { x1: "335", y1: "147", x2: "335", y2: "167", stroke: "#0f172a", "stroke-width": "1.5" }));
+          svg2.appendChild(createSvgEl("line", { x1: "95", y1: "158", x2: "335", y2: "158", stroke: "#0f172a", "stroke-width": "1.8" }));
+          var tWidth = createSvgEl("text", { x: "215", y: "184", "text-anchor": "middle", fill: "#0f172a", "font-size": "16", "font-weight": "700" });
+          tWidth.textContent = "6 cm";
+          svg2.appendChild(tWidth);
+
+          wrapper.appendChild(svg2);
+        }
+
+        return wrapper;
       }
 
       function getStats() {
@@ -1786,7 +1930,9 @@
         badgeQuiz.className = "badge-quiz";
         badgeQuiz.textContent = state.quizId === "ingles"
           ? "Língua Inglesa"
-          : (state.quizId === "quimica" ? "Química — EVA" : "Conhecimentos Gerais");
+          : (state.quizId === "quimica"
+              ? "Química — EVA"
+              : (state.quizId === "historia_eva" ? "História — Revisão EVA" : "Conhecimentos Gerais"));
 
         var badgeSubj = document.createElement("span");
         badgeSubj.className = "badge-subject";
@@ -1808,6 +1954,11 @@
         qTitle.className = "q-title";
         qTitle.textContent = q.q;
         mainCardEl.appendChild(qTitle);
+
+        // Ilustração geométrica (quando houver)
+        if (q.figure) {
+          mainCardEl.appendChild(buildQuestionFigure(q.figure));
+        }
 
         // Lista de alternativas
         var optionsCol = document.createElement("div");
