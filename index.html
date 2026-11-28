@@ -187,6 +187,16 @@
       border-color: #cbd5e1;
     }
 
+    .btn-blue {
+      background: var(--blue-soft);
+      color: var(--blue);
+      border-color: var(--blue-border);
+    }
+
+    .btn-blue:hover:not(:disabled) {
+      background: #dbeafe;
+    }
+
     .btn-primary {
       background: var(--accent);
       color: #ffffff;
@@ -787,9 +797,199 @@
       border-top: 1px dashed rgba(100, 116, 139, 0.25);
     }
 
+    /* Visualizador Integrado de Resumo em PDF */
+    .pdf-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pdf-toolbar-title h2 {
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .pdf-toolbar-title p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .pdf-toolbar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pdf-file-label {
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .pdf-hidden-input {
+      display: none;
+    }
+
+    .pdf-sheet {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: var(--radius-md);
+      padding: 22px 24px;
+      box-shadow: var(--shadow-sm);
+      color: #1e293b;
+    }
+
+    .pdf-sheet-header {
+      border-bottom: 2px solid #1e3a8a;
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+    }
+
+    .pdf-sheet-kicker {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 3px;
+    }
+
+    .pdf-sheet-title {
+      font-size: 1.32rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.25;
+    }
+
+    .pdf-sheet-sub {
+      font-size: 0.86rem;
+      color: #475569;
+      margin-top: 3px;
+    }
+
+    .pdf-section-title {
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: #1e3a8a;
+      border-left: 3.5px solid var(--accent);
+      padding-left: 9px;
+      margin: 12px 0 6px;
+      line-height: 1.25;
+    }
+
+    .pdf-list {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .pdf-list li {
+      font-size: 0.88rem;
+      line-height: 1.42;
+      color: #1e293b;
+      margin-bottom: 4px;
+    }
+
+    .pdf-sheet-footer {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .local-pdf-box {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .local-pdf-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .local-pdf-name {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+    }
+
+    .local-pdf-frame {
+      width: 100%;
+      height: 540px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: #f8fafc;
+    }
+
+    .pdf-error-msg {
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      background: var(--danger-bg);
+      border: 1px solid var(--danger-border);
+      color: var(--danger-text);
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+      }
+
+      .container {
+        max-width: 100% !important;
+      }
+
+      .header-card,
+      .progress-wrap,
+      .kbd-hint,
+      .pdf-toolbar,
+      .local-pdf-box {
+        display: none !important;
+      }
+
+      .main-card {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+      }
+
+      .pdf-sheet {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+      }
+    }
+
     @media (max-width: 720px) {
       .quiz-grid {
         grid-template-columns: 1fr;
+      }
+
+      .pdf-sheet {
+        padding: 16px 14px;
+      }
+
+      .local-pdf-frame {
+        height: 400px;
       }
     }
   </style>
@@ -808,13 +1008,14 @@
             <span class="score-box-label">Acertos / Respondidas</span>
             <span id="score-display" class="score-box-val">0 / 0</span>
           </div>
+          <button type="button" id="btn-pdf-view" class="btn btn-blue">Resumo em PDF</button>
           <button type="button" id="btn-shuffle" class="btn btn-soft">Embaralhar</button>
           <button type="button" id="btn-restart" class="btn btn-neutral">Reiniciar</button>
         </div>
       </div>
 
       <div class="block-section">
-        <span class="block-label">1. Selecione o Questionário</span>
+        <span class="block-label">1. Selecione o Questionário ou Resumo</span>
         <div id="quiz-selector" class="quiz-grid"></div>
       </div>
 
@@ -823,15 +1024,15 @@
         <div id="subject-pills" class="subject-pills"></div>
       </div>
 
-      <div class="block-section">
+      <div id="quick-nav-section" class="block-section">
         <span class="block-label">3. Navegação Rápida entre Questões</span>
         <div id="quick-nav" class="quick-nav-grid"></div>
       </div>
     </header>
 
-    <section class="progress-wrap">
+    <section id="progress-section" class="progress-wrap">
       <div class="progress-info">
-        <span id="progress-label">Questão 1 de 40</span>
+        <span id="progress-label">Questão 1 de 53</span>
         <span id="progress-percent">0% concluído</span>
       </div>
       <div class="progress-track">
@@ -855,6 +1056,54 @@
           id: "gerais",
           title: "Conhecimentos Gerais (53)",
           desc: "Geografia (10), História (8), Língua Portuguesa (10), Arte (7), Língua Inglesa (10), Química (5) e Matemática (3)"
+        },
+        {
+          id: "pdf_resumo",
+          title: "Resumo em PDF (5 Primeiras Matérias)",
+          desc: "Leitura integrada de 1 página (Geografia, História, Língua Portuguesa, Arte e Língua Inglesa), impressão/PDF e abertura de PDF local"
+        }
+      ];
+
+      var SUMMARY_SECTIONS = [
+        {
+          title: "1. Geografia — Continente Africano",
+          items: [
+            { strong: "Meio Físico:", text: "Origem ligada ao Gondwana; Grande Vale do Rift na África Oriental; Saara, Sahel (risco de desertificação) e Chifre da África." },
+            { strong: "Demografia e Economia:", text: "População jovem e alto crescimento; commodities minerais e energéticas (petróleo na Nigéria e Angola; diamantes na África Austral) e neocolonialismo econômico." },
+            { strong: "Geopolítica e Movimentos:", text: "Fronteiras artificiais da Conferência de Berlim; luta contra o Apartheid (Nelson Mandela); Pan-Africanismo; Primavera Árabe na Tunísia (2010)." }
+          ]
+        },
+        {
+          title: "2. História — Imperialismo e EUA",
+          items: [
+            { strong: "Imperialismo:", text: "Zollverein (união aduaneira prussiana); modernização seletiva da infraestrutura colonial; resistência anticolonial na África e Revolta dos Boxers na China." },
+            { strong: "Expansão dos EUA:", text: "Doutrina Monroe e lema “América para os americanos” (afirmação da hegemonia estadunidense); Destino Manifesto (expansão rumo ao Pacífico)." },
+            { strong: "Pós-Guerra de Secessão:", text: "Ku Klux Klan e leis Jim Crow, impondo segregação racial e restrição de direitos civis à população negra." }
+          ]
+        },
+        {
+          title: "3. Língua Portuguesa — Leitura, Coesão e Sintaxe",
+          items: [
+            { strong: "Interpretação e Gêneros:", text: "Tema central pela articulação lógica (sem generalizações); metáforas e polissemia (visibilidade a minorias e obras marginalizadas); reportagens e tirinhas." },
+            { strong: "Coesão, Orações e Ortografia:", text: "Pronomes e expressões de retomada; orações subordinadas adverbiais (condicionais com se, temporais com quando, finais, causais e consecutivas) e adjetivas; uso de por quê no fim de perguntas." },
+            { strong: "Regência e Fichamento:", text: "Dependência entre termo regente (verbos ou nomes/adjetivos) e termo regido com preposição; fichamentos concisos e fiéis ao texto-base." }
+          ]
+        },
+        {
+          title: "4. Arte — Espaços, Música e Cena",
+          items: [
+            { strong: "Instituições e Mostras:", text: "Museu Nacional criado por Dom João VI (incêndio em 2018); Galeria Domus (difusão do modernismo no Brasil); Bienal de Veneza (1895)." },
+            { strong: "Espaços Musicais e Musical:", text: "Evolução de igrejas e cortes para salas de concerto, teatros e arenas; Show Boat (1927), de Oscar Hammerstein II e Jerome Kern, marco do musical moderno." },
+            { strong: "Efeitos e Motivos:", text: "Leitmotiv (tema musical recorrente de Richard Wagner); artista de Foley (criação e sincronização de ruídos físicos no cinema)." }
+          ]
+        },
+        {
+          title: "5. Língua Inglesa — Vocabulário e Gramática",
+          items: [
+            { strong: "Vocabulário:", text: "Profissões e traços (Builder, Plumber, Engineer, Architect, Carpenter; Responsible, Curious, Adventurous, Relaxed); trabalho/tecnologia (Job, Technological advances, Social media analyst, App developer) e Divergent Thinking." },
+            { strong: "Adjetivos:", text: "Ordem Opinion – Size – Material – Noun (A beautiful small leather bag); -ed (sentimento: shocked) vs. -ing (causa: shocking)." },
+            { strong: "Futuro e Hábitos:", text: "Will (decisões imediatas, promessas, previsões) vs. Going to (planos); Used to + verb (hábito passado); Be used to + verb-ing (estar acostumado) e Get used to + verb-ing (adaptar-se)." }
+          ]
         }
       ];
 
@@ -1526,20 +1775,26 @@
         list: [],
         index: 0,
         answers: {},
-        finished: false
+        finished: false,
+        uploadedPdfUrl: null,
+        uploadedPdfName: "",
+        pdfError: ""
       };
 
       // Referências de DOM
       var quizSelectorEl = document.getElementById("quiz-selector");
       var subjectSectionEl = document.getElementById("subject-filter-section");
       var subjectPillsEl = document.getElementById("subject-pills");
+      var quickNavSectionEl = document.getElementById("quick-nav-section");
       var quickNavEl = document.getElementById("quick-nav");
+      var progressSectionEl = document.getElementById("progress-section");
       var scoreDisplayEl = document.getElementById("score-display");
       var progressLabelEl = document.getElementById("progress-label");
       var progressPercentEl = document.getElementById("progress-percent");
       var progressBarEl = document.getElementById("progress-bar");
       var mainCardEl = document.getElementById("main-card");
       var keyboardTipEl = document.getElementById("keyboard-tip");
+      var btnPdfViewEl = document.getElementById("btn-pdf-view");
       var btnShuffleEl = document.getElementById("btn-shuffle");
       var btnRestartEl = document.getElementById("btn-restart");
 
@@ -1751,10 +2006,54 @@
       }
 
       function handleSelectQuiz(newQuizId) {
+        if (newQuizId === "pdf_resumo") {
+          state.quizId = "pdf_resumo";
+          state.finished = false;
+          renderAll();
+          return;
+        }
+        var needsReload = state.quizId === "pdf_resumo" || state.quizId !== newQuizId || state.list.length === 0;
         state.quizId = newQuizId;
-        state.subject = "Todas";
-        state.answers = {};
-        prepareQuestions(false);
+        if (needsReload) {
+          state.subject = "Todas";
+          state.answers = {};
+          prepareQuestions(false);
+        } else {
+          state.finished = false;
+        }
+        renderAll();
+      }
+
+      function handleUploadedPdf(file) {
+        if (!file) {
+          return;
+        }
+        var isPdf = file.type === "application/pdf" || /\.pdf$/i.test(file.name);
+        if (!isPdf) {
+          state.pdfError = "Selecione um arquivo válido no formato PDF (.pdf).";
+          renderAll();
+          return;
+        }
+        try {
+          if (state.uploadedPdfUrl) {
+            URL.revokeObjectURL(state.uploadedPdfUrl);
+          }
+          state.uploadedPdfUrl = URL.createObjectURL(file);
+          state.uploadedPdfName = file.name;
+          state.pdfError = "";
+        } catch (err) {
+          state.pdfError = "Não foi possível abrir o arquivo PDF selecionado neste navegador.";
+        }
+        renderAll();
+      }
+
+      function clearUploadedPdf() {
+        if (state.uploadedPdfUrl) {
+          URL.revokeObjectURL(state.uploadedPdfUrl);
+          state.uploadedPdfUrl = null;
+        }
+        state.uploadedPdfName = "";
+        state.pdfError = "";
         renderAll();
       }
 
@@ -1833,6 +2132,10 @@
       }
 
       function renderSubjectFilters() {
+        if (state.quizId === "pdf_resumo") {
+          subjectSectionEl.style.display = "none";
+          return;
+        }
         var pool = getQuizPool(state.quizId);
         var subjects = getSubjectsForPool(pool);
 
@@ -1866,6 +2169,11 @@
       }
 
       function renderQuickNav() {
+        if (state.quizId === "pdf_resumo") {
+          quickNavSectionEl.style.display = "none";
+          return;
+        }
+        quickNavSectionEl.style.display = "block";
         clearNode(quickNavEl);
         for (var i = 0; i < state.list.length; i++) {
           (function (idx) {
@@ -1897,120 +2205,126 @@
         var stats = getStats();
         scoreDisplayEl.textContent = stats.correct + " / " + stats.answered;
 
-        if (state.finished) {
-          progressLabelEl.textContent = "Finalizado (" + stats.total + " de " + stats.total + " questões)";
-          progressPercentEl.textContent = "100% concluído";
-          progressBarEl.style.width = "100%";
-        } else {
-          var pct = stats.total > 0 ? Math.round((stats.answered / stats.total) * 100) : 0;
-          progressLabelEl.textContent = "Questão " + (state.index + 1) + " de " + stats.total;
-          progressPercentEl.textContent = pct + "% concluído";
-          progressBarEl.style.width = pct + "%";
+        if (state.quizId === "pdf_resumo") {
+          progressSectionEl.style.display = "none";
+          return;
         }
+
+        progressSectionEl.style.display = "block";
+
+        if (state.finished) {
+          progressLabelEl.textContent = "Concluído (" + stats.answered + " de " + stats.total + " respondidas)";
+          progressPercentEl.textContent = "100%";
+          progressBarEl.style.width = "100%";
+          return;
+        }
+
+        var currentNum = state.list.length > 0 ? state.index + 1 : 0;
+        var pct = state.list.length > 0 ? Math.round((stats.answered / state.list.length) * 100) : 0;
+
+        progressLabelEl.textContent = "Questão " + currentNum + " de " + state.list.length;
+        progressPercentEl.textContent = pct + "% concluído";
+        progressBarEl.style.width = pct + "%";
       }
 
       function renderQuestionCard() {
         keyboardTipEl.style.display = "block";
         clearNode(mainCardEl);
 
+        if (state.list.length === 0) {
+          var emptyMsg = document.createElement("p");
+          emptyMsg.textContent = "Nenhuma questão encontrada para este filtro.";
+          mainCardEl.appendChild(emptyMsg);
+          return;
+        }
+
         var q = state.list[state.index];
         var ans = state.answers[q.id];
         var isAnswered = ans !== undefined;
-        var stats = getStats();
-        var isLastOrDone = (state.index === state.list.length - 1) || (stats.answered === stats.total);
 
-        // Cabeçalho da questão
         var qHeader = document.createElement("div");
         qHeader.className = "q-header";
 
         var badgesRow = document.createElement("div");
         badgesRow.className = "badges-row";
 
-        var badgeQuiz = document.createElement("span");
-        badgeQuiz.className = "badge-quiz";
-        badgeQuiz.textContent = state.quizId === "ingles"
-          ? "Língua Inglesa"
-          : (state.quizId === "quimica"
-              ? "Química — EVA"
-              : (state.quizId === "historia_eva" ? "História — Revisão EVA" : "Conhecimentos Gerais"));
+        var quizBadge = document.createElement("span");
+        quizBadge.className = "badge-quiz";
+        quizBadge.textContent = "Conhecimentos Gerais";
 
-        var badgeSubj = document.createElement("span");
-        badgeSubj.className = "badge-subject";
-        badgeSubj.textContent = q.subject;
+        var subjBadge = document.createElement("span");
+        subjBadge.className = "badge-subject";
+        subjBadge.textContent = q.subject;
 
-        badgesRow.appendChild(badgeQuiz);
-        badgesRow.appendChild(badgeSubj);
+        badgesRow.appendChild(quizBadge);
+        badgesRow.appendChild(subjBadge);
 
-        var badgeCounter = document.createElement("span");
-        badgeCounter.className = "badge-counter";
-        badgeCounter.textContent = "Questão " + (state.index + 1) + " de " + state.list.length;
+        var counterBadge = document.createElement("span");
+        counterBadge.className = "badge-counter";
+        counterBadge.textContent = "Questão " + (state.index + 1) + " / " + state.list.length;
 
         qHeader.appendChild(badgesRow);
-        qHeader.appendChild(badgeCounter);
+        qHeader.appendChild(counterBadge);
         mainCardEl.appendChild(qHeader);
 
-        // Enunciado
         var qTitle = document.createElement("h2");
         qTitle.className = "q-title";
         qTitle.textContent = q.q;
         mainCardEl.appendChild(qTitle);
 
-        // Ilustração geométrica (quando houver)
         if (q.figure) {
           mainCardEl.appendChild(buildQuestionFigure(q.figure));
         }
 
-        // Lista de alternativas
         var optionsCol = document.createElement("div");
         optionsCol.className = "options-col";
 
         for (var i = 0; i < q.options.length; i++) {
-          (function (optIdx) {
-            var optBtn = document.createElement("button");
-            optBtn.type = "button";
-            optBtn.className = "opt-btn";
-            optBtn.disabled = isAnswered;
+          (function (idx) {
+            var btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "opt-btn";
+            btn.disabled = isAnswered;
 
-            var letterBox = document.createElement("span");
-            letterBox.className = "opt-letter";
-            letterBox.textContent = LETTERS[optIdx];
+            var letterSpan = document.createElement("span");
+            letterSpan.className = "opt-letter";
+            letterSpan.textContent = LETTERS[idx];
 
-            var textBox = document.createElement("span");
-            textBox.className = "opt-text";
-            textBox.textContent = q.options[optIdx];
+            var textSpan = document.createElement("span");
+            textSpan.className = "opt-text";
+            textSpan.textContent = q.options[idx];
 
-            optBtn.appendChild(letterBox);
-            optBtn.appendChild(textBox);
+            var markSpan = document.createElement("span");
+            markSpan.className = "opt-mark";
 
             if (isAnswered) {
-              if (optIdx === q.correct) {
-                optBtn.classList.add("correct");
-                var checkMark = document.createElement("span");
-                checkMark.className = "opt-mark";
-                checkMark.textContent = "✓";
-                optBtn.appendChild(checkMark);
-              } else if (optIdx === ans.selected) {
-                optBtn.classList.add("wrong");
-                var crossMark = document.createElement("span");
-                crossMark.className = "opt-mark";
-                crossMark.textContent = "✕";
-                optBtn.appendChild(crossMark);
+              if (idx === q.correct) {
+                btn.classList.add("correct");
+                markSpan.textContent = "✓";
+              } else if (idx === ans.selected && !ans.isCorrect) {
+                btn.classList.add("wrong");
+                markSpan.textContent = "✕";
               } else {
-                optBtn.classList.add("muted");
+                btn.classList.add("muted");
               }
-            } else {
-              optBtn.addEventListener("click", function () {
-                handleAnswer(optIdx);
+            }
+
+            btn.appendChild(letterSpan);
+            btn.appendChild(textSpan);
+            btn.appendChild(markSpan);
+
+            if (!isAnswered) {
+              btn.addEventListener("click", function () {
+                handleAnswer(idx);
               });
             }
 
-            optionsCol.appendChild(optBtn);
+            optionsCol.appendChild(btn);
           })(i);
         }
 
         mainCardEl.appendChild(optionsCol);
 
-        // Caixa de Explicação
         if (isAnswered) {
           var expBox = document.createElement("div");
           expBox.className = "exp-box " + (ans.isCorrect ? "correct" : "wrong");
@@ -2020,12 +2334,12 @@
 
           var expTag = document.createElement("span");
           expTag.className = "exp-tag";
-          expTag.textContent = "Explicação";
+          expTag.textContent = ans.isCorrect ? "Correta" : "Incorreta";
 
           var expTitle = document.createElement("span");
           expTitle.textContent = ans.isCorrect
-            ? "Resposta correta!"
-            : "Resposta incorreta — Gabarito: alternativa " + LETTERS[q.correct];
+            ? "Resposta correta (" + LETTERS[q.correct] + ")"
+            : "Gabarito: alternativa " + LETTERS[q.correct];
 
           expHead.appendChild(expTag);
           expHead.appendChild(expTitle);
@@ -2039,34 +2353,31 @@
           mainCardEl.appendChild(expBox);
         }
 
-        // Rodapé de navegação
         var cardNav = document.createElement("div");
         cardNav.className = "card-nav";
 
-        if (state.index > 0) {
-          var prevBtn = document.createElement("button");
-          prevBtn.type = "button";
-          prevBtn.className = "btn btn-outline";
-          prevBtn.textContent = "← Anterior";
-          prevBtn.addEventListener("click", handlePrev);
-          cardNav.appendChild(prevBtn);
-        } else {
-          var spacer = document.createElement("div");
-          cardNav.appendChild(spacer);
-        }
+        var prevBtn = document.createElement("button");
+        prevBtn.type = "button";
+        prevBtn.className = "btn btn-outline";
+        prevBtn.textContent = "← Anterior";
+        prevBtn.disabled = state.index === 0;
+        prevBtn.addEventListener("click", handlePrev);
 
-        if (isAnswered) {
+        cardNav.appendChild(prevBtn);
+
+        if (!isAnswered) {
+          var hint = document.createElement("span");
+          hint.className = "hint-msg";
+          hint.textContent = "Selecione uma alternativa para ver o feedback";
+          cardNav.appendChild(hint);
+        } else {
+          var isLast = state.index === state.list.length - 1;
           var nextBtn = document.createElement("button");
           nextBtn.type = "button";
           nextBtn.className = "btn btn-primary";
-          nextBtn.textContent = isLastOrDone ? "Ver Resultado Final" : "Próxima Questão →";
+          nextBtn.textContent = isLast ? "Ver Resultado Final" : "Próxima Questão →";
           nextBtn.addEventListener("click", handleNext);
           cardNav.appendChild(nextBtn);
-        } else {
-          var hint = document.createElement("span");
-          hint.className = "hint-msg";
-          hint.textContent = "Selecione uma alternativa para continuar";
-          cardNav.appendChild(hint);
         }
 
         mainCardEl.appendChild(cardNav);
@@ -2084,185 +2395,331 @@
 
         var pill = document.createElement("span");
         pill.className = "summary-pill";
-        pill.textContent = "Aproveitamento: " + pct + "%";
+        pill.textContent = "Questionário Concluído";
 
         var heading = document.createElement("h2");
         heading.className = "summary-heading";
-        heading.textContent = pct >= 85
-          ? "Excelente desempenho!"
-          : (pct >= 60 ? "Bom resultado!" : "Continue praticando!");
+        heading.textContent = "Resultado Final";
 
         var sub = document.createElement("p");
         sub.className = "summary-sub";
-        sub.textContent = "Confira abaixo o desempenho por disciplina e o gabarito comentado de todas as questões.";
+        sub.textContent = "Conhecimentos Gerais — Disciplina: " + state.subject;
 
         var statsRow = document.createElement("div");
         statsRow.className = "stats-row";
 
-        var statItems = [
-          { label: "Acertos", value: String(stats.correct), cls: "c-green" },
-          { label: "Erros", value: String(stats.total - stats.correct), cls: "c-red" },
-          { label: "Total", value: String(stats.total), cls: "c-dark" }
-        ];
-
-        for (var i = 0; i < statItems.length; i++) {
+        function makeStat(labelText, valText, colorClass) {
           var cell = document.createElement("div");
           cell.className = "stat-cell";
-
           var lbl = document.createElement("span");
           lbl.className = "stat-lbl";
-          lbl.textContent = statItems[i].label;
-
+          lbl.textContent = labelText;
           var val = document.createElement("span");
-          val.className = "stat-val " + statItems[i].cls;
-          val.textContent = statItems[i].value;
-
+          val.className = "stat-val " + colorClass;
+          val.textContent = valText;
           cell.appendChild(lbl);
           cell.appendChild(val);
-          statsRow.appendChild(cell);
+          return cell;
         }
 
-        var btnGroup = document.createElement("div");
-        btnGroup.className = "summary-btns";
+        statsRow.appendChild(makeStat("Acertos", String(stats.correct), "c-green"));
+        statsRow.appendChild(makeStat("Erros", String(stats.answered - stats.correct), "c-red"));
+        statsRow.appendChild(makeStat("Aproveitamento", pct + "%", "c-dark"));
 
-        var redoBtn = document.createElement("button");
-        redoBtn.type = "button";
-        redoBtn.className = "btn btn-primary";
-        redoBtn.textContent = "Refazer Quiz";
-        redoBtn.addEventListener("click", function () {
+        var btnsDiv = document.createElement("div");
+        btnsDiv.className = "summary-btns";
+
+        var reviewFirstBtn = document.createElement("button");
+        reviewFirstBtn.type = "button";
+        reviewFirstBtn.className = "btn btn-outline";
+        reviewFirstBtn.textContent = "Revisar da 1ª Questão";
+        reviewFirstBtn.addEventListener("click", function () {
+          handleJump(0);
+        });
+
+        var retryBtn = document.createElement("button");
+        retryBtn.type = "button";
+        retryBtn.className = "btn btn-primary";
+        retryBtn.textContent = "Refazer Questionário";
+        retryBtn.addEventListener("click", function () {
           state.answers = {};
           prepareQuestions(false);
           renderAll();
         });
 
-        var redoShuffleBtn = document.createElement("button");
-        redoShuffleBtn.type = "button";
-        redoShuffleBtn.className = "btn btn-outline";
-        redoShuffleBtn.textContent = "Embaralhar e Refazer";
-        redoShuffleBtn.addEventListener("click", function () {
-          state.answers = {};
-          prepareQuestions(true);
-          renderAll();
-        });
-
-        btnGroup.appendChild(redoBtn);
-        btnGroup.appendChild(redoShuffleBtn);
+        btnsDiv.appendChild(reviewFirstBtn);
+        btnsDiv.appendChild(retryBtn);
 
         topDiv.appendChild(pill);
         topDiv.appendChild(heading);
         topDiv.appendChild(sub);
         topDiv.appendChild(statsRow);
-        topDiv.appendChild(btnGroup);
+        topDiv.appendChild(btnsDiv);
         mainCardEl.appendChild(topDiv);
 
         // Desempenho por disciplina
-        var subTitle1 = document.createElement("h3");
-        subTitle1.className = "sub-heading";
-        subTitle1.textContent = "Desempenho por Disciplina";
-        mainCardEl.appendChild(subTitle1);
-
         var subjMap = {};
-        var subjOrder = [];
-        for (var s = 0; s < state.list.length; s++) {
-          var qItem = state.list[s];
-          if (!subjMap[qItem.subject]) {
-            subjMap[qItem.subject] = { total: 0, ok: 0 };
-            subjOrder.push(qItem.subject);
+        for (var i = 0; i < state.list.length; i++) {
+          var item = state.list[i];
+          if (!subjMap[item.subject]) {
+            subjMap[item.subject] = { total: 0, correct: 0 };
           }
-          subjMap[qItem.subject].total++;
-          if (state.answers[qItem.id] && state.answers[qItem.id].isCorrect) {
-            subjMap[qItem.subject].ok++;
+          subjMap[item.subject].total++;
+          if (state.answers[item.id] && state.answers[item.id].isCorrect) {
+            subjMap[item.subject].correct++;
           }
         }
 
-        var breakdownGrid = document.createElement("div");
-        breakdownGrid.className = "subj-breakdown-grid";
+        var subjKeys = Object.keys(subjMap);
+        if (subjKeys.length > 1) {
+          var subjHeading = document.createElement("h3");
+          subjHeading.className = "sub-heading";
+          subjHeading.textContent = "Desempenho por Disciplina";
+          mainCardEl.appendChild(subjHeading);
 
-        for (var b = 0; b < subjOrder.length; b++) {
-          var sName = subjOrder[b];
-          var sData = subjMap[sName];
+          var grid = document.createElement("div");
+          grid.className = "subj-breakdown-grid";
 
-          var card = document.createElement("div");
-          card.className = "subj-card";
+          for (var s = 0; s < subjKeys.length; s++) {
+            var key = subjKeys[s];
+            var card = document.createElement("div");
+            card.className = "subj-card";
 
-          var nameStrong = document.createElement("strong");
-          nameStrong.textContent = sName;
+            var nameEl = document.createElement("strong");
+            nameEl.textContent = key;
 
-          var scoreStrong = document.createElement("strong");
-          scoreStrong.textContent = sData.ok + " / " + sData.total;
+            var scoreEl = document.createElement("span");
+            scoreEl.textContent = subjMap[key].correct + " / " + subjMap[key].total;
 
-          card.appendChild(nameStrong);
-          card.appendChild(scoreStrong);
-          breakdownGrid.appendChild(card);
+            card.appendChild(nameEl);
+            card.appendChild(scoreEl);
+            grid.appendChild(card);
+          }
+
+          mainCardEl.appendChild(grid);
         }
 
-        mainCardEl.appendChild(breakdownGrid);
+        // Gabarito detalhado
+        var revHeading = document.createElement("h3");
+        revHeading.className = "sub-heading";
+        revHeading.textContent = "Gabarito Comentado";
+        mainCardEl.appendChild(revHeading);
 
-        // Gabarito comentado
-        var subTitle2 = document.createElement("h3");
-        subTitle2.className = "sub-heading";
-        subTitle2.textContent = "Gabarito Comentado (" + state.list.length + " Questões)";
-        mainCardEl.appendChild(subTitle2);
+        var revCol = document.createElement("div");
+        revCol.className = "review-col";
 
-        var reviewCol = document.createElement("div");
-        reviewCol.className = "review-col";
-
-        for (var r = 0; r < state.list.length; r++) {
-          var rq = state.list[r];
+        for (var rIdx = 0; rIdx < state.list.length; rIdx++) {
+          var rq = state.list[rIdx];
           var rans = state.answers[rq.id];
-          var isOk = rans && rans.isCorrect;
+          var wasCorrect = rans ? rans.isCorrect : false;
 
-          var rCard = document.createElement("div");
-          rCard.className = "rev-card " + (isOk ? "ok" : "err");
+          var revCard = document.createElement("div");
+          revCard.className = "rev-card " + (wasCorrect ? "ok" : "err");
 
-          var rHead = document.createElement("div");
-          rHead.className = "rev-head";
+          var revHead = document.createElement("div");
+          revHead.className = "rev-head";
 
-          var rLeft = document.createElement("div");
-          rLeft.className = "badges-row";
+          var qNumSpan = document.createElement("span");
+          qNumSpan.className = "badge-subject";
+          qNumSpan.textContent = "Questão " + (rIdx + 1) + " • " + rq.subject;
 
-          var rNum = document.createElement("span");
-          rNum.className = "badge-counter";
-          rNum.textContent = "Questão " + (r + 1);
+          var statusSpan = document.createElement("span");
+          statusSpan.className = "rev-status";
+          statusSpan.textContent = wasCorrect ? "Acertou" : (rans ? "Errou" : "Não respondida");
 
-          var rSubj = document.createElement("span");
-          rSubj.className = "badge-subject";
-          rSubj.textContent = rq.subject;
+          revHead.appendChild(qNumSpan);
+          revHead.appendChild(statusSpan);
 
-          rLeft.appendChild(rNum);
-          rLeft.appendChild(rSubj);
+          var qText = document.createElement("p");
+          qText.className = "rev-question";
+          qText.textContent = rq.q;
 
-          var rStatus = document.createElement("span");
-          rStatus.className = "rev-status";
-          rStatus.textContent = isOk ? "Correta" : "Incorreta";
+          var ansInfo = document.createElement("p");
+          ansInfo.className = "rev-ans";
+          var userAnsLabel = rans && rans.selected !== undefined
+            ? LETTERS[rans.selected] + ") " + rq.options[rans.selected]
+            : "Nenhuma";
+          ansInfo.textContent = "Sua resposta: " + userAnsLabel + " | Correta: " + LETTERS[rq.correct] + ") " + rq.options[rq.correct];
 
-          rHead.appendChild(rLeft);
-          rHead.appendChild(rStatus);
+          var expInfo = document.createElement("p");
+          expInfo.className = "rev-exp";
+          expInfo.textContent = rq.exp;
 
-          var rQ = document.createElement("p");
-          rQ.className = "rev-question";
-          rQ.textContent = rq.q;
-
-          var rAns = document.createElement("p");
-          rAns.className = "rev-ans";
-          var yourTxt = rans
-            ? "Sua resposta: " + LETTERS[rans.selected] + " — " + rq.options[rans.selected]
-            : "Sua resposta: Não respondida";
-          var rightTxt = " | Gabarito: " + LETTERS[rq.correct] + " — " + rq.options[rq.correct];
-          rAns.textContent = yourTxt + (isOk ? "" : rightTxt);
-
-          var rExp = document.createElement("p");
-          rExp.className = "rev-exp";
-          rExp.textContent = "Explicação: " + rq.exp;
-
-          rCard.appendChild(rHead);
-          rCard.appendChild(rQ);
-          rCard.appendChild(rAns);
-          rCard.appendChild(rExp);
-          reviewCol.appendChild(rCard);
+          revCard.appendChild(revHead);
+          revCard.appendChild(qText);
+          revCard.appendChild(ansInfo);
+          revCard.appendChild(expInfo);
+          revCol.appendChild(revCard);
         }
 
-        mainCardEl.appendChild(reviewCol);
+        mainCardEl.appendChild(revCol);
+      }
+
+      function renderPdfViewerCard() {
+        keyboardTipEl.style.display = "none";
+        clearNode(mainCardEl);
+
+        // Barra superior do leitor de PDF
+        var toolbar = document.createElement("div");
+        toolbar.className = "pdf-toolbar";
+
+        var titleGroup = document.createElement("div");
+        titleGroup.className = "pdf-toolbar-title";
+
+        var h2 = document.createElement("h2");
+        h2.textContent = "Visualizador de Resumo em PDF (1 Página)";
+
+        var desc = document.createElement("p");
+        desc.textContent = "Leia o resumo das 5 primeiras matérias, salve/imprima em PDF ou abra um arquivo PDF local.";
+
+        titleGroup.appendChild(h2);
+        titleGroup.appendChild(desc);
+
+        var actions = document.createElement("div");
+        actions.className = "pdf-toolbar-actions";
+
+        var backBtn = document.createElement("button");
+        backBtn.type = "button";
+        backBtn.className = "btn btn-outline";
+        backBtn.textContent = "← Voltar ao Quiz";
+        backBtn.addEventListener("click", function () {
+          handleSelectQuiz("gerais");
+        });
+
+        var printBtn = document.createElement("button");
+        printBtn.type = "button";
+        printBtn.className = "btn btn-primary";
+        printBtn.textContent = "Imprimir / Salvar PDF";
+        printBtn.addEventListener("click", function () {
+          try {
+            window.print();
+          } catch (e) {
+            state.pdfError = "Use o atalho Ctrl+P (ou Cmd+P) do navegador para salvar como PDF.";
+            renderAll();
+          }
+        });
+
+        var fileLabel = document.createElement("label");
+        fileLabel.className = "btn btn-blue pdf-file-label";
+        fileLabel.textContent = "Abrir PDF Local";
+
+        var fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.accept = "application/pdf,.pdf";
+        fileInput.className = "pdf-hidden-input";
+        fileInput.addEventListener("change", function (ev) {
+          var chosen = ev.target && ev.target.files ? ev.target.files[0] : null;
+          handleUploadedPdf(chosen);
+          ev.target.value = "";
+        });
+
+        fileLabel.appendChild(fileInput);
+        actions.appendChild(backBtn);
+        actions.appendChild(printBtn);
+        actions.appendChild(fileLabel);
+
+        toolbar.appendChild(titleGroup);
+        toolbar.appendChild(actions);
+        mainCardEl.appendChild(toolbar);
+
+        // Folha de 1 página com o resumo enxuto das 5 primeiras matérias
+        var sheet = document.createElement("article");
+        sheet.className = "pdf-sheet";
+
+        var sheetHeader = document.createElement("header");
+        sheetHeader.className = "pdf-sheet-header";
+
+        var kicker = document.createElement("p");
+        kicker.className = "pdf-sheet-kicker";
+        kicker.textContent = "Guia de Revisão • Conhecimentos Gerais";
+
+        var sheetTitle = document.createElement("h3");
+        sheetTitle.className = "pdf-sheet-title";
+        sheetTitle.textContent = "Síntese das Cinco Primeiras Disciplinas";
+
+        var sheetSub = document.createElement("p");
+        sheetSub.className = "pdf-sheet-sub";
+        sheetSub.textContent = "Geografia, História, Língua Portuguesa, Arte e Língua Inglesa";
+
+        sheetHeader.appendChild(kicker);
+        sheetHeader.appendChild(sheetTitle);
+        sheetHeader.appendChild(sheetSub);
+        sheet.appendChild(sheetHeader);
+
+        for (var i = 0; i < SUMMARY_SECTIONS.length; i++) {
+          var sec = SUMMARY_SECTIONS[i];
+          var secTitle = document.createElement("h4");
+          secTitle.className = "pdf-section-title";
+          secTitle.textContent = sec.title;
+          sheet.appendChild(secTitle);
+
+          var ul = document.createElement("ul");
+          ul.className = "pdf-list";
+
+          for (var j = 0; j < sec.items.length; j++) {
+            var li = document.createElement("li");
+            var b = document.createElement("strong");
+            b.textContent = sec.items[j].strong + " ";
+            li.appendChild(b);
+            li.appendChild(document.createTextNode(sec.items[j].text));
+            ul.appendChild(li);
+          }
+
+          sheet.appendChild(ul);
+        }
+
+        var sheetFooter = document.createElement("footer");
+        sheetFooter.className = "pdf-sheet-footer";
+
+        var footLeft = document.createElement("span");
+        footLeft.textContent = "Resumo de Estudos — Revisão Geral";
+
+        var footRight = document.createElement("span");
+        footRight.textContent = "Página 1 de 1";
+
+        sheetFooter.appendChild(footLeft);
+        sheetFooter.appendChild(footRight);
+        sheet.appendChild(sheetFooter);
+
+        mainCardEl.appendChild(sheet);
+
+        if (state.pdfError) {
+          var errBox = document.createElement("div");
+          errBox.className = "pdf-error-msg";
+          errBox.textContent = state.pdfError;
+          mainCardEl.appendChild(errBox);
+        }
+
+        // Visualização de arquivo PDF carregado localmente pelo usuário
+        if (state.uploadedPdfUrl) {
+          var localBox = document.createElement("section");
+          localBox.className = "local-pdf-box";
+
+          var localHeader = document.createElement("div");
+          localHeader.className = "local-pdf-header";
+
+          var nameSpan = document.createElement("span");
+          nameSpan.className = "local-pdf-name";
+          nameSpan.textContent = "PDF carregado: " + state.uploadedPdfName;
+
+          var closeBtn = document.createElement("button");
+          closeBtn.type = "button";
+          closeBtn.className = "btn btn-neutral";
+          closeBtn.textContent = "Fechar PDF Local";
+          closeBtn.addEventListener("click", clearUploadedPdf);
+
+          localHeader.appendChild(nameSpan);
+          localHeader.appendChild(closeBtn);
+          localBox.appendChild(localHeader);
+
+          var frame = document.createElement("iframe");
+          frame.className = "local-pdf-frame";
+          frame.src = state.uploadedPdfUrl;
+          frame.title = "Visualizador de PDF Local — " + state.uploadedPdfName;
+          localBox.appendChild(frame);
+
+          mainCardEl.appendChild(localBox);
+        }
       }
 
       function renderAll() {
@@ -2270,27 +2727,39 @@
         renderSubjectFilters();
         renderQuickNav();
         renderProgress();
-        if (state.finished) {
+        if (state.quizId === "pdf_resumo") {
+          renderPdfViewerCard();
+        } else if (state.finished) {
           renderSummaryCard();
         } else {
           renderQuestionCard();
         }
       }
 
+      btnPdfViewEl.addEventListener("click", function () {
+        handleSelectQuiz("pdf_resumo");
+      });
+
       btnShuffleEl.addEventListener("click", function () {
+        if (state.quizId === "pdf_resumo") {
+          handleSelectQuiz("gerais");
+        }
         state.answers = {};
         prepareQuestions(true);
         renderAll();
       });
 
       btnRestartEl.addEventListener("click", function () {
+        if (state.quizId === "pdf_resumo") {
+          handleSelectQuiz("gerais");
+        }
         state.answers = {};
         prepareQuestions(false);
         renderAll();
       });
 
       document.addEventListener("keydown", function (ev) {
-        if (state.finished) {
+        if (state.finished || state.quizId === "pdf_resumo") {
           return;
         }
         var q = state.list[state.index];
