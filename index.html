@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portal de Quizzes Interativos — 47 Questões</title>
+  <title>Portal de Quizzes Interativos — 52 Questões</title>
   <style>
     :root {
       --bg-page: #f1f5f9;
@@ -782,7 +782,7 @@
       <div class="header-top">
         <div class="title-group">
           <h1>Portal de Quizzes Interativos</h1>
-          <p>47 questões divididas por disciplina com feedback imediato e gabarito comentado</p>
+          <p>52 questões divididas por disciplina com feedback imediato e gabarito comentado</p>
         </div>
         <div class="top-actions">
           <div class="score-box">
@@ -823,28 +823,33 @@
     <main id="main-card" class="main-card"></main>
 
     <p id="keyboard-tip" class="kbd-hint">
-      Atalhos de teclado: pressione <kbd>A</kbd>, <kbd>B</kbd>, <kbd>C</kbd> ou <kbd>D</kbd> para responder e <kbd>Enter</kbd> para avançar.
+      Atalhos de teclado: pressione <kbd>A</kbd>, <kbd>B</kbd>, <kbd>C</kbd>, <kbd>D</kbd> (ou <kbd>E</kbd>) para responder e <kbd>Enter</kbd> para avançar.
     </p>
   </div>
 
   <script>
     (function () {
-      var LETTERS = ["A", "B", "C", "D"];
+      var LETTERS = ["A", "B", "C", "D", "E"];
 
       var QUIZ_CONFIGS = [
         {
           id: "gerais",
-          title: "Conhecimentos Gerais (47)",
-          desc: "Geografia (10), História (10), Língua Portuguesa (10), Arte (7) e Língua Inglesa (10)"
+          title: "Conhecimentos Gerais (52)",
+          desc: "Geografia (10), História (10), Língua Portuguesa (10), Arte (7), Língua Inglesa (10) e Química (5)"
         },
         {
           id: "ingles",
           title: "Língua Inglesa — Revisão (10)",
           desc: "Vocabulary, Order of Adjectives, -ed/-ing, Divergent Thinking, Will/Going to e Used to"
+        },
+        {
+          id: "quimica",
+          title: "Química — EVA (5)",
+          desc: "Ligações iônicas e covalentes, ligas metálicas (latão), condutividade elétrica e reciclagem"
         }
       ];
 
-      // Banco de 47 questões (10 Geografia, 10 História, 10 Língua Portuguesa, 7 Arte e 10 Inglês)
+      // Banco de 52 questões (10 Geografia, 10 História, 10 Língua Portuguesa, 7 Arte, 10 Inglês e 5 Química)
       var QUESTIONS = [
         // ================= GEOGRAFIA (10) =================
         {
@@ -1418,6 +1423,71 @@
           ],
           correct: 0,
           exp: "Como indica o processo de adaptação ('acostumando-se a acordar cedo'), emprega-se 'is getting used to' seguido do verbo com -ing ('waking up')."
+        },
+
+        // ================= QUÍMICA — EVA (5) =================
+        {
+          id: "qui-1", quizId: "quimica", subject: "Química",
+          q: "Os compostos iônicos são formados a partir de ligação iônica resultante da atração eletrostática de cargas opostas. Uma propriedade característica desses compostos é a:",
+          options: [
+            "Alta temperatura de fusão",
+            "Alta taxa de inflamabilidade",
+            "Baixa temperatura de ebulição",
+            "Facilidade de separação dos íons que constituem uma estrutura cristalina"
+          ],
+          correct: 0,
+          exp: "Devido às fortes atrações eletrostáticas entre cátions e ânions no retículo cristalino, os compostos iônicos apresentam elevadas temperaturas de fusão e ebulição."
+        },
+        {
+          id: "qui-2", quizId: "quimica", subject: "Química",
+          q: "Quais são os tipos de ligação presentes no gás hidrogênio (H₂) e no cloreto de sódio (NaCl), respectivamente?",
+          options: [
+            "Covalente e iônica",
+            "Covalente e covalente",
+            "Covalente e metálica",
+            "Iônica e covalente"
+          ],
+          correct: 0,
+          exp: "No gás hidrogênio (H₂), dois átomos de ametal compartilham pares de elétrons (ligação covalente). No cloreto de sódio (NaCl), há transferência de elétron do metal sódio (Na⁺) para o ametal cloro (Cl⁻), formando ligação iônica."
+        },
+        {
+          id: "qui-3", quizId: "quimica", subject: "Química",
+          q: "Anúncio: \"Compramos sucatas em geral: alumínio, cobre, chumbo e latão\". O último item listado no anúncio é uma liga metálica formada pela mistura de:",
+          options: [
+            "Cobre e zinco",
+            "Mercúrio, prata e estanho",
+            "Aço e tungstênio",
+            "Ferro e carbono",
+            "Ouro e cobre"
+          ],
+          correct: 0,
+          exp: "O latão é uma liga metálica amplamente utilizada na indústria e em ferragens, composta principalmente pela mistura de cobre (Cu) e zinco (Zn)."
+        },
+        {
+          id: "qui-4", quizId: "quimica", subject: "Química",
+          q: "Uma empresa deseja fabricar um dispositivo capaz de conduzir corrente elétrica. Para isso, precisa selecionar um material entre os listados a seguir: 1 = F₂ | 2 = Al | 3 = CO₂ | 4 = CH₄ | 5 = NH₃. O mais eficiente para a finalidade pretendida é o:",
+          options: [
+            "2 (Al — alumínio, metal com elétrons livres na ligação metálica)",
+            "4 (CH₄ — metano, composto molecular)",
+            "3 (CO₂ — dióxido de carbono, composto molecular)",
+            "5 (NH₃ — amônia, composto molecular)",
+            "1 (F₂ — gás flúor, substância simples molecular)"
+          ],
+          correct: 0,
+          exp: "Entre as opções, apenas o alumínio (item 2, Al) é um metal, possuindo elétrons livres em sua rede metálica que garantem excelente condução de corrente elétrica no estado sólido. Os demais são compostos moleculares isolantes."
+        },
+        {
+          id: "qui-5", quizId: "quimica", subject: "Química",
+          q: "A reciclagem é uma importante prática para minimizar os impactos ambientais causados pelo descarte de resíduos. Qual dos objetos a seguir pode ser submetido ao procedimento mencionado?",
+          options: [
+            "Garrafa PET",
+            "Fralda descartável",
+            "Fotografia",
+            "Espelho",
+            "Absorvente"
+          ],
+          correct: 0,
+          exp: "A garrafa PET (politereftalato de etileno) é um plástico amplamente reciclável. Já fraldas descartáveis, absorventes, fotografias e espelhos (devido ao revestimento metálico/químico) são considerados rejeitos não recicláveis na coleta seletiva convencional."
         }
       ];
 
@@ -1714,7 +1784,9 @@
 
         var badgeQuiz = document.createElement("span");
         badgeQuiz.className = "badge-quiz";
-        badgeQuiz.textContent = state.quizId === "ingles" ? "Língua Inglesa" : "Conhecimentos Gerais";
+        badgeQuiz.textContent = state.quizId === "ingles"
+          ? "Língua Inglesa"
+          : (state.quizId === "quimica" ? "Química — EVA" : "Conhecimentos Gerais");
 
         var badgeSubj = document.createElement("span");
         badgeSubj.className = "badge-subject";
@@ -2078,7 +2150,7 @@
         var k = ev.key.toUpperCase();
         var idx = LETTERS.indexOf(k);
 
-        if (idx !== -1 && !isAnswered) {
+        if (idx !== -1 && idx < q.options.length && !isAnswered) {
           handleAnswer(idx);
         } else if (ev.key === "Enter" && isAnswered) {
           ev.preventDefault();
